@@ -1,0 +1,94 @@
+---
+---
+<div class="loader" id="loader" aria-hidden="true" aria-label="Caricamento in corso">
+  <div class="loader__inner">
+    <svg class="loader__logo-icon" width="48" height="48" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <rect x="2"  y="2"  width="12" height="12" rx="1" fill="#C4922A"/>
+      <rect x="18" y="2"  width="12" height="12" rx="1" fill="#9E7420"/>
+      <rect x="2"  y="18" width="12" height="12" rx="1" fill="#9E7420"/>
+      <rect x="18" y="18" width="12" height="12" rx="1" fill="#C4922A"/>
+    </svg>
+    <div class="loader__bar">
+      <div class="loader__progress"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import gsap from 'gsap';
+
+  const loader   = document.getElementById('loader') as HTMLElement;
+  const progress = loader?.querySelector<HTMLElement>('.loader__progress');
+  if (!loader) throw new Error('Loader not found');
+
+  /* Stagger logo squares */
+  const rects = loader.querySelectorAll('rect');
+  const loaderTween = gsap.to(rects, {
+    scale: 0.55,
+    opacity: 1,
+    transformOrigin: 'center',
+    ease: 'power2.inOut',
+    duration: 0.5,
+    stagger: { each: 0.14, repeat: -1, yoyo: true },
+  });
+
+  /* Progress bar simulation */
+  let pct = 0;
+  const tick = setInterval(() => {
+    pct = Math.min(pct + Math.random() * 18, 90);
+    if (progress) progress.style.width = `${pct}%`;
+  }, 120);
+
+  window.addEventListener('load', () => {
+    clearInterval(tick);
+    if (progress) progress.style.width = '100%';
+
+    /* Stop infinite loop before fade */
+    loaderTween.kill();
+
+    gsap.to(loader, {
+      opacity: 0,
+      duration: 0.5,
+      delay: 0.3,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        loader.style.display = 'none';
+        document.dispatchEvent(new CustomEvent('loader:complete'));
+      },
+    });
+  });
+</script>
+
+<style>
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: background var(--duration-300);
+}
+.loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.loader__bar {
+  width: 200px;
+  height: 2px;
+  background: var(--color-border-ui);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.loader__progress {
+  height: 100%;
+  width: 0%;
+  background: var(--color-gold);
+  border-radius: 2px;
+  transition: width var(--duration-75) linear;
+}
+</style>

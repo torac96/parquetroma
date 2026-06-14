@@ -1,0 +1,123 @@
+---
+import '../styles/global.css';
+import '../styles/animations.css';
+import { SCHEMA_LOCAL_BUSINESS, SITE_CONFIG } from '../data/config';
+import { ViewTransitions } from 'astro:transitions';
+
+interface BreadcrumbItem {
+  name: string;
+  url:  string;
+}
+
+interface Props {
+  title:        string;
+  description:  string;
+  canonical?:   string;
+  ogImage?:     string;
+  schema?:      object | object[];
+  lcpImage?:    string;
+  breadcrumbs?: BreadcrumbItem[];
+  noindex?:     boolean;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage   = `${SITE_CONFIG.url}/og-image.jpg`,
+  schema,
+  lcpImage,
+  breadcrumbs,
+  noindex = false,
+} = Astro.props;
+
+/* Build breadcrumb schema */
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_CONFIG.url },
+    ...breadcrumbs.map((bc, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: bc.name,
+      item: `${SITE_CONFIG.url}${bc.url}`,
+    })),
+  ],
+} : null;
+
+/* Collect all schemas */
+const schemas: object[] = [SCHEMA_LOCAL_BUSINESS];
+if (breadcrumbSchema) schemas.push(breadcrumbSchema);
+if (schema) {
+  if (Array.isArray(schema)) schemas.push(...schema);
+  else schemas.push(schema);
+}
+---
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Anti-FOUC: applica dark mode prima del render -->
+  <script is:inline>
+    (function() {
+      const t = localStorage.getItem('parquetroma-theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={canonical} />
+  <meta property="og:locale"      content="it_IT" />
+  <meta property="og:image"       content={ogImage} />
+  <meta property="og:site_name"   content={SITE_CONFIG.name} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={ogImage} />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <!-- Font preloads (self-hosted) -->
+  <link rel="preload" href="/fonts/inter-400.woff2"              as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-600.woff2"              as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/playfair-display-700.woff2"   as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/playfair-display-700i.woff2"  as="font" type="font/woff2" crossorigin />
+
+  <!-- LCP image preload (hero) -->
+  {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Generator tag -->
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Structured Data (one script per schema) -->
+  {schemas.map(s => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
+
+  <ViewTransitions />
+</head>
+<body>
+  <slot />
+</body>
+</html>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  eyebrow?:  string;
+  title:     string;
+  subtitle?: string;
+  align?:    'left' | 'center' | 'right';
+  class?:    string;
+}
+const { eyebrow, title, subtitle, align = 'center', class: className } = Astro.props;
+---
+
+<div class:list={['section__header reveal-up', `section__header--${align}`, className]}>
+  {eyebrow && <p class="section__eyebrow">{eyebrow}</p>}
+  <h2 class="section__title" set:html={title} />
+  {subtitle && <p class="section__subtitle">{subtitle}</p>}
+</div>
+
+<style>
+.section__header { max-width: 640px; }
+.section__header--center { margin-inline: auto; text-align: center; }
+.section__header--left   { margin-inline: 0; text-align: left; }
+.section__header--right  { margin-inline: 0 auto; text-align: right; }
+</style>

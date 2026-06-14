@@ -1,0 +1,145 @@
+---
+import type { Service } from '../../data/services';
+
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+---
+
+<article
+  class:list={['service-card tilt-card', { 'service-card--featured': service.isFeatured }]}
+  aria-labelledby={`svc-${service.id}`}
+>
+  <div class="service-card__image">
+    <img
+      src={service.image.src}
+      alt={service.image.alt}
+      width={service.image.width}
+      height={service.image.height}
+      loading="lazy"
+    />
+    {service.isFeatured && <span class="service-card__badge">Servizio Principale</span>}
+  </div>
+  <div class="service-card__body">
+    <div class="service-card__icon" aria-hidden="true">
+      <slot name="icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </slot>
+    </div>
+    <h3 class="service-card__title" id={`svc-${service.id}`}>{service.title}</h3>
+    <p class="service-card__desc">{service.description}</p>
+    <ul class="service-card__features" role="list">
+      {service.features.map(f => <li>{f}</li>)}
+    </ul>
+    <a
+      href={`/${service.slug}/`}
+      class:list={['btn service-card__cta', service.isFeatured ? 'btn--primary' : 'btn--secondary']}
+    >
+      {service.id === 'consulenza' ? 'Prenota Consulenza' : 'Scopri il Servizio'}
+    </a>
+  </div>
+</article>
+
+<style>
+.service-card {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border-ui);
+  transition: transform var(--duration-300) var(--ease-out), box-shadow var(--duration-300) var(--ease-out);
+}
+.service-card:hover {
+  transform: translateY(var(--card-lift));
+  box-shadow: var(--shadow-lg);
+}
+.service-card__image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+}
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-500) var(--ease-out);
+}
+.service-card:hover .service-card__image img { transform: scale(1.04); }
+.service-card__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--color-gold);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  padding: .3rem .75rem;
+  border-radius: var(--radius-full);
+}
+.service-card__body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.service-card__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-gold-pale);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+.dark .service-card__icon { background: rgba(196,146,42,.12); }
+.service-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: .75rem;
+}
+.service-card__desc {
+  font-size: .93rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: 1.25rem;
+}
+.service-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 1.75rem;
+  flex: 1;
+}
+.service-card__features li {
+  font-size: .85rem;
+  color: var(--color-text-secondary);
+  padding-left: 1.25rem;
+  position: relative;
+}
+.service-card__features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+.service-card__cta { align-self: flex-start; }
+
+/* Featured variant */
+.service-card--featured { grid-row: span 1; }
+@media (min-width: 900px) {
+  .service-card--featured { grid-column: span 1; }
+}
+</style>

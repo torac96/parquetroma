@@ -1,0 +1,136 @@
+---
+import type { Testimonial } from '../../data/testimonials';
+
+interface Props {
+  testimonial: Testimonial;
+  variant?: 'default' | 'google';
+}
+const { testimonial, variant = 'default' } = Astro.props;
+
+const stars = Array.from({ length: testimonial.rating });
+---
+
+{variant === 'google' ? (
+  <article class="testimonial-card testimonial-card--google" role="listitem">
+    <div class="testimonial-card__google-rating">
+      <span class="testimonial-card__google-score">5.0</span>
+      <div>
+        <div class="testimonial-card__stars" aria-label="5 stelle su 5">
+          {stars.map(() => (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C4922A" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          ))}
+        </div>
+        <p class="testimonial-card__google-count">127 recensioni su Google</p>
+      </div>
+    </div>
+    <p class="testimonial-card__google-text">{testimonial.quote}</p>
+    <a href="/testimonianze/" class="btn btn--secondary btn--sm">Leggi tutte</a>
+  </article>
+) : (
+  <article class="testimonial-card" role="listitem">
+    <div class="testimonial-card__stars" aria-label={`${testimonial.rating} stelle su 5`}>
+      {stars.map(() => (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#C4922A" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      ))}
+    </div>
+    <blockquote class="testimonial-card__quote">"{testimonial.quote}"</blockquote>
+    <div class="testimonial-card__author">
+      <img
+        src={testimonial.avatar}
+        alt={testimonial.name}
+        width="48"
+        height="48"
+        loading="lazy"
+      />
+      <div>
+        <strong class="testimonial-card__name">{testimonial.name}</strong>
+        <span class="testimonial-card__role">{testimonial.role}</span>
+      </div>
+    </div>
+  </article>
+)}
+
+<style>
+.testimonial-card {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--color-border-ui);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex-shrink: 0;
+  width: clamp(280px, 360px, 90vw);
+  transition: transform var(--duration-300) var(--ease-out), box-shadow var(--duration-300) var(--ease-out);
+}
+.testimonial-card:hover {
+  transform: translateY(var(--card-lift));
+  box-shadow: var(--shadow-lg);
+}
+.testimonial-card__stars { display: flex; gap: .2rem; }
+.testimonial-card__quote {
+  font-size: .93rem;
+  color: var(--color-on-surface);
+  line-height: var(--lh-relaxed);
+  flex: 1;
+}
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border-ui);
+}
+.testimonial-card__author img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.testimonial-card__name {
+  display: block;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+}
+.testimonial-card__role {
+  display: block;
+  font-size: .78rem;
+  color: var(--color-text-muted);
+  margin-top: .15rem;
+}
+
+/* Google aggregate card */
+.testimonial-card--google {
+  background: linear-gradient(135deg, var(--color-gold-pale), white);
+  border-color: rgba(196,146,42,.25);
+}
+.dark .testimonial-card--google {
+  background: linear-gradient(135deg, rgba(196,146,42,.12), rgba(196,146,42,.06));
+  border-color: rgba(196,146,42,.2);
+}
+.testimonial-card__google-rating {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.testimonial-card__google-score {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+.testimonial-card__google-count {
+  font-size: .75rem;
+  color: var(--color-text-muted);
+  margin-top: .2rem;
+}
+.testimonial-card__google-text {
+  font-size: .9rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+  flex: 1;
+}
+</style>

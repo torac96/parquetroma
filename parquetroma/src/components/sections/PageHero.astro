@@ -1,0 +1,44 @@
+---
+interface Breadcrumb { name: string; href: string; }
+interface Props {
+  eyebrow?:    string;
+  title:       string;
+  subtitle?:   string;
+  image?:      string;
+  breadcrumbs?: Breadcrumb[];
+  actions?:    boolean;
+}
+const {
+  eyebrow,
+  title,
+  subtitle,
+  image = 'https://picsum.photos/seed/parquet-hero/1920/600',
+  breadcrumbs = [],
+  actions = false,
+} = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="page-hero__bg" aria-hidden="true">
+    <img src={image} alt="" width="1920" height="600" loading="eager" fetchpriority="high" />
+    <div class="page-hero__overlay"></div>
+  </div>
+
+  <div class="container page-hero__content">
+    {breadcrumbs.length > 0 && (
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        {breadcrumbs.map(bc => (
+          <>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            {bc.href ? <a href={bc.href}>{bc.name}</a> : <span aria-current="page">{bc.name}</span>}
+          </>
+        ))}
+      </nav>
+    )}
+    {eyebrow && <span class="page-hero__eyebrow">{eyebrow}</span>}
+    <h1 class="page-hero__title" set:html={title} />
+    {subtitle && <p class="page-hero__subtitle">{subtitle}</p>}
+    {actions && <slot name="actions" />}
+  </div>
+</section>

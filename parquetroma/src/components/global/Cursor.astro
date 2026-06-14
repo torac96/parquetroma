@@ -1,0 +1,61 @@
+---
+---
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-follower" id="cursor-follower" aria-hidden="true"></div>
+
+<style>
+/* FIX: No will-change — il cursor aggiorna ogni frame, spreca GPU layer */
+.cursor {
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: calc(var(--z-cursor) + 1);
+  mix-blend-mode: multiply;
+  transition: opacity var(--duration-200);
+}
+/* FIX border flicker: border-color RIMOSSA dalla transition */
+.cursor-follower {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(196,146,42,.45);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  /* Solo width/height in transition — border-color cambia istantaneamente */
+  transition:
+    width var(--duration-300) var(--ease-out),
+    height var(--duration-300) var(--ease-out);
+}
+.cursor-follower.expanded {
+  width: 56px;
+  height: 56px;
+  border-color: var(--color-gold);
+}
+.cursor-follower[data-label]::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: .5rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-wider);
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+.cursor-follower.has-label {
+  width: 64px;
+  height: 64px;
+  border-color: rgba(196,146,42,.6);
+  background: rgba(250,248,244,.06);
+}
+body:not(.has-cursor) .cursor,
+body:not(.has-cursor) .cursor-follower { display: none; }
+
+.dark .cursor { mix-blend-mode: screen; }
+</style>

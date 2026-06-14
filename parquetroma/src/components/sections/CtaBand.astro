@@ -1,0 +1,101 @@
+---
+import { SITE_CONFIG } from '../../data/config';
+
+interface Props {
+  title?:    string;
+  text?:     string;
+  phoneCta?: string;
+  formCta?:  string;
+}
+const {
+  title    = 'Pronto a Trasformare il Tuo Spazio?',
+  text     = 'Unisciti ai 500+ clienti soddisfatti. Preventivo gratuito, senza impegno.',
+  phoneCta = 'Chiama Ora',
+  formCta  = 'Richiedi Preventivo',
+} = Astro.props;
+---
+
+<div class="cta-band">
+  <div class="cta-band__orb cta-band__orb--1" aria-hidden="true"></div>
+  <div class="cta-band__orb cta-band__orb--2" aria-hidden="true"></div>
+
+  <div class="cta-band__content">
+    <h2 class="cta-band__title">{title}</h2>
+    <p class="cta-band__text">{text}</p>
+  </div>
+
+  <div class="cta-band__actions">
+    <a href={SITE_CONFIG.phoneHref} class="btn btn--white btn--lg">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 11.9 19.79 19.79 0 01.07 3.28 2 2 0 012.03 1H5a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      {phoneCta}
+    </a>
+    <a href="/contatti/" class="btn btn--outline-white btn--lg">{formCta}</a>
+  </div>
+</div>
+
+<style>
+.cta-band {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-green-deep) 0%, var(--color-green-deeper) 100%);
+  border-radius: var(--radius-xl);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  overflow: hidden;
+  animation: ctaGradShift 8s ease-in-out infinite;
+}
+.cta-band__orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ctaOrbPulse 6s ease-in-out infinite;
+}
+.cta-band__orb--1 {
+  width: 350px;
+  height: 350px;
+  background: rgba(196,146,42,.12);
+  top: -100px;
+  right: -50px;
+  filter: blur(60px);
+}
+.cta-band__orb--2 {
+  width: 200px;
+  height: 200px;
+  background: rgba(196,146,42,.08);
+  bottom: -60px;
+  left: 10%;
+  filter: blur(40px);
+  animation-delay: 3s;
+}
+.cta-band__content { position: relative; z-index: 1; max-width: 520px; }
+.cta-band__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .75rem;
+  line-height: var(--lh-snug);
+}
+.cta-band__text {
+  font-size: 1rem;
+  color: rgba(255,255,255,.7);
+  line-height: var(--lh-relaxed);
+}
+.cta-band__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .cta-band { flex-direction: column; text-align: center; }
+  .cta-band__actions { justify-content: center; }
+}
+</style>

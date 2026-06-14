@@ -1,0 +1,95 @@
+---
+interface Props {
+  num:         string;
+  name:        string;
+  latin:       string;
+  description: string;
+  gradient:    string;
+  href:        string;
+}
+const { num, name, latin, description, gradient, href } = Astro.props;
+---
+
+<a href={href} class="material-card" aria-label={`${name} — scopri il servizio`}>
+  <div class="material-card__bg" style={`background: ${gradient}`}></div>
+  <div class="material-card__overlay"></div>
+  <div class="material-card__content">
+    <span class="material-card__num">{num}</span>
+    <div class="material-card__accent" aria-hidden="true"></div>
+    <h3 class="material-card__name">{name}</h3>
+    <span class="material-card__lat">{latin}</span>
+    <p class="material-card__desc">{description}</p>
+  </div>
+</a>
+
+<style>
+.material-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  text-decoration: none;
+}
+.material-card:hover .material-card__bg { transform: scale(1.05); }
+.material-card:hover .material-card__accent { width: 3rem; }
+
+.material-card__bg {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--duration-700) var(--ease-out);
+  will-change: transform;
+}
+.material-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 60%, transparent 100%);
+}
+.material-card__content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.75rem;
+  width: 100%;
+}
+.material-card__num {
+  font-family: var(--font-serif);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-widest);
+  color: rgba(255,255,255,.45);
+  display: block;
+  margin-bottom: 1rem;
+}
+.material-card__accent {
+  width: 2rem;
+  height: 1.5px;
+  background: var(--color-gold);
+  border-radius: 1px;
+  margin-bottom: 1rem;
+  transition: width var(--duration-300) var(--ease-out);
+}
+.material-card__name {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .25rem;
+  line-height: var(--lh-tight);
+}
+.material-card__lat {
+  font-size: .72rem;
+  color: rgba(255,255,255,.45);
+  font-style: italic;
+  display: block;
+  margin-bottom: .75rem;
+  letter-spacing: .04em;
+}
+.material-card__desc {
+  font-size: .83rem;
+  color: rgba(255,255,255,.7);
+  line-height: var(--lh-relaxed);
+  max-width: 260px;
+}
+</style>

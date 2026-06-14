@@ -1,0 +1,57 @@
+/* ============================================================
+   PARQUETROMA — Keyframe Animations
+   ============================================================ */
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  14%  { transform: translate(-5%, -10%); }
+  28%  { transform: translate(-15%, 5%); }
+  42%  { transform: translate(7%, -20%); }
+  57%  { transform: translate(-5%, 25%); }
+  71%  { transform: translate(15%, 0%); }
+  85%  { transform: translate(-10%, 15%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes loaderPulse {
+  0%, 100% { transform: scale(1); opacity: .8; }
+  50%       { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes goldGlow {
+  0%, 100% { text-shadow: none; }
+  50%       { text-shadow: 0 0 28px rgba(212,168,67,.35), 0 0 56px rgba(196,146,42,.15); }
+}
+
+@keyframes goldShimmer {
+  to { background-position: 200% center; }
+}
+
+@keyframes ctaGradShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes ctaOrbPulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.4); opacity: .65; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin { animation: spin 1s linear infinite; }
+
+/* ============================================================
+   PREFERS REDUCED MOTION — disable all non-essential animations
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Keep essential transitions for theme toggle */
+  body { transition: background 0.3s, color 0.3s; }
+}

@@ -1,0 +1,92 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header     from '../components/global/Header.astro';
+import Footer     from '../components/global/Footer.astro';
+import Loader     from '../components/global/Loader.astro';
+import Cursor     from '../components/global/Cursor.astro';
+import ScrollProgress from '../components/global/ScrollProgress.astro';
+import StickyCTA  from '../components/global/StickyCTA.astro';
+
+interface Props {
+  title:        string;
+  description:  string;
+  canonical?:   string;
+  ogImage?:     string;
+  schema?:      object | object[];
+  lcpImage?:    string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+  noindex?:     boolean;
+}
+---
+
+<BaseLayout {...Astro.props}>
+  <!-- Global elements -->
+  <Loader />
+  <ScrollProgress />
+  <Cursor />
+
+  <!-- Navigation -->
+  <Header currentPath={Astro.url.pathname} />
+
+  <!-- Page Content -->
+  <main id="main-content">
+    <a href="#main-content" class="skip-link">Vai al contenuto</a>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <Footer />
+
+  <!-- Mobile sticky CTA -->
+  <StickyCTA />
+
+  <!-- Init all animations after loader completes -->
+  <script>
+    import { initHeroAnimations, initPageHeroAnimations } from '../scripts/animations/heroAnimations';
+    import { initScrollReveals }   from '../scripts/animations/scrollReveal';
+    import { initTiltCards }       from '../scripts/animations/tiltCard';
+    import { initMagneticButtons } from '../scripts/animations/magneticButton';
+    import { initMarquee }         from '../scripts/animations/marquee';
+    import { initHorizontalScroll }from '../scripts/animations/horizontalScroll';
+    import { initBASliders }       from '../scripts/animations/baSlider';
+    import { initCursor }          from '../scripts/animations/cursor';
+    import { initHeader }          from '../scripts/ui/header';
+    import { initPortfolioFilter } from '../scripts/ui/portfolioFilter';
+    import { initFaqAccordion }    from '../scripts/ui/faqAccordion';
+    import { initTheme, toggleTheme } from '../scripts/theme';
+
+    function initAllAnimations(): void {
+      initHeroAnimations();
+      initPageHeroAnimations();
+      initScrollReveals();
+      initTiltCards();
+      initMagneticButtons();
+      initMarquee();
+      initHorizontalScroll();
+      initBASliders();
+      initPortfolioFilter();
+      initFaqAccordion();
+    }
+
+    /* Init on first load */
+    initTheme();
+    initCursor();
+    initHeader();
+
+    /* Wait for loader to finish */
+    document.addEventListener('loader:complete', initAllAnimations, { once: true });
+
+    /* Re-init after Astro View Transitions navigation */
+    document.addEventListener('astro:after-swap', () => {
+      initHeader();
+      initAllAnimations();
+    });
+
+    /* Dark mode toggle — delegated to any [data-theme-toggle] button */
+    document.addEventListener('click', (e: Event) => {
+      if ((e.target as HTMLElement)?.closest('[data-theme-toggle]')) {
+        toggleTheme();
+      }
+    });
+  </script>
+</BaseLayout>

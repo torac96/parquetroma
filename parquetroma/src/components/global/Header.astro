@@ -1,0 +1,246 @@
+---
+import ThemeToggle from '../ui/ThemeToggle.astro';
+import { SITE_CONFIG } from '../../data/config';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const isActive = (path: string) =>
+  currentPath === path || currentPath.startsWith(path + '/') ? 'active' : '';
+---
+
+<header class="header" id="header" role="banner">
+  <div class="container header__inner">
+
+    <a href="/" class="header__logo" aria-label="ParquetRoma — Home">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="2"  y="2"  width="12" height="12" rx="1" fill="#C4922A"/>
+        <rect x="18" y="2"  width="12" height="12" rx="1" fill="#9E7420"/>
+        <rect x="2"  y="18" width="12" height="12" rx="1" fill="#9E7420"/>
+        <rect x="18" y="18" width="12" height="12" rx="1" fill="#C4922A"/>
+      </svg>
+      <span class="header__logo-text">Parquet<strong>Roma</strong></span>
+    </a>
+
+    <nav class="header__nav" id="nav" role="navigation" aria-label="Navigazione principale">
+      <ul class="header__nav-list" role="list">
+        <li>
+          <a href="/chi-siamo/" class={`header__nav-link ${isActive('/chi-siamo')}`}>Chi Siamo</a>
+        </li>
+        <li class="header__nav-item--has-drop">
+          <a href="/servizi/" class={`header__nav-link ${isActive('/servizi')}`}>
+            Servizi
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </a>
+          <ul class="header__nav-dropdown" role="list">
+            <li><a href="/servizi/#parquet">Posa Parquet</a></li>
+            <li><a href="/servizi/#porte">Installazione Porte</a></li>
+            <li><a href="/servizi/#consulenza">Consulenza &amp; Design</a></li>
+            <li><a href="/servizi/#levigatura">Levigatura &amp; Restauro</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/portfolio/" class={`header__nav-link ${isActive('/portfolio')}`}>Portfolio</a>
+        </li>
+        <li>
+          <a href="/testimonianze/" class={`header__nav-link ${isActive('/testimonianze')}`}>Testimonianze</a>
+        </li>
+        <li>
+          <a href="/contatti/" class={`header__nav-link ${isActive('/contatti')}`}>Contatti</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__cta">
+      <ThemeToggle />
+      <a href={SITE_CONFIG.phoneHref} class="btn btn--phone" aria-label={`Chiama ${SITE_CONFIG.phone}`}>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 11.9 19.79 19.79 0 01.07 3.28 2 2 0 012.03 1H5a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        <span>06 1234 5678</span>
+      </a>
+      <button
+        class="header__burger"
+        id="burger"
+        aria-label="Apri menu"
+        aria-expanded="false"
+        aria-controls="nav"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<style>
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--z-dropdown);
+  height: var(--header-h);
+  background: var(--color-header-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition:
+    box-shadow var(--duration-300),
+    border-color var(--duration-300),
+    background var(--duration-300);
+}
+.header.scrolled {
+  box-shadow: 0 4px 32px rgba(0,0,0,.08);
+  border-color: var(--color-border-ui);
+  background: var(--color-header-scrolled);
+}
+.dark .header.scrolled {
+  box-shadow: 0 4px 32px rgba(0,0,0,.3);
+}
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 1.5rem;
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.header__logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+  letter-spacing: var(--ls-tight);
+}
+.header__logo-text strong { color: var(--color-gold); font-weight: 700; }
+
+.header__nav { flex: 1; }
+.header__nav-list {
+  display: flex;
+  align-items: center;
+  gap: .1rem;
+  justify-content: center;
+}
+.header__nav-item--has-drop { position: relative; }
+.header__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .5rem .9rem;
+  border-radius: var(--radius-sm);
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: color var(--duration-200), background var(--duration-200);
+  position: relative;
+}
+.header__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: .9rem; right: .9rem;
+  height: 1.5px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s var(--ease-out);
+}
+.header__nav-link:hover,
+.header__nav-link.active { color: var(--color-gold); background: var(--color-gold-pale); }
+.dark .header__nav-link:hover,
+.dark .header__nav-link.active { background: rgba(196,146,42,.12); }
+.header__nav-link:hover::after,
+.header__nav-link.active::after { transform: scaleX(1); }
+
+/* Dropdown */
+.header__nav-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 220px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-ui);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: .5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-200), transform var(--duration-200) var(--ease-out);
+  z-index: 10;
+}
+.header__nav-item--has-drop:hover .header__nav-dropdown {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+.header__nav-dropdown a {
+  display: block;
+  padding: .6rem 1rem;
+  font-size: .875rem;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-150), background var(--duration-150);
+}
+.header__nav-dropdown a:hover { color: var(--color-gold); background: var(--color-gold-pale); }
+.dark .header__nav-dropdown a:hover { background: rgba(196,146,42,.12); }
+
+.header__cta { display: flex; align-items: center; gap: .85rem; }
+.header__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: .45rem;
+  border-radius: var(--radius-sm);
+}
+.header__burger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--color-text-primary);
+  border-radius: 2px;
+  transition: transform var(--duration-300), opacity var(--duration-200);
+}
+.header__burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.header__burger.open span:nth-child(2) { opacity: 0; }
+.header__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .header__nav {
+    position: fixed;
+    top: var(--header-h); left: 0; right: 0;
+    background: var(--color-card-bg);
+    border-bottom: 1px solid var(--color-border-ui);
+    padding: 1.25rem 1.5rem 2rem;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-110%);
+    transition: transform .35s var(--ease-out);
+    z-index: 999;
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+  }
+  .header__nav.open { transform: translateY(0); }
+  .header__nav-list { flex-direction: column; align-items: flex-start; gap: .25rem; }
+  .header__nav-link { font-size: 1rem; padding: .65rem .75rem; width: 100%; }
+  .header__nav-dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: all;
+    box-shadow: none;
+    border: none;
+    background: var(--color-surface-alt);
+    margin-top: .25rem;
+    border-radius: var(--radius-md);
+  }
+  .header__burger { display: flex; }
+  .btn--phone span { display: none; }
+}
+</style>

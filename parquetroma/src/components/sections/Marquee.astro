@@ -1,0 +1,48 @@
+---
+---
+
+<div class="marquee" id="marquee" aria-hidden="true">
+  <div class="marquee__inner">
+    <span class="marquee__item"><strong>20+</strong> anni di esperienza <span class="marquee__dot"></span></span>
+    <span class="marquee__item"><strong>500+</strong> progetti realizzati <span class="marquee__dot"></span></span>
+    <span class="marquee__item"><strong>127</strong> recensioni 5 stelle <span class="marquee__dot"></span></span>
+    <span class="marquee__item"><strong>100%</strong> soddisfazione garantita <span class="marquee__dot"></span></span>
+    <span class="marquee__item">Posa Parquet Roma <span class="marquee__dot"></span></span>
+    <span class="marquee__item">Installazione Porte Roma <span class="marquee__dot"></span></span>
+    <span class="marquee__item">Consulenza Design Gratuita <span class="marquee__dot"></span></span>
+    <span class="marquee__item">Quercia · Noce · Frassino · Bambù <span class="marquee__dot"></span></span>
+  </div>
+</div>
+
+<style>
+.marquee {
+  overflow: hidden;
+  background: var(--color-dark);
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+.marquee__inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  will-change: transform;
+}
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  padding-inline: 2.5rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  flex-shrink: 0;
+}
+.marquee__item strong { color: var(--color-gold-light); font-size: 1rem; font-family: var(--font-serif); }
+.marquee__dot { width: 4px; height: 4px; border-radius: 50%; background: var(--color-gold); flex-shrink: 0; opacity: .5; }
+</style>

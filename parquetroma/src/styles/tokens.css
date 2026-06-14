@@ -1,0 +1,138 @@
+/* ============================================================
+   PARQUETROMA — Design Token System
+   Tailwind v4 @theme + CSS custom properties
+   ============================================================ */
+
+@theme {
+  /* === BRAND COLORS === */
+  --color-gold:         #C4922A;
+  --color-gold-dark:    #9E7420;
+  --color-gold-light:   #D4A843;
+  --color-gold-pale:    #F5EDD8;
+
+  --color-green:        #2D5016;
+  --color-green-light:  #3D6B20;
+  --color-green-deep:   #1e3a0e;
+  --color-green-deeper: #0d2006;
+
+  --color-cream:        #FAF8F4;
+  --color-cream-alt:    #F2EDE3;
+  --color-dark:         #100E09;
+  --color-dark-2:       #1A1710;
+  --color-dark-3:       #241F18;
+
+  --color-text:         #1E1A15;
+  --color-text-light:   #6B6560;
+  --color-text-muted:   #9B9790;
+  --color-border:       #E8E0D4;
+  --color-wa-green:     #25D366;
+
+  /* === SEMANTIC TOKENS (override in .dark) === */
+  --color-surface:      #FAF8F4;
+  --color-surface-alt:  #F2EDE3;
+  --color-surface-dark: #100E09;
+  --color-on-surface:   #1E1A15;
+  --color-card-bg:      #FFFFFF;
+  --color-border-ui:    #E8E0D4;
+  --color-header-bg:    rgba(250,248,244,0.92);
+  --color-header-scrolled: rgba(250,248,244,0.98);
+  --color-text-primary: #1E1A15;
+  --color-text-secondary: #6B6560;
+
+  /* === FONT FAMILIES === */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* === SPACING SCALE (8px base) === */
+  --spacing-px: 1px;
+  --spacing-0:  0px;
+  --spacing-1:  4px;
+  --spacing-2:  8px;
+  --spacing-3:  12px;
+  --spacing-4:  16px;
+  --spacing-5:  20px;
+  --spacing-6:  24px;
+  --spacing-8:  32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-14: 56px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+
+  /* === BORDER RADIUS === */
+  --radius-sm:   4px;
+  --radius-md:   10px;
+  --radius-lg:   18px;
+  --radius-xl:   28px;
+  --radius-2xl:  40px;
+  --radius-full: 9999px;
+
+  /* === SHADOWS === */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:   0 4px 16px rgba(0,0,0,.09);
+  --shadow-lg:   0 12px 40px rgba(0,0,0,.12);
+  --shadow-xl:   0 28px 64px rgba(0,0,0,.16);
+  --shadow-gold: 0 8px 32px rgba(196,146,42,.28);
+
+  /* === ANIMATION DURATIONS === */
+  --duration-75:   75ms;
+  --duration-100:  100ms;
+  --duration-150:  150ms;
+  --duration-200:  200ms;
+  --duration-300:  300ms;
+  --duration-500:  500ms;
+  --duration-700:  700ms;
+  --duration-1000: 1000ms;
+
+  /* === EASING === */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-expo:   cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* === Z-INDEX LAYERS === */
+  --z-base:     0;
+  --z-above:    10;
+  --z-dropdown: 100;
+  --z-modal:    200;
+  --z-overlay:  300;
+  --z-cursor:   400;
+  --z-loader:   500;
+
+  /* === TYPOGRAPHY SCALE === */
+  --lh-none:    1.0;
+  --lh-tight:   1.15;
+  --lh-snug:    1.35;
+  --lh-normal:  1.65;
+  --lh-relaxed: 1.75;
+  --lh-loose:   2.0;
+
+  --ls-tighter: -0.04em;
+  --ls-tight:   -0.01em;
+  --ls-normal:  0em;
+  --ls-wide:    0.06em;
+  --ls-wider:   0.12em;
+  --ls-widest:  0.18em;
+
+  /* === LAYOUT === */
+  --header-h:     76px;
+  --header-h-mob: 64px;
+  --card-lift:    -4px;
+}
+
+/* ============================================================
+   DARK MODE — token overrides via .dark class on <html>
+   ============================================================ */
+.dark {
+  --color-surface:          #100E09;
+  --color-surface-alt:      #1A1710;
+  --color-on-surface:       #FAF8F4;
+  --color-card-bg:          #1A1710;
+  --color-border-ui:        #2A2520;
+  --color-header-bg:        rgba(16,14,9,0.90);
+  --color-header-scrolled:  rgba(16,14,9,0.98);
+  --color-text-primary:     #FAF8F4;
+  --color-text-secondary:   #B8B2AC;
+}
