@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it" data-base="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servizi Parquet Roma | Posa, Porte, Consulenza | ParquetRoma</title>
+  <meta name="description" content="Posa parquet Roma, installazione porte e consulenza design a Roma e Lazio. 20+ anni di esperienza artigianale. Sopralluogo e preventivo gratuiti.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.parquetroma.it/servizi.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .service-detail { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,6vw,6rem); align-items: center; margin-bottom: clamp(5rem,10vw,8rem); position: relative; z-index: 1; }
+    .service-detail:last-child { margin-bottom: 0; }
+    .service-detail--reverse .service-detail__image { order: 2; }
+    .service-detail--reverse .service-detail__content { order: 1; }
+    .service-detail__image { border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4/3; }
+    .service-detail__image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-out); }
+    .service-detail__image:hover img { transform: scale(1.04); }
+    .service-detail__eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .85rem; display: block; }
+    .service-detail__title { font-family: var(--serif); font-size: clamp(1.75rem,3.5vw,2.5rem); font-weight: 700; color: var(--text); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 1rem; }
+    .service-detail__title em { font-style: italic; color: var(--gold); }
+    .service-detail__desc { color: var(--text-light); margin-bottom: 1.75rem; line-height: 1.75; font-size: 1rem; }
+    .features-list { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 2rem; }
+    .features-list li { display: flex; align-items: flex-start; gap: .75rem; font-size: .9rem; color: var(--text-light); }
+    .features-list li::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: .45rem; }
+    .woods-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 4rem; }
+    .wood-card { background: var(--white); border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--sh-sm); transition: transform .25s var(--ease-out), box-shadow .25s; }
+    .wood-card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .wood-card__swatch { height: 100px; }
+    .wood-card__swatch--quercia { background: linear-gradient(135deg,#C8923A,#A06820); }
+    .wood-card__swatch--noce { background: linear-gradient(135deg,#6B3A1F,#4A2510); }
+    .wood-card__swatch--frassino { background: linear-gradient(135deg,#B0A090,#8A7A6A); }
+    .wood-card__swatch--bambu { background: linear-gradient(135deg,#7A8A50,#5A6A30); }
+    .wood-card__swatch--wenge { background: linear-gradient(135deg,#2A1A0A,#1A0A00); }
+    .wood-card__swatch--pino { background: linear-gradient(135deg,#D4C090,#B0A070); }
+    .wood-card__body { padding: 1.1rem; }
+    .wood-card__name { font-family: var(--serif); font-size: .95rem; font-weight: 700; color: var(--text); }
+    .wood-card__desc { font-size: .78rem; color: var(--text-light); margin-top: .2rem; }
+    @media (max-width: 900px) { .service-detail { grid-template-columns: 1fr; } .service-detail--reverse .service-detail__image { order: 0; } .service-detail--reverse .service-detail__content { order: 0; } .woods-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 500px) { .woods-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main-content">
+
+  <!-- ====== PAGE HERO ====== -->
+  <section class="page-hero" aria-labelledby="ph-title">
+    <div class="page-hero__bg" aria-hidden="true">
+      <img src="https://picsum.photos/seed/parquet-tools/1920/800" alt="" width="1920" height="800">
+      <div class="page-hero__overlay"></div>
+    </div>
+    <div class="container page-hero__content">
+      <nav class="breadcrumb" aria-label="Navigazione breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span aria-current="page">Servizi</span>
+      </nav>
+      <span class="page-hero__eyebrow">Tutto Quello che Offriamo</span>
+      <h1 class="page-hero__title" id="ph-title">Servizi Professionali<br><em>di Posa Parquet a Roma</em></h1>
+      <p class="page-hero__subtitle">Dalla consulenza iniziale alla consegna finale: un servizio completo che trasforma il tuo spazio con la maestria del legno.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+        <a href="contatti.html" class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+        <a href="tel:+390612345678" class="btn btn--ghost btn--lg">Chiama Ora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PARQUET ====== -->
+  <section class="section" id="parquet" aria-labelledby="svc1-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__image clip-reveal">
+          <img src="https://picsum.photos/seed/parquet-herringbone/900/675" alt="Posa parquet a spina di pesce Roma" width="900" height="675" loading="lazy">
+        </div>
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Servizio Principale</span>
+          <h2 class="service-detail__title" id="svc1-title">Posa <em>Parquet</em><br>Professionale</h2>
+          <p class="service-detail__desc">Installiamo pavimenti in legno pregiato con la precisione che solo 20+ anni di esperienza possono garantire. Ogni progetto inizia dall'ascolto: capiamo il tuo stile, il tuo spazio, e ti guidiamo verso la scelta perfetta.</p>
+          <ul class="features-list" role="list">
+            <li>Sopralluogo e consulenza gratuita</li>
+            <li>Selezione essenze: quercia, noce, frassino, bambù, wengé, pino</li>
+            <li>Pattern: spina di pesce, diagonale, dritto, mattoni, chevron</li>
+            <li>Posa tradizionale incollata e posa flottante</li>
+            <li>Preparazione e livellamento sottofondo</li>
+            <li>Levigatura, verniciatura, oliatura e ceratura</li>
+            <li>Garanzia scritta sul lavoro eseguito</li>
+          </ul>
+          <a href="contatti.html" class="btn btn--primary btn--lg">Richiedi Preventivo</a>
+        </div>
+      </div>
+
+      <!-- Essenze -->
+      <div class="section__header reveal-up" style="margin-top:5rem">
+        <p class="section__eyebrow">Le Nostre Essenze</p>
+        <h3 class="section__title">Ogni Legno Racconta<br><em>una Storia Diversa</em></h3>
+      </div>
+      <div class="woods-grid stagger-grid">
+        <div class="wood-card"><div class="wood-card__swatch wood-card__swatch--quercia"></div><div class="wood-card__body"><p class="wood-card__name">Quercia</p><p class="wood-card__desc">Classica, versatile, dalla venatura ricca. La scelta più amata.</p></div></div>
+        <div class="wood-card"><div class="wood-card__swatch wood-card__swatch--noce"></div><div class="wood-card__body"><p class="wood-card__name">Noce</p><p class="wood-card__desc">Scuro, elegante, dall'atmosfera calda e sofisticata.</p></div></div>
+        <div class="wood-card"><div class="wood-card__swatch wood-card__swatch--frassino"></div><div class="wood-card__body"><p class="wood-card__name">Frassino</p><p class="wood-card__desc">Chiaro, moderno, perfetto per ambienti luminosi e minimalisti.</p></div></div>
+        <div class="wood-card"><div class="wood-card__swatch wood-card__swatch--bambu"></div><div class="wood-card__body"><p class="wood-card__name">Bambù</p><p class="wood-card__desc">Sostenibile, durissimo, dall'estetica contemporanea e originale.</p></div></div>
+        <div class="wood-card"><div class="wood-card__swatch wood-card__swatch--wenge"></div><div class="wood-card__body"><p class="wood-card__name">Wengé</p><p class="wood-card__desc">Esotico, scurissimo, per ambienti di grande impatto visivo.</p></div></div>
+        <div class="wood-card"><div class="wood-card__swatch wood-card__swatch--pino"></div><div class="wood-card__body"><p class="wood-card__name">Pino Nordico</p><p class="wood-card__desc">Rustico e caldo, con nodi caratteristici. Spirito nordico autentico.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PORTE ====== -->
+  <section class="section section--alt" id="porte" aria-labelledby="svc2-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="service-detail service-detail--reverse reveal-up">
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Servizio Complementare</span>
+          <h2 class="service-detail__title" id="svc2-title">Installazione<br><em>Porte in Legno</em></h2>
+          <p class="service-detail__desc">Un parquet straordinario merita porte all'altezza. Installiamo porte interne ed esterne in legno coordinate esteticamente con il pavimento scelto, per un risultato finale armonioso e di grande impatto.</p>
+          <ul class="features-list" role="list">
+            <li>Porte interne battente, scorrevoli a scomparsa, filomuro</li>
+            <li>Porte blindate e di sicurezza</li>
+            <li>Montaggio telaio e controtelaio</li>
+            <li>Coordinamento cromatico ed estetico con il parquet</li>
+            <li>Rifacimento di porte esistenti</li>
+            <li>Consulenza su stile: classico, moderno, minimal</li>
+          </ul>
+          <a href="contatti.html" class="btn btn--primary btn--lg">Prenota Consulenza</a>
+        </div>
+        <div class="service-detail__image clip-reveal">
+          <img src="https://picsum.photos/seed/door-wood-detail/900/675" alt="Installazione porta in legno coordinata con parquet Roma" width="900" height="675" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONSULENZA ====== -->
+  <section class="section" id="consulenza" aria-labelledby="svc3-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__image clip-reveal">
+          <img src="https://picsum.photos/seed/design-samples/900/675" alt="Consulenza design parquet Roma campionari essenze" width="900" height="675" loading="lazy">
+        </div>
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Servizio Gratuito</span>
+          <h2 class="service-detail__title" id="svc3-title">Consulenza<br><em>&amp; Design</em></h2>
+          <p class="service-detail__desc">Non sai da dove iniziare? È normale. Ventidue anni di progetti ci hanno insegnato che la scelta giusta del legno trasforma un appartamento ordinario in uno straordinario. Ti guidiamo passo dopo passo.</p>
+          <ul class="features-list" role="list">
+            <li>Sopralluogo gratuito a domicilio</li>
+            <li>Analisi dello spazio, della luce e dello stile</li>
+            <li>Presentazione campionari fisici a casa tua</li>
+            <li>Simulazione visiva del risultato finale</li>
+            <li>Pianificazione lavori e tempistiche</li>
+            <li>Supporto nella scelta del pattern di posa</li>
+          </ul>
+          <a href="contatti.html" class="btn btn--primary btn--lg">Prenota il Sopralluogo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== LEVIGATURA ====== -->
+  <section class="section section--alt" id="levigatura" aria-labelledby="svc4-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="service-detail service-detail--reverse reveal-up">
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Restauro e Manutenzione</span>
+          <h2 class="service-detail__title" id="svc4-title">Levigatura<br><em>&amp; Restauro Parquet</em></h2>
+          <p class="service-detail__desc">Il tuo parquet esistente ha perso smalto? Non è necessario sostituirlo. Con levigatura professionale, verniciatura o oliatura, lo riportiamo alla bellezza originale — e spesso ancora meglio.</p>
+          <ul class="features-list" role="list">
+            <li>Levigatura a umido con macchinari professionali silenziosi</li>
+            <li>Riparazione assi danneggiate o sollevate</li>
+            <li>Trattamento antitarme e antimuffa</li>
+            <li>Verniciatura opaca, satinata o lucida</li>
+            <li>Oliatura e ceratura naturale</li>
+            <li>Cambio di finitura (da lucido a opaco e viceversa)</li>
+          </ul>
+          <a href="contatti.html" class="btn btn--primary btn--lg">Richiedi Valutazione</a>
+        </div>
+        <div class="service-detail__image clip-reveal">
+          <img src="https://picsum.photos/seed/sanding-parquet/900/675" alt="Levigatura parquet professionale Roma restauro" width="900" height="675" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TRUST BAR ====== -->
+  <section class="trust-bar" aria-label="Le nostre statistiche">
+    <div class="container trust-bar__inner">
+      <div class="trust-bar__stat"><span class="trust-bar__number" data-count="20" data-suffix="+">20+</span><span class="trust-bar__label">Anni di Esperienza</span></div>
+      <div class="trust-bar__divider" aria-hidden="true"></div>
+      <div class="trust-bar__stat"><span class="trust-bar__number" data-count="500" data-suffix="+">500+</span><span class="trust-bar__label">Progetti Realizzati</span></div>
+      <div class="trust-bar__divider" aria-hidden="true"></div>
+      <div class="trust-bar__stat"><span class="trust-bar__number" data-count="48">48h</span><span class="trust-bar__label">Per il Sopralluogo</span></div>
+      <div class="trust-bar__divider" aria-hidden="true"></div>
+      <div class="trust-bar__stat"><span class="trust-bar__number">100%</span><span class="trust-bar__label">Soddisfazione Garantita</span></div>
+    </div>
+  </section>
+
+  <!-- ====== CTA ====== -->
+  <section class="section" aria-label="Chiamata all'azione">
+    <div class="container">
+      <div class="cta-band">
+        <div class="cta-band__content">
+          <h2 class="cta-band__title">Qual è il Tuo Progetto?</h2>
+          <p class="cta-band__text">Raccontaci di cosa hai bisogno — sopralluogo gratuito entro 48 ore.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a href="tel:+390612345678" class="btn btn--white btn--lg">Chiama Ora</a>
+          <a href="contatti.html" class="btn btn--outline-white btn--lg">Scrivi Online</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
