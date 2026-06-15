@@ -41,8 +41,19 @@ export function initHeroAnimations(): void {
   /* Title — word by word (yPercent reveal) */
   const title = hero.querySelector<HTMLElement>('.hero__title');
   if (title) {
-    const html = title.innerHTML;
-    title.innerHTML = html.replace(/(\S+)/g, '<span class="word-wrap" style="overflow:hidden;display:inline-block;vertical-align:top"><span class="word" style="display:inline-block;transform:translateY(115%)">$1</span></span>');
+    const newHTML = Array.from(title.childNodes)
+      .map(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent ?? '';
+          return text.split(/(\s+)/).map(word =>
+            /\s+/.test(word) ? word : `<span class="word-wrap" style="overflow:hidden;display:inline-block;vertical-align:top"><span class="word" style="display:inline-block;transform:translateY(115%)">` + word + `</span></span>`
+          ).join('');
+        } else {
+          return (node as Element).outerHTML;
+        }
+      })
+      .join('');
+    title.innerHTML = newHTML;
     tl.to(title.querySelectorAll('.word'), {
       yPercent: 0, duration: 0.9, stagger: 0.07, ease: 'power4.out',
     }, 0.65);
@@ -102,8 +113,19 @@ export function initPageHeroAnimations(): void {
   if (eyebrow)   tl.from(eyebrow,   { opacity: 0, y: 15, duration: 0.5 }, 0.1);
 
   if (title) {
-    const html = title.innerHTML;
-    title.innerHTML = html.replace(/(\S+)/g, '<span style="overflow:hidden;display:inline-block;vertical-align:top"><span style="display:inline-block;transform:translateY(110%)">$1</span></span>');
+    const newHTML = Array.from(title.childNodes)
+      .map(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent ?? '';
+          return text.split(/(\s+)/).map(word =>
+            /\s+/.test(word) ? word : `<span style="overflow:hidden;display:inline-block;vertical-align:top"><span style="display:inline-block;transform:translateY(110%)">` + word + `</span></span>`
+          ).join('');
+        } else {
+          return (node as Element).outerHTML;
+        }
+      })
+      .join('');
+    title.innerHTML = newHTML;
     tl.to(title.querySelectorAll('span > span'), {
       yPercent: 0, duration: 0.8, stagger: 0.06,
     }, 0.2);
