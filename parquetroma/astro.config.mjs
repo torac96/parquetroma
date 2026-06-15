@@ -16,14 +16,5 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            gsap: ['gsap'],
-          },
-        },
-      },
-    },
   },
 });
