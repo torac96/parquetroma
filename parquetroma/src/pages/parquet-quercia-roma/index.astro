@@ -1,0 +1,182 @@
+---
+import PageLayout    from '../../layouts/PageLayout.astro';
+import PageHero      from '../../components/sections/PageHero.astro';
+import TrustBar      from '../../components/sections/TrustBar.astro';
+import CtaBand       from '../../components/sections/CtaBand.astro';
+import { portfolio } from '../../data/portfolio';
+import { SITE_CONFIG } from '../../data/config';
+import { url }       from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Parquet Quercia Roma', url: '/parquet-quercia-roma/' }];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Parquet Quercia Roma',
+  description: 'Installazione parquet in quercia europea a Roma: quercia naturale, sbiancata, affumicata e grigia. La scelta più versatile e richiesta.',
+  brand: { '@type': 'Brand', name: 'ParquetRoma' },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    seller: { '@id': `${SITE_CONFIG.url}/#business` },
+  },
+};
+
+const querciaProjects = portfolio.filter(p =>
+  p.wood.toLowerCase().includes('quercia')
+);
+
+const faqQuercia = [
+  {
+    q: 'Il parquet di quercia è adatto al riscaldamento a pavimento?',
+    a: 'Sì. La quercia prefinita è uno dei legni più indicati per i sistemi di riscaldamento a pavimento (idronico ed elettrico). È importante scegliere spessori adeguati (solitamente 14–15 mm prefinito) e seguire le indicazioni del produttore per la messa in servizio graduale del riscaldamento.'
+  },
+  {
+    q: 'Quercia naturale, sbiancata o affumicata: quale scegliere?',
+    a: 'La quercia naturale (toni dorati-bruni) è universale e classica. La quercia sbiancata (toni grigi-bianchi) amplia visivamente gli spazi ed è perfetta per ambienti moderni e luminosi. La quercia affumicata (toni scuri quasi neri) è scenografica e adatta a interni di carattere. Vi aiutiamo nella scelta durante il sopralluogo gratuito.'
+  },
+  {
+    q: 'Quanto dura un parquet di quercia?',
+    a: 'Un parquet in quercia massello ben posato e manutenuto dura 50–100 anni. Anche il prefinito in quercia ha una durata media di 25–40 anni con 2–3 cicli di levigatura. La quercia ha una durezza Janka di circa 1290 lbf, che la rende molto resistente ai graffi e all\'usura quotidiana.'
+  },
+  {
+    q: 'Quale pattern si abbina meglio alla quercia?',
+    a: 'La quercia è versatile con tutti i pattern. La spina di pesce esalta la venatura crociata in modo elegante — è la combinazione più richiesta. La posa dritta moderna valorizza la linearità della venatura. Il chevron è perfetto per ambienti di grande effetto scenografico. Vi consigliamo in base alla forma e alle proporzioni della stanza.'
+  },
+];
+
+const varianti = [
+  { name: 'Quercia Naturale',   desc: 'Toni caldi dorati-marroni. Venatura ricca e caratteristica. La scelta più classica e universale.',        css: 'background:radial-gradient(ellipse, #c8923a 0%, #8b6020 50%, #5a3a10 100%)' },
+  { name: 'Quercia Sbiancata',  desc: 'Toni chiari grigi e bianchi. Amplifica la luce, perfetta per ambienti moderni e minimalisti.',          css: 'background:radial-gradient(ellipse, #e8dece 0%, #c8b898 50%, #a09070 100%)' },
+  { name: 'Quercia Affumicata', desc: 'Toni scuri, quasi neri con venatura in rilievo. Eleganza estrema per ambienti di grande carattere.',   css: 'background:radial-gradient(ellipse, #3a2a1a 0%, #231810 50%, #150d05 100%)' },
+  { name: 'Quercia Grigia',     desc: 'Toni neutri grigio-beige. Contemporanea e raffinata, si abbina a qualsiasi palette cromatica.',         css: 'background:radial-gradient(ellipse, #a0a090 0%, #707060 50%, #404030 100%)' },
+];
+---
+
+<PageLayout
+  title="Parquet Quercia Roma | Installazione Quercia Europea | ParquetRoma"
+  description="Parquet quercia Roma: installazione quercia europea naturale, sbiancata, affumicata e grigia. Pattern spina di pesce, dritto, chevron. 20+ anni. Preventivo gratuito."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/testaccio-after/1920/800"
+  schema={productSchema}
+>
+
+  <PageHero
+    eyebrow="L'Essenza più Amata"
+    title="Parquet Quercia Roma<br><em>La Scelta Senza Tempo</em>"
+    subtitle="La quercia europea è l'essenza più installata a Roma. Versatile, durissima, con venatura ricca che si presta a ogni stile: dal classico al contemporaneo. Quattro varianti di trattamento per ogni esigenza."
+    image="https://picsum.photos/seed/testaccio-after/1920/800"
+    breadcrumbs={[{ name: 'Parquet Quercia Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+      <a href={url('/posa-parquet-roma/')} class="btn btn--ghost btn--lg">Come Lavoriamo</a>
+    </div>
+  </PageHero>
+
+  <!-- VARIANTI -->
+  <section class="section" aria-labelledby="varianti-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Quattro Trattamenti</p>
+        <h2 class="section__title" id="varianti-title">Quale Quercia<br><em>fa per Te?</em></h2>
+        <p class="section__subtitle">La quercia europea si presta a quattro trattamenti principali, ognuno con un'estetica diversa. Durante il sopralluogo vi mostriamo i campioni reali.</p>
+      </div>
+      <div class="grid grid--4 stagger-grid">
+        {varianti.map(v => (
+          <div class="reveal-up" style="border:1px solid var(--color-border);border-radius:12px;overflow:hidden">
+            <div style={`height:120px;${v.css}`} aria-hidden="true"></div>
+            <div style="padding:1.25rem">
+              <h3 style="font-family:var(--font-serif);font-size:1rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{v.name}</h3>
+              <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0;line-height:1.6">{v.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CARATTERISTICHE TECNICHE -->
+  <section class="section section--alt" aria-labelledby="tech-quercia-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Scheda Tecnica</span>
+          <h2 class="service-detail__title" id="tech-quercia-title">Perché la Quercia<br><em>Dura una Vita</em></h2>
+          <p class="service-detail__desc">La quercia europea (<em>Quercus robur</em>) è il legno più usato per i pavimenti in tutto il mondo, non per moda ma per ragioni tecniche precise.</p>
+          <ul class="features-list" role="list">
+            <li><strong>Durezza Janka:</strong> ~1290 lbf — alta resistenza a graffi e ammaccature</li>
+            <li><strong>Densità:</strong> 700–750 kg/m³ — legno compatto e stabile</li>
+            <li><strong>Stabilità dimensionale:</strong> ottima, meno sensibile a umidità e temperatura rispetto a essenze tropicali</li>
+            <li><strong>Compatibilità riscaldamento a pavimento:</strong> eccellente nelle versioni prefinite</li>
+            <li><strong>Possibilità di levigatura:</strong> 5–7 volte (massello) · 1–3 volte (prefinito)</li>
+            <li><strong>Durata media:</strong> 50–100 anni (massello) · 25–40 anni (prefinito)</li>
+            <li><strong>Disponibilità FSC/PEFC:</strong> sì, da fornitori certificati</li>
+          </ul>
+        </div>
+        <div class="service-detail__image clip-reveal">
+          <img
+            src="https://picsum.photos/seed/prati-after/900/675"
+            alt="Attico Prati — quercia bianca sbiancata a spina di pesce Roma"
+            width="900"
+            height="675"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGETTI CON QUERCIA -->
+  {querciaProjects.length > 0 && (
+    <section class="section" aria-labelledby="proj-quercia-title">
+      <span class="section-num section-num--right" aria-hidden="true">03</span>
+      <div class="container">
+        <div class="section__header reveal-up">
+          <p class="section__eyebrow">Progetti Realizzati</p>
+          <h2 class="section__title" id="proj-quercia-title">Quercia nelle<br><em>Case di Roma</em></h2>
+        </div>
+        <div class="grid grid--3 stagger-grid">
+          {querciaProjects.map(p => (
+            <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden">
+              <img src={p.after} alt={p.title} width="600" height="400" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+              <div style="padding:1.5rem">
+                <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-accent);font-weight:600;margin-bottom:0.5rem">{p.wood} · {p.pattern}</p>
+                <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{p.title}</h3>
+                <p style="font-size:0.875rem;color:var(--color-text-muted);margin:0">{p.size}</p>
+                {p.quote && <blockquote style="margin:0.75rem 0 0;font-size:0.8rem;font-style:italic;color:var(--color-text-secondary);border-left:2px solid var(--color-accent);padding-left:0.75rem">"{p.quote}"</blockquote>}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FAQ -->
+  <section class="section section--alt" aria-labelledby="faq-quercia-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Domande Frequenti</p>
+        <h2 class="section__title" id="faq-quercia-title">Tutto sul<br><em>Parquet di Quercia</em></h2>
+      </div>
+      <div class="faq-accordion reveal-up" style="max-width:800px;margin:0 auto">
+        {faqQuercia.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">{f.q}</summary>
+            <div class="faq-answer"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>

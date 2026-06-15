@@ -1,0 +1,209 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TrustBar         from '../../components/sections/TrustBar.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import { portfolio }    from '../../data/portfolio';
+import { testimonials } from '../../data/testimonials';
+import { SITE_CONFIG }  from '../../data/config';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Restauro Parquet Roma', url: '/restauro-parquet-roma/' }];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Restauro Parquet Roma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: { '@type': 'City', name: 'Roma' },
+  description: 'Restauro professionale di parquet storico e d\'epoca a Roma. Stuccatura, riparazione assi, recupero finiture originali con tecniche tradizionali.',
+  serviceType: 'Restauro Parquet',
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Come funziona il restauro del parquet a Roma',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Diagnosi gratuita', text: 'Valutiamo le condizioni del parquet: danni strutturali, stato delle doghe, spessore residuo e tipo di finitura originale.' },
+    { '@type': 'HowToStep', position: 2, name: 'Riparazione strutturale', text: 'Sostituzione delle doghe irrecuperabili, consolidamento di quelle allentate, stuccatura delle fughe.' },
+    { '@type': 'HowToStep', position: 3, name: 'Levigatura di ripristino', text: 'Levigatura professionale per uniformare la superficie e rimuovere la vecchia finitura deteriorata.' },
+    { '@type': 'HowToStep', position: 4, name: 'Finitura d\'epoca o moderna', text: 'Applichiamo una finitura che rispetta lo stile dell\'immobile: ceratura storica, oliatura naturale o verniciatura moderna.' },
+    { '@type': 'HowToStep', position: 5, name: 'Consegna e garanzia', text: 'Consegniamo il parquet restaurato con garanzia scritta di 2 anni sulla finitura.' },
+  ],
+};
+
+const faqRestauro = [
+  {
+    q: 'Si può restaurare un parquet di 50–60 anni?',
+    a: 'Sì, nella maggior parte dei casi. I parquet storici italiani, spesso in legno massello di alta qualità, sono eccellenti candidati al restauro proprio perché hanno spessore abbondante. Palazzi storici romani ospitano parquet restaurati da noi che erano stati posati negli anni \'50 e \'60.'
+  },
+  {
+    q: 'Quando è preferibile il restauro rispetto alla sostituzione?',
+    a: 'Il restauro è preferibile quando: il parquet è in legno massello con spessore sufficiente (min. 10mm residui), il pavimento ha valore storico o affettivo, le doghe sono strutturalmente integre e il danno è principalmente estetico. La sostituzione conviene solo se il parquet è in prefinito esaurito, strutturalmente compromesso o se si vuole cambiare completamente l\'aspetto.'
+  },
+  {
+    q: 'Quanto costa il restauro del parquet rispetto alla sostituzione?',
+    a: 'Il restauro completo (levigatura + riparazione doghe + nuova finitura) costa mediamente tra €18 e €35/mq, contro i €60–120/mq della sostituzione completa con materiale incluso. Il risparmio medio è del 50–70%.'
+  },
+  {
+    q: 'Posso continuare ad abitare durante il restauro?',
+    a: 'Dipende dall\'estensione del lavoro. Per restauri di singole stanze, spesso è possibile continuare ad abitare. Per restauri completi dell\'appartamento consigliamo 3–5 giorni di assenza per agevolare il lavoro e i tempi di asciugatura delle finiture.'
+  },
+];
+
+const trastevereProject = portfolio.find(p => p.id === 'trastevere')!;
+const annaR = testimonials.find(t => t.id === 'anna-r')!;
+
+const tipologie = [
+  { title: 'Parquet a Spina di Pesce Storico',  text: 'Pattern tradizionale romano spesso presente in palazzi d\'epoca. Recupero con sostituzione selettiva delle tavole danneggiate mantenendo il pattern originale.' },
+  { title: 'Parquet Massello Anni \'50–\'80',    text: 'Parquet in legno massello di castagno, quercia o ciliegio. Alta qualità strutturale, ideali per 2–3 restauri nel corso della vita.' },
+  { title: 'Doghe Allentate e Scricchiolanti',   text: 'Riinchiodiamo o reincolliamo le doghe allentate, risolviamo scricchiolii e movimenti senza dover sostituire il pavimento.' },
+  { title: 'Recupero da Danni da Acqua',         text: 'Allagamenti o infiltrazioni causano rigonfiamenti e macchie scure. Interveniamo con sostituzione mirata e trattamenti specifici per il legno danneggiato dall\'umidità.' },
+  { title: 'Cambio Finitura',                    text: 'Dal parquet verniciato lucido degli anni \'80 alla finitura opaca moderna. Oppure dalla vernice all\'olio naturale. Cambiamo l\'aspetto senza cambiare il pavimento.' },
+  { title: 'Stuccatura e Consolidamento',        text: 'Fughe dilatate, piccoli vuoti, giunti aperti. Li stucchiamo con materiali a tinta legno abbinati all\'essenza originale.' },
+];
+---
+
+<PageLayout
+  title="Restauro Parquet Roma | Recupero Parquet Storico e d'Epoca | ParquetRoma"
+  description="Restauro parquet Roma: recuperiamo pavimenti storici e d'epoca con tecniche tradizionali. Stuccatura, riparazione assi, cambio finitura. 20+ anni di esperienza. Preventivo gratuito."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/trastevere-after/1920/800"
+  schema={[serviceSchema, howToSchema]}
+>
+
+  <PageHero
+    eyebrow="Patrimonio da Preservare"
+    title="Restauro Parquet Roma<br><em>Il Legno Storico Rivive</em>"
+    subtitle="Hai un parquet antico che ha perso lucentezza, doghe allentate o danni da umidità? Prima di sostituirlo, scopri quanto può durare ancora con un restauro professionale."
+    image="https://picsum.photos/seed/trastevere-after/1920/800"
+    breadcrumbs={[{ name: 'Restauro Parquet Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Valutazione Gratuita</a>
+      <a href="tel:+390612345678" class="btn btn--ghost btn--lg">Chiama Ora</a>
+    </div>
+  </PageHero>
+
+  <!-- CASE STUDY TRASTEVERE -->
+  <section class="section" aria-labelledby="case-study-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__image clip-reveal">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;height:100%">
+            <img src={trastevereProject.before} alt="Prima del restauro — Palazzo Storico Trastevere" width="450" height="338" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:6px 0 0 6px" />
+            <img src={trastevereProject.after}  alt="Dopo il restauro — Palazzo Storico Trastevere"  width="450" height="338" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:0 6px 6px 0" />
+          </div>
+        </div>
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Case Study — Trastevere</span>
+          <h2 class="service-detail__title" id="case-study-title">Palazzo Storico<br><em>XVII Secolo</em></h2>
+          <p class="service-detail__desc">{trastevereProject.desc}</p>
+          <ul class="features-list" role="list">
+            <li>Tipologia: {trastevereProject.wood} — pattern {trastevereProject.pattern}</li>
+            <li>Superficie: {trastevereProject.size}</li>
+            <li>Intervento: restauro completo con rispetto materiali originali</li>
+            <li>Risultato: parquet come nuovo, conservato nella sua autenticità</li>
+          </ul>
+          <blockquote style="border-left:3px solid var(--color-accent);padding-left:1rem;margin:1.5rem 0;font-style:italic;color:var(--color-text-secondary)">
+            "{annaR.quote}"
+            <cite style="display:block;margin-top:0.5rem;font-style:normal;font-size:0.875rem;font-weight:600;color:var(--color-on-surface)">— {annaR.name}, {annaR.role}</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOLOGIE RESTAURO -->
+  <section class="section section--alt" aria-labelledby="tipologie-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Cosa Ripariamo</p>
+        <h2 class="section__title" id="tipologie-title">Tutti i Tipi<br><em>di Restauro</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {tipologie.map(t => (
+          <div class="feature-card reveal-up">
+            <h3 class="feature-card__title">{t.title}</h3>
+            <p class="feature-card__text">{t.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="section" aria-labelledby="processo-rest-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Il Nostro Metodo</p>
+        <h2 class="section__title" id="processo-rest-title">Come Procediamo<br><em>al Restauro</em></h2>
+      </div>
+      <ol class="processo__list stagger-grid" role="list">
+        <li class="processo__item reveal-up">
+          <span class="processo__num" aria-hidden="true">01</span>
+          <div class="processo__content">
+            <h3 class="processo__title">Diagnosi Gratuita</h3>
+            <p class="processo__text">Valutiamo spessore residuo, condizioni strutturali delle doghe, tipo di legno e finitura originale. Vi diciamo onestamente se il restauro è consigliato.</p>
+          </div>
+        </li>
+        <li class="processo__item reveal-up">
+          <span class="processo__num" aria-hidden="true">02</span>
+          <div class="processo__content">
+            <h3 class="processo__title">Riparazione Strutturale</h3>
+            <p class="processo__text">Sostituzione delle doghe irrecuperabili con essenza abbinata, consolidamento di quelle allentate, stuccatura fughe con stucco a tinta.</p>
+          </div>
+        </li>
+        <li class="processo__item reveal-up">
+          <span class="processo__num" aria-hidden="true">03</span>
+          <div class="processo__content">
+            <h3 class="processo__title">Levigatura di Ripristino</h3>
+            <p class="processo__text">Levigatura professionale multi-passata per uniformare la superficie e rimuovere ogni traccia della vecchia finitura deteriorata.</p>
+          </div>
+        </li>
+        <li class="processo__item reveal-up">
+          <span class="processo__num" aria-hidden="true">04</span>
+          <div class="processo__content">
+            <h3 class="processo__title">Finitura Appropriata</h3>
+            <p class="processo__text">Consigliamo la finitura in linea con lo stile dell'immobile: ceratura per pavimenti storici, oliatura per look naturale, verniciatura per massima protezione.</p>
+          </div>
+        </li>
+        <li class="processo__item reveal-up">
+          <span class="processo__num" aria-hidden="true">05</span>
+          <div class="processo__content">
+            <h3 class="processo__title">Garanzia Scritta</h3>
+            <p class="processo__text">Consegniamo con garanzia scritta di 2 anni sulla finitura applicata e interveniamo gratuitamente su qualsiasi difetto imputabile al nostro lavoro.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt" aria-labelledby="faq-rest-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Domande Frequenti</p>
+        <h2 class="section__title" id="faq-rest-title">Restauro o<br><em>Sostituzione?</em></h2>
+      </div>
+      <div class="faq-accordion reveal-up" style="max-width:800px;margin:0 auto">
+        {faqRestauro.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">{f.q}</summary>
+            <div class="faq-answer"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>

@@ -1,0 +1,179 @@
+---
+import PageLayout    from '../../layouts/PageLayout.astro';
+import PageHero      from '../../components/sections/PageHero.astro';
+import TrustBar      from '../../components/sections/TrustBar.astro';
+import CtaBand       from '../../components/sections/CtaBand.astro';
+import { portfolio } from '../../data/portfolio';
+import { SITE_CONFIG } from '../../data/config';
+import { url }       from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Parquet Noce Roma', url: '/parquet-noce-roma/' }];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Parquet Noce Roma',
+  description: 'Installazione parquet in noce italiano e americano a Roma. Eleganza scura per ambienti di lusso. Venatura sinuosa e toni caldi dal marrone al nero.',
+  brand: { '@type': 'Brand', name: 'ParquetRoma' },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    seller: { '@id': `${SITE_CONFIG.url}/#business` },
+  },
+};
+
+const noceProjects = portfolio.filter(p =>
+  p.wood.toLowerCase().includes('noce')
+);
+
+const faqNoce = [
+  {
+    q: 'Qual è la differenza tra noce italiano e americano?',
+    a: 'Il noce italiano (Juglans regia) ha toni più caldi e venatura più mossa, molto apprezzato per ambienti di lusso tradizionali. Il noce americano (Juglans nigra) ha toni più scuri e uniformi, con venatura più diritta e lineare — ideale per ambienti contemporanei. Entrambi sono legni di grande pregio.'
+  },
+  {
+    q: 'Il noce è difficile da mantenere?',
+    a: 'No più di altri legni. Con finitura a olio naturale si tocca up facilmente in caso di graffi puntuali. Con verniciatura resistente necessita della normale manutenzione: pulizia con prodotti specifici per parquet, protezione dalle fonti di calore dirette. La venatura scura ha il vantaggio di mostrare meno la polvere.'
+  },
+  {
+    q: 'Il parquet di noce è compatibile con il riscaldamento a pavimento?',
+    a: 'Il noce prefinito con strato nobile di buona qualità è compatibile con il riscaldamento a pavimento. È importante comunicarcelo in anticipo per scegliere la versione più adatta. Sconsigliamo il noce massello molto spesso (>20mm) per sistemi a pavimento intensivi.'
+  },
+  {
+    q: 'Quanto costa il parquet di noce rispetto alla quercia?',
+    a: 'Il noce è generalmente il 20–40% più costoso della quercia per il materiale, essendo un\'essenza più pregiata e rara. Il costo della posa è equivalente. Il risultato estetico finale, con la sua ricchezza di colore, giustifica ampiamente il differenziale di prezzo per chi cerca un risultato di lusso.'
+  },
+];
+
+const varianti = [
+  { name: 'Noce Italiano',   desc: 'Toni caldi marroni con sfumature rosate. Venatura mossa e caratteristica. Il più apprezzato per ambienti classici di lusso.',    css: 'background:radial-gradient(ellipse, #6b4a2e 0%, #4a3020 50%, #231508 100%)' },
+  { name: 'Noce Americano',  desc: 'Toni scuri uniformi, venatura più diritta. Eleganza contemporanea e forte identità visiva. Perfetto per ambienti moderni.',    css: 'background:radial-gradient(ellipse, #3d2010 0%, #231008 50%, #100504 100%)' },
+  { name: 'Noce Canaletto',  desc: 'Varietà pregiata con venatura finissima e colore intenso. Usata nei palazzi storici romani. Risultato straordinario.',          css: 'background:radial-gradient(ellipse, #5a3818 0%, #3a2010 50%, #1a0e06 100%)' },
+];
+---
+
+<PageLayout
+  title="Parquet Noce Roma | Pavimenti in Noce Italiano e Americano | ParquetRoma"
+  description="Parquet noce Roma: installiamo pavimenti in noce italiano e americano massello e prefinito. Eleganza scura per ambienti di lusso. 20+ anni. Preventivo gratuito."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parioli-after/1920/800"
+  schema={productSchema}
+>
+
+  <PageHero
+    eyebrow="Eleganza e Lusso"
+    title="Parquet Noce Roma<br><em>Toni Scuri, Atmosfera Unica</em>"
+    subtitle="Il noce è il legno dell'eleganza per eccellenza. Venatura sinuosa, toni caldi dal marrone al quasi-nero. Scelto da chi vuole un pavimento che sia la dichiarazione di stile dell'intera casa."
+    image="https://picsum.photos/seed/parioli-after/1920/800"
+    breadcrumbs={[{ name: 'Parquet Noce Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+      <a href={url('/parquet-quercia-roma/')} class="btn btn--ghost btn--lg">Scopri la Quercia</a>
+    </div>
+  </PageHero>
+
+  <!-- VARIANTI -->
+  <section class="section" aria-labelledby="varianti-noce-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Tre Varietà</p>
+        <h2 class="section__title" id="varianti-noce-title">Quale Noce<br><em>si Adatta a Te?</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {varianti.map(v => (
+          <div class="reveal-up" style="border:1px solid var(--color-border);border-radius:12px;overflow:hidden">
+            <div style={`height:140px;${v.css}`} aria-hidden="true"></div>
+            <div style="padding:1.5rem">
+              <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{v.name}</h3>
+              <p style="font-size:0.875rem;color:var(--color-text-muted);margin:0;line-height:1.6">{v.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CARATTERISTICHE -->
+  <section class="section section--alt" aria-labelledby="tech-noce-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__image clip-reveal">
+          <img
+            src="https://picsum.photos/seed/sanlorenzo-after/900/675"
+            alt="Loft San Lorenzo — noce italiano in posa diagonale Roma"
+            width="900"
+            height="675"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Scheda Tecnica</span>
+          <h2 class="service-detail__title" id="tech-noce-title">Il Legno<br><em>dell'Eccellenza</em></h2>
+          <p class="service-detail__desc">Il noce è uno dei legni da pavimentazione più pregiati al mondo. La sua venatura sinuosa e i toni caldi profondi creano un'atmosfera irripetibile.</p>
+          <ul class="features-list" role="list">
+            <li><strong>Durezza Janka:</strong> ~1010 lbf (italiano) · ~1010 lbf (americano)</li>
+            <li><strong>Venatura:</strong> mossa e sinuosa — ogni tavola è unica</li>
+            <li><strong>Toni:</strong> dal marrone caldo al quasi-nero, con sfumature viola</li>
+            <li><strong>Stabilità:</strong> buona — richiede acclimazione di 72h prima della posa</li>
+            <li><strong>Pattern consigliati:</strong> diagonale (magnifica la venatura), dritto (sobrietà moderna)</li>
+            <li><strong>Durata:</strong> 40–80 anni (massello), 20–30 anni (prefinito)</li>
+          </ul>
+          <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  {noceProjects.length > 0 && (
+    <section class="section" aria-labelledby="proj-noce-title">
+      <span class="section-num section-num--right" aria-hidden="true">03</span>
+      <div class="container">
+        <div class="section__header reveal-up">
+          <p class="section__eyebrow">Progetti Realizzati</p>
+          <h2 class="section__title" id="proj-noce-title">Noce nelle<br><em>Case di Roma</em></h2>
+        </div>
+        <div class="grid grid--3 stagger-grid">
+          {noceProjects.map(p => (
+            <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden">
+              <img src={p.after} alt={p.title} width="600" height="400" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+              <div style="padding:1.5rem">
+                <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-accent);font-weight:600;margin-bottom:0.5rem">{p.wood} · {p.pattern} · {p.size}</p>
+                <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{p.title}</h3>
+                {p.quote && <blockquote style="margin:0.5rem 0 0;font-size:0.8rem;font-style:italic;color:var(--color-text-secondary);border-left:2px solid var(--color-accent);padding-left:0.75rem">"{p.quote}"</blockquote>}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FAQ -->
+  <section class="section section--alt" aria-labelledby="faq-noce-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Domande Frequenti</p>
+        <h2 class="section__title" id="faq-noce-title">Tutto sul<br><em>Parquet di Noce</em></h2>
+      </div>
+      <div class="faq-accordion reveal-up" style="max-width:800px;margin:0 auto">
+        {faqNoce.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">{f.q}</summary>
+            <div class="faq-answer"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>
