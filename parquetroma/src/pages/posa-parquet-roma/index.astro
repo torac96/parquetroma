@@ -1,0 +1,267 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TrustBar         from '../../components/sections/TrustBar.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import TestimonialCard  from '../../components/cards/TestimonialCard.astro';
+import { testimonials } from '../../data/testimonials';
+import { faq }          from '../../data/faq';
+import { SITE_CONFIG }  from '../../data/config';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Posa Parquet Roma', url: '/posa-parquet-roma/' }];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Posa Parquet Roma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: { '@type': 'City', name: 'Roma' },
+  description: 'Installazione professionale di pavimenti in parquet a Roma con 20+ anni di esperienza artigianale.',
+  serviceType: 'Posa Parquet',
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Come funziona la posa del parquet a Roma con ParquetRoma',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Sopralluogo gratuito', text: 'Veniamo da te entro 48 ore per valutare la superficie, misurare gli ambienti e ascoltare le tue esigenze. Zero costi, zero impegni.' },
+    { '@type': 'HowToStep', position: 2, name: 'Preventivo dettagliato', text: 'Ti presentiamo un preventivo trasparente con materiali, pattern scelto, tempistiche e costi. Nessuna sorpresa.' },
+    { '@type': 'HowToStep', position: 3, name: 'Posa professionale', text: 'Installiamo il parquet con precisione millimetrica rispettando i tempi concordati e la tua vita quotidiana.' },
+    { '@type': 'HowToStep', position: 4, name: 'Consegna e garanzia', text: 'Consegniamo il lavoro finito con garanzia scritta di 5 anni sulla posa. Un pavimento per tutta la vita.' },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
+const processo = [
+  { n: '01', title: 'Sopralluogo Gratuito',  text: 'Veniamo da te entro 48 ore. Misuriamo, ascoltiamo, consigliamo. Nessun costo, nessun impegno.',        icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>' },
+  { n: '02', title: 'Preventivo Chiaro',     text: 'Preventivo dettagliato su materiali, pattern, tempi e costi. Tutto trasparente, senza sorprese.',       icon: '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>' },
+  { n: '03', title: 'Posa Professionale',    text: 'Installiamo con precisione millimetrica rispettando cantiere e tempi concordati.',                      icon: '<polyline points="20 6 9 17 4 12"/>' },
+  { n: '04', title: 'Garanzia 5 Anni',       text: 'Consegna con garanzia scritta. 500+ famiglie romane lo confermano da oltre 20 anni.',                   icon: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>' },
+];
+
+const pattern = [
+  { name: 'Spina di Pesce',    desc: 'Il pattern più elegante e richiesto. Crea movimento e profondità in qualsiasi ambiente.',           css: 'background: repeating-linear-gradient(45deg, #8b6a3e 0 4px, #6b4f2e 4px 8px)' },
+  { name: 'Chevron',           desc: 'Versione a 45° della spina di pesce. Effetto scenografico e di grande impatto visivo.',             css: 'background: repeating-linear-gradient(135deg, #7a5a30 0 4px, #5a4020 4px 8px)' },
+  { name: 'Posa Dritta',       desc: 'Classica e senza tempo. Amplifica la lunghezza dello spazio, ideale per corridoi e ambienti open.', css: 'background: repeating-linear-gradient(90deg, #8b6a3e 0 6px, #6b4f2e 6px 12px)' },
+  { name: 'Posa Diagonale',    desc: 'A 45°. Allarga visivamente gli ambienti quadrati e dona dinamismo al piano.',                       css: 'background: repeating-linear-gradient(45deg, #7a5a30 0 6px, #9b7a50 6px 12px)' },
+  { name: 'Posa a Mattoni',    desc: 'Le tavole sfalsate a metà creano un effetto muratura in legno. Caldo e contemporaneo.',             css: 'background: repeating-linear-gradient(90deg, #8b6a3e 0 8px, #5a4020 8px 16px)' },
+];
+
+const valueProps = [
+  { icon: '🏅', title: '20+ Anni di Esperienza', text: 'Due decenni di installazioni a Roma: conosciamo ogni tipo di sottofondo, essenza, pattern e contesto.' },
+  { icon: '📐', title: 'Precisione Millimetrica', text: 'La posa parquet è artigianato di alta precisione. Ogni tavola posizionata con cura, ogni giunto perfetto.' },
+  { icon: '🌿', title: 'Materiali Certificati',   text: 'Lavoriamo solo con essenze di prima scelta da fornitori certificati FSC e PEFC.' },
+  { icon: '✅', title: 'Garanzia Scritta',         text: '5 anni sulla posa, 2 anni sulla finitura. Interverremo gratuitamente su qualsiasi difetto imputabile al nostro lavoro.' },
+];
+---
+
+<PageLayout
+  title="Posa Parquet Roma | Installazione Professionale 20+ Anni | ParquetRoma"
+  description="Posa parquet Roma professionale: quercia, noce, frassino, bambù, wengé. Pattern spina di pesce, chevron, diagonale. 20+ anni di esperienza artigianale. Sopralluogo gratuito entro 48h."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parquet-herringbone/1920/800"
+  schema={[serviceSchema, howToSchema, faqSchema]}
+>
+
+  <PageHero
+    eyebrow="Servizio Principale"
+    title="Posa Parquet Roma<br><em>Artigianale e Garantita</em>"
+    subtitle="Installiamo pavimenti in legno pregiato a Roma dal 2003. Ogni progetto è unico: ascoltiamo la tua visione, scegliamo insieme l'essenza e il pattern, e consegniamo un risultato che dura decenni."
+    image="https://picsum.photos/seed/parquet-herringbone/1920/800"
+    breadcrumbs={[{ name: 'Posa Parquet Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+      <a href="tel:+390612345678" class="btn btn--ghost btn--lg">Chiama Ora</a>
+    </div>
+  </PageHero>
+
+  <!-- PERCHÉ SCEGLIERCI -->
+  <section class="section" aria-labelledby="perche-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Il Nostro Vantaggio</p>
+        <h2 class="section__title" id="perche-title">Perché Scegliere<br><em>ParquetRoma</em></h2>
+        <p class="section__subtitle">Non siamo una grande azienda. Siamo artigiani specializzati con 20+ anni di mestiere, scelti da famiglie romane e studi di architettura.</p>
+      </div>
+      <div class="grid grid--4 stagger-grid">
+        {valueProps.map(v => (
+          <div class="feature-card reveal-up">
+            <div class="feature-card__icon" aria-hidden="true">{v.icon}</div>
+            <h3 class="feature-card__title">{v.title}</h3>
+            <p class="feature-card__text">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ESSENZE -->
+  <section class="section section--alt" aria-labelledby="essenze-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Le Nostre Essenze</p>
+        <h2 class="section__title" id="essenze-title">Ogni Legno Racconta<br><em>una Storia Diversa</em></h2>
+        <p class="section__subtitle">Selezioniamo essenze di prima qualità da fornitori certificati. Che tu voglia calore classico o design contemporaneo, abbiamo il legno giusto.</p>
+      </div>
+      <div class="woods-grid stagger-grid">
+        <div class="wood-swatch-card">
+          <div class="wood-swatch wood-swatch--quercia"></div>
+          <div class="wood-swatch-card__body">
+            <p class="wood-swatch-card__name">Quercia</p>
+            <p class="wood-swatch-card__desc">Classica, versatile, dalla venatura ricca. La scelta più amata a Roma.</p>
+          </div>
+        </div>
+        <div class="wood-swatch-card">
+          <div class="wood-swatch wood-swatch--noce"></div>
+          <div class="wood-swatch-card__body">
+            <p class="wood-swatch-card__name">Noce</p>
+            <p class="wood-swatch-card__desc">Scuro, elegante, dall'atmosfera calda e sofisticata per ambienti di lusso.</p>
+          </div>
+        </div>
+        <div class="wood-swatch-card">
+          <div class="wood-swatch wood-swatch--frassino"></div>
+          <div class="wood-swatch-card__body">
+            <p class="wood-swatch-card__name">Frassino</p>
+            <p class="wood-swatch-card__desc">Chiaro, moderno, perfetto per ambienti luminosi e minimalisti.</p>
+          </div>
+        </div>
+        <div class="wood-swatch-card">
+          <div class="wood-swatch wood-swatch--bambu"></div>
+          <div class="wood-swatch-card__body">
+            <p class="wood-swatch-card__name">Bambù</p>
+            <p class="wood-swatch-card__desc">Sostenibile, durissimo, dall'estetica contemporanea e originale.</p>
+          </div>
+        </div>
+        <div class="wood-swatch-card">
+          <div class="wood-swatch wood-swatch--wenge"></div>
+          <div class="wood-swatch-card__body">
+            <p class="wood-swatch-card__name">Wengé</p>
+            <p class="wood-swatch-card__desc">Esotico, scurissimo, per ambienti di grande impatto visivo.</p>
+          </div>
+        </div>
+        <div class="wood-swatch-card">
+          <div class="wood-swatch wood-swatch--pino"></div>
+          <div class="wood-swatch-card__body">
+            <p class="wood-swatch-card__name">Pino Nordico</p>
+            <p class="wood-swatch-card__desc">Rustico e caldo, con nodi caratteristici. Spirito nordico autentico.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATTERN DI POSA -->
+  <section class="section" aria-labelledby="pattern-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Schemi di Posa</p>
+        <h2 class="section__title" id="pattern-title">Il Pattern Giusto<br><em>Cambia Tutto</em></h2>
+        <p class="section__subtitle">La scelta del pattern di posa è fondamentale quanto quella dell'essenza. Modifica la percezione dello spazio, la luce e l'atmosfera dell'ambiente.</p>
+      </div>
+      <div class="grid grid--3 stagger-grid" style="gap:1.5rem">
+        {pattern.map(p => (
+          <div class="reveal-up" style="border:1px solid var(--color-border);border-radius:12px;overflow:hidden">
+            <div style={`height:120px;${p.css};opacity:0.7`} aria-hidden="true"></div>
+            <div style="padding:1.25rem">
+              <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin:0 0 0.5rem">{p.name}</h3>
+              <p style="font-size:0.875rem;color:var(--color-text-muted);margin:0;line-height:1.6">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="section section--alt" aria-labelledby="processo-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Come Lavoriamo</p>
+        <h2 class="section__title" id="processo-title">Dal Sopralluogo<br><em>alla Consegna</em></h2>
+      </div>
+      <ol class="processo__list stagger-grid" role="list">
+        {processo.map(p => (
+          <li class="processo__item reveal-up">
+            <span class="processo__num" aria-hidden="true">{p.n}</span>
+            <div class="processo__content">
+              <svg class="processo__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={p.icon} />
+              <h3 class="processo__title">{p.title}</h3>
+              <p class="processo__text">{p.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- TESTIMONIANZE -->
+  <section class="section" aria-labelledby="testi-title">
+    <span class="section-num section-num--right" aria-hidden="true">05</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Cosa Dicono i Clienti</p>
+        <h2 class="section__title" id="testi-title">500+ Progetti a Roma.<br><em>127 Recensioni 5 Stelle.</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {testimonials.slice(0, 3).map(t => (
+          <TestimonialCard testimonial={t} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt" aria-labelledby="faq-posa-title">
+    <span class="section-num section-num--left" aria-hidden="true">06</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Domande Frequenti</p>
+        <h2 class="section__title" id="faq-posa-title">Tutto Quello<br><em>che Vuoi Sapere</em></h2>
+      </div>
+      <div class="faq-accordion reveal-up" style="max-width:800px;margin:0 auto">
+        {faq.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">{f.question}</summary>
+            <div class="faq-answer"><p>{f.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA PREVENTIVO -->
+  <section class="section" aria-labelledby="cta-posa-title">
+    <div class="container" style="text-align:center">
+      <div class="reveal-up">
+        <p class="section__eyebrow">Pronto a Iniziare?</p>
+        <h2 class="section__title" id="cta-posa-title">Sopralluogo Gratuito<br><em>Entro 48 Ore</em></h2>
+        <p class="section__subtitle" style="max-width:520px;margin:0 auto 2rem">Raccontaci il tuo progetto. Veniamo da te, misuriamo lo spazio e ti presentiamo un preventivo dettagliato senza impegno.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo Gratuito</a>
+          <a href="tel:+390612345678" class="btn btn--ghost btn--lg">Chiama: +39 06 1234 5678</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>

@@ -9,8 +9,8 @@ const breadcrumbs = [{ name: 'Servizi', url: '/servizi/' }];
 ---
 
 <PageLayout
-  title="Servizi Parquet Roma | Posa, Porte, Consulenza | ParquetRoma"
-  description="Posa parquet Roma, installazione porte e consulenza design a Roma e Lazio. 20+ anni di esperienza artigianale. Sopralluogo e preventivo gratuiti."
+  title="Posa Parquet Roma | Levigatura, Restauro, Consulenza | ParquetRoma"
+  description="Posa parquet Roma professionale: levigatura, restauro, installazione porte e consulenza design. 20+ anni di esperienza artigianale. Sopralluogo gratuito entro 48 ore."
   breadcrumbs={breadcrumbs}
   lcpImage="https://picsum.photos/seed/parquet-tools/1920/800"
 >
@@ -55,7 +55,10 @@ const breadcrumbs = [{ name: 'Servizi', url: '/servizi/' }];
             <li>Levigatura, verniciatura, oliatura e ceratura</li>
             <li>Garanzia scritta sul lavoro eseguito</li>
           </ul>
-          <a href={url('/contatti/')} class="btn btn--primary btn--lg">Richiedi Preventivo</a>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap">
+            <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo</a>
+            <a href={url('/posa-parquet-roma/')} class="btn btn--ghost">Scopri il servizio completo</a>
+          </div>
         </div>
       </div>
 

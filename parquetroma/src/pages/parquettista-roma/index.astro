@@ -1,0 +1,212 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TrustBar         from '../../components/sections/TrustBar.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import TestimonialCard  from '../../components/cards/TestimonialCard.astro';
+import { testimonials } from '../../data/testimonials';
+import { SITE_CONFIG }  from '../../data/config';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Parquettista Roma', url: '/parquettista-roma/' }];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Parquettista Roma — ParquetRoma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: { '@type': 'City', name: 'Roma' },
+  description: 'Parquettista professionista a Roma con 20+ anni di esperienza nella posa, levigatura e restauro di pavimenti in legno.',
+  serviceType: 'Parquettista',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servizi Parquettista Roma',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Posa parquet Roma' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Levigatura parquet Roma' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Restauro parquet Roma' } },
+    ],
+  },
+};
+
+const timeline = [
+  { year: '2003', title: 'Le Origini',         text: 'Iniziamo a Roma con pochi attrezzi e tanta passione. I primi clienti ci scelgono per la cura che mettiamo in ogni dettaglio.' },
+  { year: '2008', title: 'La Crescita',         text: 'Il passaparola funziona. Espandiamo il team e iniziamo a lavorare con i primi studi di architettura romani.' },
+  { year: '2015', title: 'L\'Eccellenza',       text: 'Superiamo i 300 progetti. Affiniamo le tecniche, selezioniamo fornitori di eccellenza, investiamo in formazione continua.' },
+  { year: '2020', title: 'Oggi',                text: '500+ progetti completati. 127 recensioni a 5 stelle. Un team artigianale che porta il meglio del legno nelle case di Roma.' },
+];
+
+const skills = [
+  { title: 'Posa Parquet',        text: 'Incollata, inchiodata, flottante. Ogni tecnica per ogni situazione. Pattern semplici e complessi.' },
+  { title: 'Levigatura',          text: 'Ripristiniamo il tuo parquet esistente senza sostituirlo. Risultato come nuovo con costo ridotto.' },
+  { title: 'Restauro Storico',    text: 'Esperienza su palazzi d\'epoca e parquet antichi. Rispettiamo i materiali originali.' },
+  { title: 'Consulenza Legno',    text: 'Ti guidiamo nella scelta dell\'essenza e del pattern giusto per il tuo spazio e il tuo stile.' },
+  { title: 'Installazione Porte', text: 'Porte interne coordinate esteticamente con il parquet scelto per un risultato armonioso.' },
+  { title: 'Finitura Premium',    text: 'Verniciatura, oliatura, ceratura. La finitura giusta prolunga la vita del legno e ne esalta la bellezza.' },
+];
+
+const faqParquettista = [
+  {
+    q: 'Come scelgo un buon parquettista a Roma?',
+    a: 'Cerca anni di esperienza documentata (almeno 10+), un portfolio di progetti reali con foto, recensioni verificate su Google e la disponibilità a fare un sopralluogo gratuito prima di qualsiasi impegno economico. Diffidate di chi non vuole venire a vedere l\'ambiente.'
+  },
+  {
+    q: 'Cosa devo chiedere a un parquettista prima di firmare?',
+    a: 'Chiedi: anni di esperienza nel settore, se usano materiali certificati, che tipo di garanzia offrono per iscritto sulla posa, le tempistiche precise del lavoro, se sono assicurati, e se hanno referenze di clienti precedenti che puoi contattare.'
+  },
+  {
+    q: 'Quanto costa un parquettista a Roma?',
+    a: 'I prezzi variano in base al tipo di lavoro: la posa di nuovo parquet può costare dai €15 al mq per soluzioni flottanti fino a €35+ al mq per parquet massello con pattern complessi. La levigatura parte da €8–12 al mq. Richiedete sempre un preventivo dettagliato con tutto incluso.'
+  },
+  {
+    q: 'Quanto tempo ci vuole per posare il parquet?',
+    a: 'Per un appartamento standard di 80–100 mq la posa richiede in media 3–5 giorni lavorativi. I tempi variano in base alla metratura, al pattern (la spina di pesce richiede più tempo) e alle condizioni del sottofondo.'
+  },
+];
+---
+
+<PageLayout
+  title="Parquettista Roma | Artigiano Parquet con 20+ Anni | ParquetRoma"
+  description="Cerca un parquettista a Roma esperto? ParquetRoma: 20+ anni di mestiere artigianale, 500+ progetti completati, 127 recensioni 5 stelle. Sopralluogo gratuito. Chiama oggi."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/craftsman-workshop/1920/800"
+  schema={serviceSchema}
+>
+
+  <PageHero
+    eyebrow="20+ Anni di Mestiere"
+    title="Il Tuo <em>Parquettista</em><br>a Roma"
+    subtitle="Non siamo una grande azienda. Siamo artigiani del legno con oltre 20 anni di esperienza a Roma, scelti da famiglie e studi di architettura per la nostra precisione e affidabilità."
+    image="https://picsum.photos/seed/craftsman-workshop/1920/800"
+    breadcrumbs={[{ name: 'Parquettista Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+      <a href="tel:+390612345678" class="btn btn--ghost btn--lg">Chiama Ora</a>
+    </div>
+  </PageHero>
+
+  <!-- CHI È UN PARQUETTISTA -->
+  <section class="section" aria-labelledby="cosa-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="about__grid reveal-up">
+        <div class="about__image-col">
+          <div class="about__image-wrap clip-reveal">
+            <img
+              src="https://picsum.photos/seed/craftsman-tools/900/675"
+              alt="Parquettista Roma al lavoro — dettaglio posa artigianale"
+              width="900"
+              height="675"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="about__content">
+          <span class="section__eyebrow" id="cosa-title">Il Mestiere</span>
+          <h2 class="about__title">Cos'è un<br><em>Parquettista?</em></h2>
+          <p class="about__text">Il parquettista è un artigiano specializzato esclusivamente nel legno per pavimentazioni. Non un tuttofare, non un posatore generico: una figura professionale con competenze specifiche su essenze, pattern, sottofondo, tecniche di fissaggio e finiture.</p>
+          <p class="about__text">Un buon parquettista conosce le differenze tra quercia europea e americana, sa quando la spina di pesce funziona meglio della posa dritta, capisce come il sottofondo influisce sulla durabilità e quale finitura è giusta per ogni ambiente. Questa specializzazione è impossibile da improvvisare.</p>
+          <div class="about__values">
+            <div class="about__value">
+              <span class="about__value-num">20+</span>
+              <span class="about__value-label">Anni di specializzazione</span>
+            </div>
+            <div class="about__value">
+              <span class="about__value-num">500+</span>
+              <span class="about__value-label">Progetti completati</span>
+            </div>
+            <div class="about__value">
+              <span class="about__value-num">127</span>
+              <span class="about__value-label">Recensioni 5 stelle</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENZE -->
+  <section class="section section--alt" aria-labelledby="skills-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Le Nostre Competenze</p>
+        <h2 class="section__title" id="skills-title">Tutto Quello<br><em>che Sappiamo Fare</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {skills.map(s => (
+          <div class="feature-card reveal-up">
+            <h3 class="feature-card__title">{s.title}</h3>
+            <p class="feature-card__text">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE STORIA -->
+  <section class="section" aria-labelledby="storia-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">La Nostra Storia</p>
+        <h2 class="section__title" id="storia-title">20 Anni di Parquet<br><em>nelle Case di Roma</em></h2>
+      </div>
+      <div class="timeline stagger-grid">
+        {timeline.map(t => (
+          <div class="timeline-item reveal-up">
+            <span class="timeline-year">{t.year}</span>
+            <div class="timeline-content">
+              <h3 class="timeline-title">{t.title}</h3>
+              <p class="timeline-text">{t.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section section--alt" aria-labelledby="testi-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Cosa Dicono i Clienti</p>
+        <h2 class="section__title" id="testi-title">La Parola<br><em>ai Nostri Clienti</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {testimonials.map(t => (
+          <TestimonialCard testimonial={t} />
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:3rem">
+        <a href={url('/testimonianze/')} class="btn btn--ghost btn--lg">Leggi tutte le recensioni</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-parq-title">
+    <span class="section-num section-num--right" aria-hidden="true">05</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Domande Frequenti</p>
+        <h2 class="section__title" id="faq-parq-title">Come Scelgo<br><em>un Parquettista?</em></h2>
+      </div>
+      <div class="faq-accordion reveal-up" style="max-width:800px;margin:0 auto">
+        {faqParquettista.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">{f.q}</summary>
+            <div class="faq-answer"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>
