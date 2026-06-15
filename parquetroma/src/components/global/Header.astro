@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from '../ui/ThemeToggle.astro';
 import { SITE_CONFIG } from '../../data/config';
+import { url } from '../../utils/url';
 
 interface Props {
   currentPath: string;
@@ -15,7 +16,7 @@ const isActive = (path: string) =>
 <header class="header" id="header" role="banner">
   <div class="container header__inner">
 
-    <a href="/" class="header__logo" aria-label="ParquetRoma — Home">
+    <a href={url('/')} class="header__logo" aria-label="ParquetRoma — Home">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <rect x="2"  y="2"  width="12" height="12" rx="1" fill="#C4922A"/>
         <rect x="18" y="2"  width="12" height="12" rx="1" fill="#9E7420"/>
@@ -28,30 +29,30 @@ const isActive = (path: string) =>
     <nav class="header__nav" id="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="header__nav-list" role="list">
         <li>
-          <a href="/chi-siamo/" class={`header__nav-link ${isActive('/chi-siamo')}`}>Chi Siamo</a>
+          <a href={url('/chi-siamo/')} class={`header__nav-link ${isActive('/chi-siamo')}`}>Chi Siamo</a>
         </li>
         <li class="header__nav-item--has-drop">
-          <a href="/servizi/" class={`header__nav-link ${isActive('/servizi')}`}>
+          <a href={url('/servizi/')} class={`header__nav-link ${isActive('/servizi')}`}>
             Servizi
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </a>
           <ul class="header__nav-dropdown" role="list">
-            <li><a href="/servizi/#parquet">Posa Parquet</a></li>
-            <li><a href="/servizi/#porte">Installazione Porte</a></li>
-            <li><a href="/servizi/#consulenza">Consulenza &amp; Design</a></li>
-            <li><a href="/servizi/#levigatura">Levigatura &amp; Restauro</a></li>
+            <li><a href={url('/servizi/#parquet')}>Posa Parquet</a></li>
+            <li><a href={url('/servizi/#porte')}>Installazione Porte</a></li>
+            <li><a href={url('/servizi/#consulenza')}>Consulenza &amp; Design</a></li>
+            <li><a href={url('/servizi/#levigatura')}>Levigatura &amp; Restauro</a></li>
           </ul>
         </li>
         <li>
-          <a href="/portfolio/" class={`header__nav-link ${isActive('/portfolio')}`}>Portfolio</a>
+          <a href={url('/portfolio/')} class={`header__nav-link ${isActive('/portfolio')}`}>Portfolio</a>
         </li>
         <li>
-          <a href="/testimonianze/" class={`header__nav-link ${isActive('/testimonianze')}`}>Testimonianze</a>
+          <a href={url('/testimonianze/')} class={`header__nav-link ${isActive('/testimonianze')}`}>Testimonianze</a>
         </li>
         <li>
-          <a href="/contatti/" class={`header__nav-link ${isActive('/contatti')}`}>Contatti</a>
+          <a href={url('/contatti/')} class={`header__nav-link ${isActive('/contatti')}`}>Contatti</a>
         </li>
       </ul>
     </nav>

@@ -1,5 +1,6 @@
 ---
 import type { Testimonial } from '../../data/testimonials';
+import { url } from '../../utils/url';
 
 interface Props {
   testimonial: Testimonial;
@@ -24,7 +25,7 @@ const stars = Array.from({ length: testimonial.rating });
       </div>
     </div>
     <p class="testimonial-card__google-text">{testimonial.quote}</p>
-    <a href="/testimonianze/" class="btn btn--secondary btn--sm">Leggi tutte</a>
+    <a href={url('/testimonianze/')} class="btn btn--secondary btn--sm">Leggi tutte</a>
   </article>
 ) : (
   <article class="testimonial-card" role="listitem">

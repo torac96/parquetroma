@@ -1,5 +1,6 @@
 ---
 import { SITE_CONFIG } from '../../data/config';
+import { url } from '../../utils/url';
 ---
 
 <div class="sticky-cta" role="navigation" aria-label="Contatti rapidi">
@@ -15,7 +16,7 @@ import { SITE_CONFIG } from '../../data/config';
     </svg>
     WhatsApp
   </a>
-  <a href="/contatti/" class="sticky-cta__quote">
+  <a href={url('/contatti/')} class="sticky-cta__quote">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
       <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
     </svg>

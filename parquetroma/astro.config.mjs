@@ -4,7 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.parquetroma.it',
+  site: 'https://torac96.github.io',
+  base: '/parquetroma',
   integrations: [
     sitemap({
       changefreq: 'monthly',

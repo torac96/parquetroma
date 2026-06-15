@@ -1,5 +1,6 @@
 ---
 import { SITE_CONFIG } from '../../data/config';
+import { url } from '../../utils/url';
 const year = new Date().getFullYear();
 ---
 
@@ -7,7 +8,7 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
-        <a href="/" class="header__logo" aria-label="ParquetRoma">
+        <a href={url('/')} class="header__logo" aria-label="ParquetRoma">
           <svg width="36" height="36" viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <rect x="2"  y="2"  width="12" height="12" rx="1" fill="#C4922A"/>
             <rect x="18" y="2"  width="12" height="12" rx="1" fill="#9E7420"/>
@@ -33,20 +34,20 @@ const year = new Date().getFullYear();
       <div class="footer__col">
         <h3 class="footer__col-title">Servizi</h3>
         <ul class="footer__links" role="list">
-          <li><a class="footer__link" href="/servizi/#parquet">Posa Parquet</a></li>
-          <li><a class="footer__link" href="/servizi/#porte">Installazione Porte</a></li>
-          <li><a class="footer__link" href="/servizi/#consulenza">Consulenza Design</a></li>
-          <li><a class="footer__link" href="/servizi/#levigatura">Levigatura &amp; Finitura</a></li>
+          <li><a class="footer__link" href={url('/servizi/#parquet')}>Posa Parquet</a></li>
+          <li><a class="footer__link" href={url('/servizi/#porte')}>Installazione Porte</a></li>
+          <li><a class="footer__link" href={url('/servizi/#consulenza')}>Consulenza Design</a></li>
+          <li><a class="footer__link" href={url('/servizi/#levigatura')}>Levigatura &amp; Finitura</a></li>
         </ul>
       </div>
 
       <div class="footer__col">
         <h3 class="footer__col-title">Azienda</h3>
         <ul class="footer__links" role="list">
-          <li><a class="footer__link" href="/chi-siamo/">Chi Siamo</a></li>
-          <li><a class="footer__link" href="/portfolio/">Portfolio</a></li>
-          <li><a class="footer__link" href="/testimonianze/">Testimonianze</a></li>
-          <li><a class="footer__link" href="/contatti/">Contatti</a></li>
+          <li><a class="footer__link" href={url('/chi-siamo/')}>Chi Siamo</a></li>
+          <li><a class="footer__link" href={url('/portfolio/')}>Portfolio</a></li>
+          <li><a class="footer__link" href={url('/testimonianze/')}>Testimonianze</a></li>
+          <li><a class="footer__link" href={url('/contatti/')}>Contatti</a></li>
         </ul>
       </div>
 
@@ -65,8 +66,8 @@ const year = new Date().getFullYear();
     <div class="footer__bottom">
       <p class="footer__copy">&copy; {year} ParquetRoma. Tutti i diritti riservati.</p>
       <div class="footer__legal">
-        <a href="/privacy/" class="footer__legal-link">Privacy Policy</a>
-        <a href="/cookie/" class="footer__legal-link">Cookie Policy</a>
+        <a href={url('/privacy/')} class="footer__legal-link">Privacy Policy</a>
+        <a href={url('/cookie/')} class="footer__legal-link">Cookie Policy</a>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 ---
 import { SITE_CONFIG } from '../../data/config';
+import { url } from '../../utils/url';
 ---
 
 <section class="hero" id="hero" aria-label="Sezione principale">
@@ -26,8 +27,8 @@ import { SITE_CONFIG } from '../../data/config';
     <h1 class="hero__title">Maestria Artigianale<br><em>nel Parquet</em></h1>
     <p class="hero__subtitle">20+ anni di esperienza trasformano il tuo spazio in un'opera d'arte. Installazione professionale di parquet e porte a Roma.</p>
     <div class="hero__actions">
-      <a href="/contatti/" class="btn btn--primary btn--lg">Richiedi Preventivo Gratuito</a>
-      <a href="/portfolio/" class="btn btn--ghost btn--lg">Vedi il Portfolio</a>
+      <a href={url('/contatti/')} class="btn btn--primary btn--lg">Richiedi Preventivo Gratuito</a>
+      <a href={url('/portfolio/')} class="btn btn--ghost btn--lg">Vedi il Portfolio</a>
     </div>
     <div class="hero__badges" role="list">
       <div class="hero__badge" role="listitem">

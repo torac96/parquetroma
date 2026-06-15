@@ -27,7 +27,7 @@ const {
   <div class="container page-hero__content">
     {breadcrumbs.length > 0 && (
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
+        <a href={import.meta.env.BASE_URL || '/'}>Home</a>
         {breadcrumbs.map(bc => (
           <>
             <span class="breadcrumb__sep" aria-hidden="true">/</span>

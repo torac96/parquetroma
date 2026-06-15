@@ -1,5 +1,6 @@
 ---
 import { SITE_CONFIG } from '../../data/config';
+import { url } from '../../utils/url';
 
 interface Props {
   title?:    string;
@@ -31,7 +32,7 @@ const {
       </svg>
       {phoneCta}
     </a>
-    <a href="/contatti/" class="btn btn--outline-white btn--lg">{formCta}</a>
+    <a href={url('/contatti/')} class="btn btn--outline-white btn--lg">{formCta}</a>
   </div>
 </div>
 
