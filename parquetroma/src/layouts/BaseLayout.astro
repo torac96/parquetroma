@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import '../styles/animations.css';
 import { SCHEMA_LOCAL_BUSINESS, SITE_CONFIG } from '../data/config';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface BreadcrumbItem {
   name: string;
@@ -115,7 +115,7 @@ if (schema) {
     <script type="application/ld+json" set:html={JSON.stringify(s)} />
   ))}
 
-  <ViewTransitions />
+  <ClientRouter />
 </head>
 <body>
   <slot />
