@@ -66,7 +66,7 @@ export const portfolio: Project[] = [
     wood:     'Quercia Bianca',
     pattern:  'Spina di Pesce',
     desc:     'Attico con vista su Roma. Quercia bianca sbiancata per amplificare la luce naturale degli ampi spazi a disposizione.',
-    quote:    'Ogni mattina mi sveglio e ammiro il pavimento — è un'opera d\'arte.',
+    quote:    "Ogni mattina mi sveglio e ammiro il pavimento — è un'opera d'arte.",
     before:   'https://picsum.photos/seed/prati-before/900/600',
     after:    'https://picsum.photos/seed/prati-after/900/600',
   },
