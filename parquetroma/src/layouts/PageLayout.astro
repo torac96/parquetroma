@@ -77,6 +77,19 @@ interface Props {
     /* Wait for loader to finish */
     document.addEventListener('loader:complete', initAllAnimations, { once: true });
 
+    /* Hide loader before page swap and cleanup tweens */
+    document.addEventListener('astro:before-swap', () => {
+      const loader = document.getElementById('loader') as HTMLElement | null;
+      if (loader) {
+        import('gsap').then(({ default: gsap }) => {
+          gsap.killTweensOf(loader);
+          loader.querySelectorAll('rect').forEach((rect: Element) => gsap.killTweensOf(rect));
+          loader.style.display = 'none';
+          loader.style.opacity = '0';
+        });
+      }
+    });
+
     /* Re-init after Astro View Transitions navigation */
     document.addEventListener('astro:after-swap', () => {
       initHeader();
