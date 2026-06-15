@@ -1,5 +1,6 @@
 ---
 import type { Service } from '../../data/services';
+import { url } from '../../utils/url';
 
 interface Props {
   service: Service;
@@ -33,7 +34,7 @@ const { service } = Astro.props;
       {service.features.map(f => <li>{f}</li>)}
     </ul>
     <a
-      href={`/${service.slug}/`}
+      href={url(`/${service.slug}`)}
       class:list={['btn service-card__cta', service.isFeatured ? 'btn--primary' : 'btn--secondary']}
     >
       {service.id === 'consulenza' ? 'Prenota Consulenza' : 'Scopri il Servizio'}

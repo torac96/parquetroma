@@ -1,17 +1,730 @@
 ---
+import PageLayout       from '../layouts/PageLayout.astro';
+import Hero             from '../components/sections/Hero.astro';
+import Marquee          from '../components/sections/Marquee.astro';
+import SectionHeader    from '../components/ui/SectionHeader.astro';
+import ServiceCard      from '../components/cards/ServiceCard.astro';
+import MaterialCard     from '../components/cards/MaterialCard.astro';
+import ProjectCard      from '../components/cards/ProjectCard.astro';
+import TestimonialCard  from '../components/cards/TestimonialCard.astro';
+import StatementSection from '../components/sections/StatementSection.astro';
+import TrustBar         from '../components/sections/TrustBar.astro';
+import CtaBand          from '../components/sections/CtaBand.astro';
+import { services }     from '../data/services';
+import { portfolio }    from '../data/portfolio';
+import { testimonials } from '../data/testimonials';
+import { SITE_CONFIG }  from '../data/config';
+import { url }          from '../utils/url';
 
+const previewServices  = services.slice(0, 3);
+const previewProjects  = portfolio.slice(0, 3);
+const previewTestimonials = testimonials.slice(0, 3);
+
+const googleTestimonial = {
+  id: 'google',
+  name: 'Google',
+  role: '',
+  quote: 'Professionisti seri e affidabili. La qualità del lavoro è eccezionale — ogni dettaglio è curato con maestria. Lo consiglio a chiunque voglia un parquet di qualità a Roma.',
+  rating: 5,
+  avatar: '',
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_CONFIG.url}/#website`,
+  name: SITE_CONFIG.name,
+  url: SITE_CONFIG.url,
+  description: 'Installazione professionale di parquet e porte a Roma — 20+ anni di esperienza artigianale.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_CONFIG.url}/?s={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const materials = [
+  { num: '01', name: 'Quercia',  latin: 'Quercus robur',       gradient: 'radial-gradient(ellipse at 30% 40%, #a07832 0%, #6b4f18 40%, #3d2a08 100%)', href: url('/servizi/#parquet'), description: 'La regina del parquet. Venatura ricca, calore senza tempo. Naturale, sbiancata o affumicata.' },
+  { num: '02', name: 'Noce',     latin: 'Juglans regia',       gradient: 'radial-gradient(ellipse at 40% 35%, #6b4a2e 0%, #4a3020 40%, #231508 100%)', href: url('/servizi/#parquet'), description: 'Toni scuri e venatura sinuosa. Eleganza e preziosità per ambienti di lusso.' },
+  { num: '03', name: 'Frassino', latin: 'Fraxinus excelsior',  gradient: 'radial-gradient(ellipse at 50% 40%, #c8b898 0%, #a09070 40%, #6e6050 100%)', href: url('/servizi/#parquet'), description: 'Toni chiari e venatura aperta. Perfetto per ambienti contemporanei e minimalisti.' },
+  { num: '04', name: 'Bambù',    latin: 'Phyllostachys edulis', gradient: 'radial-gradient(ellipse at 45% 35%, #7a8f50 0%, #5a6a38 40%, #2d3a1a 100%)', href: url('/servizi/#parquet'), description: 'Sostenibile e resistente. Durezza superiore al legno, estetica moderna e naturale.' },
+];
+
+const processo = [
+  { n: '01', title: 'Sopralluogo Gratuito', text: 'Veniamo da te, misuriamo lo spazio, ascoltiamo la tua visione. Nessun costo, nessun impegno.', icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>' },
+  { n: '02', title: 'Preventivo Chiaro',    text: 'Preventivo dettagliato: materiali, pattern, tempistiche, costi. Tutto trasparente, senza sorprese.', icon: '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>' },
+  { n: '03', title: 'Posa Professionale',   text: 'Installiamo con precisione millimetrica. Rispettiamo il cantiere e consegniamo nei tempi concordati.', icon: '<polyline points="20 6 9 17 4 12"/>' },
+  { n: '04', title: 'Il Tuo Risultato',     text: 'Un pavimento che ti emoziona ogni giorno. Garantito per iscritto. 500+ famiglie lo confermano.', icon: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<PageLayout
+  title="Posa Parquet Roma | 20+ Anni di Maestria Artigianale | ParquetRoma"
+  description="Installazione parquet professionale a Roma e Lazio. 20+ anni di esperienza artigianale. Posa parquet, porte e consulenza design. Preventivo gratuito. Chiama oggi!"
+  lcpImage="https://picsum.photos/seed/parquet-hero/1920/1080"
+  schema={websiteSchema}
+>
+
+  <!-- ====== HERO ====== -->
+  <Hero />
+
+  <!-- ====== MARQUEE ====== -->
+  <Marquee />
+
+  <!-- ====== ABOUT PREVIEW ====== -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="about__grid">
+
+        <div class="about__image-col reveal-left">
+          <div class="about__image-wrapper tilt-card">
+            <img
+              src="https://picsum.photos/seed/craftsman-portrait/600/750"
+              alt="Artigiano parquet Roma — 20+ anni di esperienza"
+              class="about__portrait"
+              width="600"
+              height="750"
+              loading="lazy"
+            />
+            <div class="about__experience-badge">
+              <span class="about__experience-number">20+</span>
+              <span class="about__experience-label">Anni di<br>Maestria</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__content reveal-right">
+          <p class="section__eyebrow">Chi Siamo</p>
+          <h2 class="section__title" id="about-title">Passione per il Legno,<br><em>Eccellenza nel Risultato</em></h2>
+          <p class="about__lead">Da oltre vent'anni trasformiamo spazi con la bellezza autentica del parquet. Non installiamo semplicemente pavimenti — creiamo ambienti che durano nel tempo.</p>
+          <p class="about__body">La nostra storia inizia con una profonda passione per il legno in tutte le sue espressioni: quercia, noce, frassino, bambù. Ogni essenza ha carattere, calore e storia propria.</p>
+          <div class="about__values stagger-grid" role="list">
+            <div class="about__value" role="listitem">
+              <div class="about__value-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div><h3 class="about__value-title">Qualità Garantita</h3><p class="about__value-text">Solo materiali premium selezionati.</p></div>
+            </div>
+            <div class="about__value" role="listitem">
+              <div class="about__value-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div><h3 class="about__value-title">Puntualità</h3><p class="about__value-text">Rispettiamo i tempi concordati, sempre.</p></div>
+            </div>
+            <div class="about__value" role="listitem">
+              <div class="about__value-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <div><h3 class="about__value-title">Consulenza Personale</h3><p class="about__value-text">Ascoltiamo e consigliamo ogni cliente.</p></div>
+            </div>
+            <div class="about__value" role="listitem">
+              <div class="about__value-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div><h3 class="about__value-title">Eccellenza Artigianale</h3><p class="about__value-text">Ogni dettaglio curato con precisione.</p></div>
+            </div>
+          </div>
+          <div class="about__cta">
+            <a href={url('/chi-siamo/')} class="btn btn--secondary">Scopri la nostra storia</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SERVIZI PREVIEW ====== -->
+  <section class="section section--alt" id="servizi" aria-labelledby="servizi-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <SectionHeader
+        eyebrow="I Nostri Servizi"
+        title="Cosa <em>Offriamo</em>"
+        subtitle="Dalla scelta dei materiali all'installazione finale: un servizio completo e professionale."
+      />
+      <div class="servizi__grid stagger-grid">
+        {previewServices.map(service => <ServiceCard service={service} />)}
+      </div>
+      <div class="section__cta-row">
+        <a href={url('/servizi/')} class="btn btn--secondary btn--lg">Tutti i Servizi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== MATERIALS SHOWCASE ====== -->
+  <section class="section section--dark" id="materiali" aria-labelledby="mat-title">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Le Essenze"
+        title="Il Legno che <em>Scegli</em>"
+        subtitle="Ogni essenza ha carattere proprio. Ti guidiamo nella scelta del materiale perfetto per il tuo spazio."
+        align="left"
+      />
+      <div class="materials__grid">
+        {materials.map(m => (
+          <MaterialCard
+            num={m.num}
+            name={m.name}
+            latin={m.latin}
+            description={m.description}
+            gradient={m.gradient}
+            href={m.href}
+          />
+        ))}
+      </div>
+      <div class="section__cta-row section__cta-row--center">
+        <a href={url('/servizi/')} class="btn btn--ghost btn--lg">Esplora Tutti i Materiali</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== HORIZONTAL SCROLL JOURNEY ====== -->
+  <section id="hscroll" aria-label="Il nostro processo in 4 fasi" class="hscroll-section">
+    <div class="hscroll-sticky">
+      <div class="hscroll-track">
+
+        <!-- Panel 1 -->
+        <div class="h-panel h-panel--dark">
+          <div class="h-panel__orb" style="background:radial-gradient(ellipse at 70% 50%,#a07832,transparent 60%)"></div>
+          <div class="container h-panel__grid">
+            <div class="h-panel__content">
+              <span class="h-panel__step">01 / 04</span>
+              <h2 class="h-panel__title">Ci<br><em>Ascoltiamo</em></h2>
+              <p class="h-panel__text">Ogni progetto inizia con un sopralluogo gratuito. Veniamo da te, misuriamo lo spazio, ascoltiamo la tua visione. Nessun costo, nessun impegno.</p>
+              <div class="h-panel__badge">
+                <div class="h-panel__badge-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <span>Sopralluogo entro <strong>48 ore</strong></span>
+              </div>
+            </div>
+            <div class="h-panel__num" aria-hidden="true">01</div>
+          </div>
+          <div class="h-panel__scroll-hint" aria-hidden="true">
+            <span>Scorri</span>
+            <svg width="40" height="14" viewBox="0 0 40 14" fill="none"><line x1="0" y1="7" x2="36" y2="7" stroke="currentColor" stroke-width="1.5"/><polyline points="30,1 38,7 30,13" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="h-panel" style="background:#1a1208">
+          <div class="h-panel__orb" style="background:radial-gradient(ellipse at 30% 50%,#c4922a,transparent 55%);opacity:.18"></div>
+          <div class="container h-panel__grid h-panel__grid--rev">
+            <div class="h-panel__num" aria-hidden="true">02</div>
+            <div class="h-panel__content">
+              <span class="h-panel__step">02 / 04</span>
+              <h2 class="h-panel__title"><em>Progettiamo</em><br>Insieme</h2>
+              <p class="h-panel__text">Preventivo chiaro e dettagliato: materiali, pattern di posa, tempistiche, costi. Tutto trasparente, senza sorprese. Scegli in piena serenità.</p>
+              <div class="h-panel__badge">
+                <div class="h-panel__badge-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <span>Preventivo entro <strong>3 giorni</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="h-panel" style="background:#0f1a08">
+          <div class="h-panel__orb" style="background:radial-gradient(ellipse at 65% 40%,#2d5016,transparent 55%);opacity:.2"></div>
+          <div class="container h-panel__grid">
+            <div class="h-panel__content">
+              <span class="h-panel__step">03 / 04</span>
+              <h2 class="h-panel__title">Eseguiamo<br>con <em style="color:#7fcf55">Cura</em></h2>
+              <p class="h-panel__text">Installiamo con precisione millimetrica. Rispettiamo l'ambiente di lavoro, manteniamo il cantiere pulito, consegniamo nei tempi concordati.</p>
+              <div class="h-panel__badge h-panel__badge--green">
+                <div class="h-panel__badge-icon h-panel__badge-icon--green" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <span><strong>100%</strong> nei tempi concordati</span>
+              </div>
+            </div>
+            <div class="h-panel__num" aria-hidden="true">03</div>
+          </div>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="h-panel h-panel--light">
+          <div class="h-panel__orb" style="background:radial-gradient(ellipse at 40% 60%,var(--color-gold-pale),transparent 55%);opacity:.4"></div>
+          <div class="container h-panel__grid h-panel__grid--rev">
+            <div class="h-panel__num h-panel__num--light" aria-hidden="true">04</div>
+            <div class="h-panel__content">
+              <span class="h-panel__step h-panel__step--dark">04 / 04</span>
+              <h2 class="h-panel__title h-panel__title--dark">Il Tuo<br><em style="color:var(--color-gold)">Risultato</em></h2>
+              <p class="h-panel__text h-panel__text--dark">Un pavimento che ti emoziona ogni volta che entri. Garantito per iscritto. 500+ famiglie romane lo confermano ogni giorno.</p>
+              <div class="h-panel__actions">
+                <a href={url('/contatti/')} class="btn btn--primary btn--lg">Inizia il Tuo Progetto</a>
+                <a href={url('/portfolio/')} class="btn btn--secondary btn--lg">Vedi il Portfolio</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PORTFOLIO PREVIEW ====== -->
+  <section class="section" id="portfolio-preview" aria-labelledby="portfolio-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <SectionHeader
+        eyebrow="Il Nostro Lavoro"
+        title="Portfolio <em>Selezionato</em>"
+        subtitle="Ogni progetto è una storia unica. Prima e dopo: il parquet che trasforma."
+      />
+      <div class="portfolio-preview__grid stagger-grid">
+        {previewProjects.map(project => <ProjectCard project={project} />)}
+      </div>
+      <div class="section__cta-row section__cta-row--center">
+        <a href={url('/portfolio/')} class="btn btn--secondary btn--lg">Vedi Tutti i Progetti</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIALS ====== -->
+  <section class="section section--alt" id="testimonianze-preview" aria-labelledby="testi-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <SectionHeader
+        eyebrow="Cosa Dicono di Noi"
+        title="500+ Clienti <em>Soddisfatti</em>"
+        subtitle="La nostra reputazione si costruisce progetto dopo progetto, a Roma e nel Lazio."
+      />
+      <div class="testimonials__track stagger-grid">
+        <TestimonialCard testimonial={googleTestimonial} variant="google" />
+        {previewTestimonials.map(t => <TestimonialCard testimonial={t} />)}
+      </div>
+      <div class="section__cta-row section__cta-row--center">
+        <a href={url('/testimonianze/')} class="btn btn--secondary btn--lg">Leggi Tutte le Recensioni</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STATEMENT ====== -->
+  <StatementSection />
+
+  <!-- ====== PROCESSO VERTICALE ====== -->
+  <section class="section" id="processo" aria-labelledby="processo-title">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Come Lavoriamo"
+        title="Il Nostro <em>Processo</em>"
+        subtitle="Quattro fasi, zero stress. Dalla prima chiamata al pavimento finito."
+      />
+      <div class="processo__list" role="list">
+        <div class="processo__line" aria-hidden="true">
+          <div class="processo__line-bar"></div>
+        </div>
+        {processo.map((step, i) => (
+          <div class="processo__item reveal-up" role="listitem">
+            <div class="processo__dot" aria-hidden="true"></div>
+            <div class="processo__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" set:html={step.icon} />
+            </div>
+            <div class="processo__body">
+              <span class="processo__num">{step.n}</span>
+              <h3 class="processo__title">{step.title}</h3>
+              <p class="processo__text">{step.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TRUST BAR ====== -->
+  <TrustBar />
+
+  <!-- ====== CTA BAND ====== -->
+  <section class="section">
+    <div class="container">
+      <CtaBand />
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+/* ── About ─────────────────────────────────────────────── */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
+}
+.about__image-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+.about__portrait {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--duration-700) var(--ease-out);
+}
+.about__image-wrapper:hover .about__portrait { transform: scale(1.03); }
+.about__experience-badge {
+  position: absolute;
+  bottom: 2rem;
+  right: -1.5rem;
+  background: var(--color-gold);
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-gold);
+}
+.about__experience-number {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+}
+.about__experience-label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  opacity: .85;
+  margin-top: .25rem;
+  display: block;
+}
+.about__content .section__title { margin-bottom: 1.5rem; }
+.about__lead {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.about__body {
+  font-size: .95rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: 2rem;
+}
+.about__values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.about__value {
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+}
+.about__value-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--color-gold-pale);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+.dark .about__value-icon { background: rgba(196,146,42,.12); }
+.about__value-title {
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: .2rem;
+}
+.about__value-text {
+  font-size: .82rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+.about__cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ── Servizi grid ───────────────────────────────────────── */
+.servizi__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ── Materials grid ─────────────────────────────────────── */
+.materials__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 0;
+}
+
+/* ── Horizontal Scroll ──────────────────────────────────── */
+.hscroll-section { height: 400vh; }
+.hscroll-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.hscroll-track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+.h-panel {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-dark);
+}
+.h-panel--light { background: var(--color-cream); }
+.h-panel__orb {
+  position: absolute;
+  inset: 0;
+  opacity: .15;
+  pointer-events: none;
+}
+.h-panel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.h-panel__grid--rev { direction: rtl; }
+.h-panel__grid--rev > * { direction: ltr; }
+.h-panel__step {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.h-panel__step--dark { color: var(--color-gold); }
+.h-panel__title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tighter);
+  margin-bottom: 1.5rem;
+}
+.h-panel__title em { color: var(--color-gold-light); font-style: italic; }
+.h-panel__title--dark { color: var(--color-text); }
+.h-panel__title--dark em { color: var(--color-gold); }
+.h-panel__text {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.65);
+  line-height: var(--lh-relaxed);
+  max-width: 420px;
+}
+.h-panel__text--dark { color: var(--color-text-secondary); }
+.h-panel__badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  font-size: .875rem;
+  color: rgba(255,255,255,.5);
+}
+.h-panel__badge strong { color: #fff; }
+.h-panel__badge--green { color: rgba(255,255,255,.5); }
+.h-panel__badge--green strong { color: #fff; }
+.h-panel__badge-icon {
+  width: 46px;
+  height: 46px;
+  background: rgba(196,146,42,.15);
+  border: 1px solid rgba(196,146,42,.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-light);
+  flex-shrink: 0;
+}
+.h-panel__badge-icon--green {
+  background: rgba(45,80,22,.3);
+  border-color: rgba(127,207,85,.2);
+  color: #7fcf55;
+}
+.h-panel__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+.h-panel__num {
+  font-family: var(--font-serif);
+  font-size: clamp(10rem, 20vw, 18rem);
+  font-weight: 700;
+  color: rgba(255,255,255,.04);
+  line-height: 1;
+  text-align: right;
+  user-select: none;
+  pointer-events: none;
+}
+.h-panel__num--light { color: var(--color-border); }
+.h-panel__scroll-hint {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .8rem;
+  color: rgba(255,255,255,.3);
+}
+
+/* ── Portfolio Preview ──────────────────────────────────── */
+.portfolio-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ── Testimonials track ─────────────────────────────────── */
+.testimonials__track {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* ── Shared CTA row ─────────────────────────────────────── */
+.section__cta-row {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+}
+.section__cta-row--center { justify-content: center; }
+
+/* ── Section num watermark ──────────────────────────────── */
+.section-num {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-serif);
+  font-size: clamp(8rem, 18vw, 16rem);
+  font-weight: 700;
+  color: var(--color-border-ui);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  opacity: .4;
+}
+.dark .section-num { opacity: .08; }
+.section-num--right { right: -2rem; }
+.section-num--left  { left: -2rem; }
+
+/* ── Processo ───────────────────────────────────────────── */
+.processo__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.processo__line {
+  position: absolute;
+  left: 1.75rem;
+  top: 2.5rem;
+  bottom: 2.5rem;
+  width: 2px;
+  background: var(--color-border-ui);
+  overflow: hidden;
+}
+.processo__line-bar {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, var(--color-gold), var(--color-gold-dark));
+  border-radius: 1px;
+}
+.processo__item {
+  display: grid;
+  grid-template-columns: 3.5rem 3rem 1fr;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--color-border-ui);
+  position: relative;
+}
+.processo__item:last-child { border-bottom: none; }
+.processo__dot {
+  position: absolute;
+  left: 1.25rem;
+  top: 2.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  border: 3px solid var(--color-surface);
+  z-index: 1;
+}
+.dark .processo__dot { border-color: var(--color-surface); }
+.processo__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-gold-pale);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
+.dark .processo__icon { background: rgba(196,146,42,.12); }
+.processo__num {
+  font-family: var(--font-serif);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: .5rem;
+}
+.processo__title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: .5rem;
+}
+.processo__text {
+  font-size: .93rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .materials__grid { grid-template-columns: repeat(2, 1fr); }
+  .servizi__grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-preview__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .about__grid { grid-template-columns: 1fr; }
+  .about__experience-badge { right: 1rem; }
+  .about__values { grid-template-columns: 1fr; }
+  .servizi__grid { grid-template-columns: 1fr; }
+  .materials__grid { grid-template-columns: 1fr; }
+  .portfolio-preview__grid { grid-template-columns: 1fr; }
+  .h-panel__grid { grid-template-columns: 1fr; }
+  .h-panel__num { display: none; }
+  .processo__list { max-width: 100%; }
+  .processo__item { grid-template-columns: 2rem 2.5rem 1fr; gap: 1rem; }
+  .processo__icon { margin-left: .75rem; }
+}
+</style>
