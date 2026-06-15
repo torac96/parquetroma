@@ -1,0 +1,199 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TestimonialCard  from '../../components/cards/TestimonialCard.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import { testimonials } from '../../data/testimonials';
+import { faq }          from '../../data/faq';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Testimonianze', url: '/testimonianze/' }];
+
+const starSvg = `<svg width="28" height="28" viewBox="0 0 24 24" fill="#C4922A" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+---
+
+<PageLayout
+  title="Testimonianze Clienti | 127 Recensioni 5 Stelle | ParquetRoma Roma"
+  description="Leggi le testimonianze reali dei clienti di ParquetRoma. 127 recensioni 5 stelle su Google. Scopri cosa dicono le famiglie romane che hanno scelto il nostro parquet."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/happy-family/1920/800"
+>
+  <PageHero
+    eyebrow="Cosa Dicono i Clienti"
+    title="127 Recensioni<br><em>5 Stelle su Google</em>"
+    subtitle="Non siamo noi a dirvi quanto siamo bravi. Lo fanno i clienti — famiglie, architetti e professionisti che hanno scelto ParquetRoma."
+    image="https://picsum.photos/seed/happy-family/1920/800"
+    breadcrumbs={[{ name: 'Testimonianze', href: '' }]}
+  />
+
+  <!-- GOOGLE BADGE + TESTIMONIANZE -->
+  <section class="section" aria-label="Valutazione Google e recensioni">
+    <div class="container">
+
+      <!-- Google badge -->
+      <div class="google-badge reveal-up">
+        <span class="google-badge__score">5.0</span>
+        <div class="google-badge__stars" aria-label="5 stelle su 5">
+          <Fragment set:html={starSvg.repeat(5)} />
+        </div>
+        <p class="google-badge__count">Basato su <strong>127 recensioni</strong> Google verificate</p>
+        <p class="google-badge__label">Rating medio su Google My Business</p>
+      </div>
+
+      <!-- Griglia testimonianze -->
+      <div class="testimonials__grid stagger-grid" role="list">
+        {testimonials.map(t => (
+          <TestimonialCard testimonial={t} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Domande Frequenti</p>
+        <h2 class="section__title" id="faq-title">Tutto Quello<br><em>che Vuoi Sapere</em></h2>
+      </div>
+      <div class="faq-list" role="list">
+        {faq.map(item => (
+          <div class="faq-item" role="listitem" id={`faq-${item.id}`}>
+            <button class="faq-item__q" aria-expanded="false" aria-controls={`faq-body-${item.id}`}>
+              {item.question}
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-item__a" id={`faq-body-${item.id}`} role="region">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <CtaBand
+        title="Unisciti ai 500+ Clienti Soddisfatti"
+        text="Prenota il tuo sopralluogo gratuito oggi. Risposta in meno di 24 ore."
+      />
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+/* Google badge */
+.google-badge {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.5rem;
+  border: 1px solid var(--color-border-ui);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto 4rem;
+}
+.google-badge__score {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+  display: block;
+}
+.google-badge__stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin: .75rem 0;
+}
+.google-badge__count {
+  font-size: .9rem;
+  color: var(--color-text-secondary);
+}
+.google-badge__label {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-on-surface);
+  margin-top: .5rem;
+  font-weight: 700;
+}
+
+/* Testimonials grid */
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Override width constraint for grid layout */
+.testimonials__grid :global(.testimonial-card) {
+  width: 100%;
+}
+
+/* FAQ */
+.faq-list {
+  max-width: 720px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.faq-item {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-ui);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.faq-item__q {
+  width: 100%;
+  text-align: left;
+  padding: 1.35rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: background var(--duration-150);
+  background: transparent;
+  border: none;
+}
+.faq-item__q:hover { background: var(--color-gold-pale); }
+.dark .faq-item__q:hover { background: rgba(196,146,42,.08); }
+.faq-item__icon {
+  flex-shrink: 0;
+  transition: transform var(--duration-250) var(--ease-out);
+  color: var(--color-gold);
+}
+.faq-item__a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s var(--ease-out), padding .3s;
+  padding: 0 1.5rem;
+}
+.faq-item__a p {
+  font-size: .93rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+.faq-item.open .faq-item__a {
+  max-height: 300px;
+  padding: 0 1.5rem 1.35rem;
+}
+.faq-item.open .faq-item__icon { transform: rotate(45deg); }
+
+@media (max-width: 900px) {
+  .testimonials__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .testimonials__grid { grid-template-columns: 1fr; }
+}
+</style>

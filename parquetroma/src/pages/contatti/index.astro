@@ -1,0 +1,855 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import TrustBar  from '../../components/sections/TrustBar.astro';
+import { SITE_CONFIG } from '../../data/config';
+import { url }   from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Contatti', url: '/contatti/' }];
+
+const WA_HREF = "https://wa.me/390612345678?text=Ciao%2C%20vorrei%20un%20preventivo%20per%20il%20parquet.";
+---
+
+<PageLayout
+  title="Contatti | Preventivo Gratuito Parquet Roma | ParquetRoma"
+  description="Contatta ParquetRoma per un preventivo gratuito. Sopralluogo entro 48 ore, risposta in 24 ore. Posa parquet Roma e Lazio."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parquet-contact-dark/900/1100"
+>
+  <!-- CINEMATIC SPLIT HERO -->
+  <section class="c-hero" aria-labelledby="c-hero-title">
+    <!-- Left dark panel -->
+    <div class="c-hero__left">
+      <div class="c-hero__bg" aria-hidden="true">
+        <img
+          src="https://picsum.photos/seed/parquet-contact-dark/900/1100"
+          alt=""
+          width="900"
+          height="1100"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="c-hero__bg-overlay"></div>
+      </div>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="position:relative;z-index:1;margin-bottom:2rem">
+        <a href={url('/')}>Home</a>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span aria-current="page">Contatti</span>
+      </nav>
+
+      <div class="c-hero__content">
+        <span class="c-hero__eyebrow">Parliamo del Tuo Progetto</span>
+        <h1 class="c-hero__title" id="c-hero-title">
+          Ogni grande<br>pavimento inizia<br>da una <em>conversazione</em>
+        </h1>
+        <p class="c-hero__subtitle">
+          Raccontaci la tua idea. Noi la trasformiamo in un progetto concreto, con sopralluogo gratuito e preventivo senza sorprese.
+        </p>
+        <div class="c-hero__guarantees">
+          <div class="c-hero__guarantee">
+            <div class="c-hero__gicon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span><strong>Sopralluogo gratuito</strong> entro 48 ore dalla richiesta</span>
+          </div>
+          <div class="c-hero__guarantee">
+            <div class="c-hero__gicon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span><strong>Preventivo dettagliato</strong> senza costi nascosti</span>
+          </div>
+          <div class="c-hero__guarantee">
+            <div class="c-hero__gicon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span><strong>20+ anni</strong> di esperienza a Roma e Lazio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vertical divider -->
+    <div class="c-hero__divider" aria-hidden="true"></div>
+
+    <!-- Right image panel -->
+    <div class="c-hero__right" aria-hidden="true">
+      <span class="c-hero__deco-num">48h</span>
+      <div class="c-hero__image-stack">
+        <div class="c-hero__image-main">
+          <img src="https://picsum.photos/seed/parquet-wood-close/600/800" alt="" width="600" height="800" loading="eager" />
+        </div>
+        <div class="c-hero__badge-float">
+          <div class="c-hero__badge-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <div class="c-hero__badge-val">5.0</div>
+            <span class="c-hero__badge-label">127 recensioni Google</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="c-section" aria-labelledby="c-section-title">
+    <div class="c-section__wm" aria-hidden="true">CONTATTI</div>
+    <div class="container">
+      <div class="c-grid">
+
+        <!-- FORM -->
+        <div class="c-form-wrap">
+          <div class="c-form-wrap__header">
+            <span class="c-form-wrap__step">Richiesta Preventivo</span>
+            <h2 class="c-form-wrap__title" id="c-section-title">Raccontaci il Tuo<br><em>Progetto</em></h2>
+            <p class="c-form-wrap__sub">Compila il modulo in 2 minuti — risponderemo entro 24 ore con una prima valutazione gratuita.</p>
+          </div>
+
+          <form class="cf__form" id="contact-form" novalidate>
+            <div class="cf__row">
+              <div class="cf__group">
+                <label class="cf__label" for="nome">Nome e Cognome <span aria-hidden="true">*</span></label>
+                <input class="cf__input" type="text" id="nome" name="nome" autocomplete="name" placeholder="Mario Rossi" required />
+                <span class="cf__error" id="nome-error" role="alert"></span>
+              </div>
+              <div class="cf__group">
+                <label class="cf__label" for="telefono">Telefono <span aria-hidden="true">*</span></label>
+                <input class="cf__input" type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="06 1234 5678" required />
+                <span class="cf__error" id="telefono-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="cf__group">
+              <label class="cf__label" for="email">Email <span aria-hidden="true">*</span></label>
+              <input class="cf__input" type="email" id="email" name="email" autocomplete="email" placeholder="mario@email.it" required />
+              <span class="cf__error" id="email-error" role="alert"></span>
+            </div>
+
+            <div class="cf__row">
+              <div class="cf__group">
+                <label class="cf__label" for="tipo-immobile">Tipo Immobile</label>
+                <select class="cf__select" id="tipo-immobile" name="tipo-immobile">
+                  <option value="">Seleziona...</option>
+                  <option>Appartamento residenziale</option>
+                  <option>Villa / Casa indipendente</option>
+                  <option>Ufficio / Studio</option>
+                  <option>Locale commerciale</option>
+                  <option>Altro</option>
+                </select>
+              </div>
+              <div class="cf__group">
+                <label class="cf__label" for="metratura">Superficie</label>
+                <select class="cf__select" id="metratura" name="metratura">
+                  <option value="">Seleziona...</option>
+                  <option>Fino a 30 mq</option>
+                  <option>30–60 mq</option>
+                  <option>60–100 mq</option>
+                  <option>100–200 mq</option>
+                  <option>Oltre 200 mq</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="cf__group">
+              <label class="cf__label">Servizi di Interesse</label>
+              <div class="cf__checkboxes">
+                <label class="cf__checkbox-pill"><input type="checkbox" name="servizio" value="parquet" /> Posa Parquet</label>
+                <label class="cf__checkbox-pill"><input type="checkbox" name="servizio" value="porte" /> Porte</label>
+                <label class="cf__checkbox-pill"><input type="checkbox" name="servizio" value="consulenza" /> Design</label>
+                <label class="cf__checkbox-pill"><input type="checkbox" name="servizio" value="levigatura" /> Restauro</label>
+              </div>
+            </div>
+
+            <div class="cf__group">
+              <label class="cf__label" for="tempistiche">Quando vorresti iniziare?</label>
+              <select class="cf__select" id="tempistiche" name="tempistiche">
+                <option value="">Seleziona tempistica...</option>
+                <option>Il prima possibile</option>
+                <option>Entro 1 mese</option>
+                <option>Entro 3 mesi</option>
+                <option>Sto ancora pianificando</option>
+              </select>
+            </div>
+
+            <div class="cf__group">
+              <label class="cf__label" for="messaggio">Note aggiuntive</label>
+              <textarea class="cf__textarea" id="messaggio" name="messaggio" rows="4" placeholder="Zona, tipo di parquet desiderato, nuova posa o restauro..."></textarea>
+            </div>
+
+            <div class="cf__group">
+              <label class="cf__privacy">
+                <input type="checkbox" id="privacy" name="privacy" required />
+                Ho letto e accetto la <a href="#">Privacy Policy</a> e il trattamento dei miei dati personali.
+              </label>
+              <span class="cf__error" id="privacy-error" role="alert"></span>
+            </div>
+
+            <div id="cf-submit-wrap">
+              <button class="cf__submit" type="submit" id="form-submit">
+                <span id="cf-btn-text">Invia Richiesta Preventivo</span>
+                <svg id="cf-btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+              <p style="font-size:.78rem;color:var(--color-text-muted);text-align:center;margin-top:.75rem">Nessuno spam. Solo risposte utili al tuo progetto.</p>
+            </div>
+          </form>
+
+          <!-- Success state -->
+          <div class="cf__success" id="cf-success" tabindex="-1" role="status" aria-live="polite">
+            <div class="cf__success-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="cf__success-title">Richiesta inviata!<br>Ti risponderemo presto.</h3>
+            <p class="cf__success-sub">Riceverai una risposta entro <strong>24 ore lavorative</strong>. Nel frattempo scrivici su WhatsApp per una risposta immediata.</p>
+            <a href={WA_HREF} class="btn btn--primary" rel="noopener" target="_blank" style="width:auto;padding:.8rem 1.75rem;margin-top:.5rem">
+              Scrivi su WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="c-info-sidebar">
+
+          <!-- Contatti diretti -->
+          <div class="c-info-card c-info-card--dark">
+            <div class="c-info-card__header">
+              <div class="c-info-card__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 11.9 19.79 19.79 0 01.07 3.28 2 2 0 012.03 1H5a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="c-info-card__title">Contatti Diretti</div>
+                <div class="c-info-card__sub">Sempre disponibili</div>
+              </div>
+              <div style="margin-left:auto">
+                <div class="c-pulse"><div class="c-pulse__dot"></div> Online</div>
+              </div>
+            </div>
+            <div class="c-info-rows">
+              <div class="c-info-row">
+                <span class="c-info-row__label">Telefono</span>
+                <a href={SITE_CONFIG.phoneHref} class="c-info-row__val">{SITE_CONFIG.phone}</a>
+              </div>
+              <div class="c-info-row">
+                <span class="c-info-row__label">Email</span>
+                <a href={`mailto:${SITE_CONFIG.email}`} class="c-info-row__val">{SITE_CONFIG.email}</a>
+              </div>
+              <div class="c-info-row">
+                <span class="c-info-row__label">Orari</span>
+                <span class="c-info-row__val">Lun–Ven 8–18 · Sab 9–13</span>
+              </div>
+              <div class="c-info-row">
+                <span class="c-info-row__label">Area</span>
+                <span class="c-info-row__val">Roma &amp; Lazio</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="c-wa-card">
+            <div style="display:flex;align-items:center;gap:.75rem">
+              <div class="c-wa-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div class="c-wa-card__title">Risposta rapida<br>su WhatsApp</div>
+            </div>
+            <p class="c-wa-card__sub">Per preventivi veloci, foto del cantiere, domande immediate. Rispondiamo anche nei weekend.</p>
+            <a href={WA_HREF} class="c-wa-btn" rel="noopener" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Scrivi Ora su WhatsApp
+            </a>
+          </div>
+
+          <!-- Garanzie -->
+          <div class="c-info-card">
+            <div class="c-info-card__header">
+              <div class="c-info-card__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <div class="c-info-card__title">Le Nostre Garanzie</div>
+                <div class="c-info-card__sub">Zero rischi, zero sorprese</div>
+              </div>
+            </div>
+            <div class="c-info-rows">
+              <div class="c-info-row">
+                <span class="c-info-row__label">Sopralluogo</span>
+                <span class="c-info-row__val c-info-row__val--gold">€0 — Gratuito</span>
+              </div>
+              <div class="c-info-row">
+                <span class="c-info-row__label">Preventivo</span>
+                <span class="c-info-row__val c-info-row__val--gold">€0 — Senza impegno</span>
+              </div>
+              <div class="c-info-row">
+                <span class="c-info-row__label">Risposta</span>
+                <span class="c-info-row__val">Entro 24 ore lavorative</span>
+              </div>
+              <div class="c-info-row">
+                <span class="c-info-row__label">Soddisfazione</span>
+                <span class="c-info-row__val">100% garantita</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <TrustBar />
+
+  <!-- MAP -->
+  <section class="section section--alt" aria-label="Area di intervento">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Dove Operiamo</p>
+        <h2 class="section__title">Roma e <em>tutto il Lazio</em></h2>
+        <p class="section__subtitle">Dal centro storico ai quartieri residenziali. Servizio capillare in tutta la regione, su appuntamento anche fuori Roma.</p>
+      </div>
+      <div class="c-map-inner">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d190888.19750820015!2d12.3617485!3d41.9027835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6196f9928ebb%3A0xb90f770693656e38!2sRoma%20RM!5e0!3m2!1sit!2sit!4v1700000000000"
+          width="100%"
+          height="420"
+          style="border:0"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Zona di intervento ParquetRoma — Roma e Lazio"
+          aria-label="Mappa area di intervento Roma e Lazio"
+        ></iframe>
+        <div class="c-map-overlay">
+          <p class="c-map-overlay__title">Area di Intervento</p>
+          <p class="c-map-overlay__sub">Parioli · EUR · Trastevere · Prati · Testaccio · Flaminio · Centro Storico · e oltre</p>
+          <div class="c-map-tags">
+            <span class="c-map-tag">Roma</span>
+            <span class="c-map-tag">Lazio</span>
+            <span class="c-map-tag">Tutta Italia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client-side form validation -->
+  <script>
+    const form    = document.getElementById('contact-form') as HTMLFormElement | null;
+    const success = document.getElementById('cf-success');
+
+    function showError(id: string, msg: string) {
+      const err = document.getElementById(`${id}-error`);
+      const inp = document.getElementById(id) as HTMLInputElement | null;
+      if (err) err.textContent = msg;
+      if (inp) inp.classList.toggle('error', !!msg);
+    }
+
+    function validate(): boolean {
+      let ok = true;
+      const nome  = (document.getElementById('nome') as HTMLInputElement)?.value.trim();
+      if (!nome) { showError('nome', 'Campo obbligatorio.'); ok = false; } else showError('nome', '');
+      const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('email', 'Email non valida.'); ok = false; } else showError('email', '');
+      const tel   = (document.getElementById('telefono') as HTMLInputElement)?.value.trim();
+      if (!tel) { showError('telefono', 'Campo obbligatorio.'); ok = false; } else showError('telefono', '');
+      const priv  = (document.getElementById('privacy') as HTMLInputElement)?.checked;
+      const pErr  = document.getElementById('privacy-error');
+      if (!priv) { if (pErr) pErr.textContent = 'Accetta la Privacy Policy.'; ok = false; }
+      else       { if (pErr) pErr.textContent = ''; }
+      return ok;
+    }
+
+    ['nome', 'email', 'telefono'].forEach(id => {
+      document.getElementById(id)?.addEventListener('blur', validate);
+    });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validate()) { (form.querySelector('.error') as HTMLElement)?.focus(); return; }
+
+      const btn = document.getElementById('form-submit') as HTMLButtonElement;
+      const btnText = document.getElementById('cf-btn-text');
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.textContent = 'Invio in corso...';
+
+      await new Promise(r => setTimeout(r, 1200));
+
+      if (form && success) {
+        form.style.display = 'none';
+        success.classList.add('show');
+        success.focus();
+      }
+    });
+  </script>
+</PageLayout>
+
+<style>
+/* ── CINEMATIC HERO ── */
+.c-hero {
+  display: grid;
+  grid-template-columns: 1fr 3px 1fr;
+  min-height: 100vh;
+  padding-top: 0;
+}
+.c-hero__left {
+  position: relative;
+  padding: calc(var(--header-h, 80px) + 4rem) 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+.c-hero__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.c-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.c-hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(20,14,5,.92) 0%, rgba(20,14,5,.75) 100%);
+}
+.c-hero__content { position: relative; z-index: 1; }
+.c-hero__eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.c-hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.c-hero__title em { font-style: italic; color: var(--color-gold-light); }
+.c-hero__subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.7);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+}
+.c-hero__guarantees { display: flex; flex-direction: column; gap: .9rem; }
+.c-hero__guarantee {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  font-size: .9rem;
+  color: rgba(255,255,255,.85);
+  line-height: 1.5;
+}
+.c-hero__gicon {
+  width: 26px;
+  height: 26px;
+  background: rgba(196,146,42,.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-gold-light);
+  margin-top: .05rem;
+}
+
+.c-hero__divider { background: var(--color-gold); opacity: .4; }
+
+.c-hero__right {
+  position: relative;
+  background: var(--color-surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+.c-hero__deco-num {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 700;
+  color: var(--color-gold);
+  opacity: .12;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.c-hero__image-stack { position: relative; width: 100%; max-width: 360px; }
+.c-hero__image-main {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.c-hero__image-main img { width: 100%; height: 100%; object-fit: cover; }
+.c-hero__badge-float {
+  position: absolute;
+  bottom: -1.5rem;
+  left: -2rem;
+  background: var(--color-card-bg);
+  border-radius: var(--radius-xl);
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border-ui);
+}
+.c-hero__badge-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--color-gold), #9E7420);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.c-hero__badge-val {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  line-height: 1;
+}
+.c-hero__badge-label {
+  font-size: .72rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: .15rem;
+}
+
+/* ── CONTACT SECTION ── */
+.c-section { position: relative; padding: var(--section-py) 0; overflow: hidden; }
+.c-section__wm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif);
+  font-size: clamp(6rem, 15vw, 14rem);
+  font-weight: 700;
+  color: var(--color-on-surface);
+  opacity: .03;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.c-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Form wrap */
+.c-form-wrap {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  border: 1px solid var(--color-border-ui);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+.c-form-wrap__step {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: .75rem;
+}
+.c-form-wrap__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-on-surface);
+  line-height: 1.2;
+  margin-bottom: .75rem;
+}
+.c-form-wrap__title em { font-style: italic; color: var(--color-gold); }
+.c-form-wrap__sub {
+  font-size: .9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.cf__form { display: flex; flex-direction: column; gap: 1.25rem; }
+.cf__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.cf__group { display: flex; flex-direction: column; gap: .4rem; }
+.cf__label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  letter-spacing: .02em;
+}
+.cf__label span { color: var(--color-gold); }
+.cf__input,
+.cf__select,
+.cf__textarea {
+  padding: .8rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border-ui);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-size: .95rem;
+  font-family: inherit;
+  transition: border-color var(--duration-200), box-shadow var(--duration-200);
+  outline: none;
+}
+.cf__input:focus,
+.cf__select:focus,
+.cf__textarea:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(196,146,42,.15);
+}
+.cf__input.error,
+.cf__select.error { border-color: #dc2626; }
+.cf__textarea { resize: vertical; min-height: 100px; }
+.cf__error { font-size: .75rem; color: #dc2626; min-height: 1rem; }
+.cf__checkboxes { display: flex; gap: .6rem; flex-wrap: wrap; }
+.cf__checkbox-pill {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .9rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border-ui);
+  font-size: .83rem;
+  cursor: pointer;
+  transition: border-color var(--duration-200), background var(--duration-200);
+}
+.cf__checkbox-pill:has(input:checked) {
+  border-color: var(--color-gold);
+  background: var(--color-gold-pale);
+}
+.dark .cf__checkbox-pill:has(input:checked) { background: rgba(196,146,42,.12); }
+.cf__checkbox-pill input { accent-color: var(--color-gold); }
+.cf__privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  font-size: .82rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  line-height: 1.55;
+}
+.cf__privacy input { accent-color: var(--color-gold); margin-top: .2rem; flex-shrink: 0; }
+.cf__privacy a { color: var(--color-gold); text-decoration: underline; }
+.cf__submit {
+  width: 100%;
+  padding: 1.1rem 2rem;
+  background: var(--color-on-surface);
+  color: var(--color-surface);
+  border-radius: var(--radius-full);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  transition: background var(--duration-250), transform var(--duration-200), box-shadow var(--duration-250);
+  position: relative;
+  overflow: hidden;
+}
+.cf__submit:hover {
+  background: var(--color-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold, 0 8px 32px rgba(196,146,42,.35));
+}
+.cf__submit:disabled { opacity: .7; cursor: not-allowed; }
+
+/* Success */
+.cf__success { display: none; flex-direction: column; align-items: center; text-align: center; padding: 3rem 2rem; gap: 1.25rem; }
+.cf__success.show { display: flex; }
+.cf__success-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--color-gold), #9E7420);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: var(--shadow-gold, 0 8px 32px rgba(196,146,42,.35));
+}
+.cf__success-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  line-height: 1.2;
+}
+.cf__success-sub { font-size: .95rem; color: var(--color-text-secondary); line-height: 1.7; }
+
+/* ── SIDEBAR ── */
+.c-info-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.c-info-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-ui);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+.c-info-card--dark {
+  background: var(--color-green-deep);
+  border-color: rgba(255,255,255,.08);
+  color: #fff;
+}
+.c-info-card__header {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border-ui);
+}
+.c-info-card--dark .c-info-card__header { border-color: rgba(255,255,255,.1); }
+.c-info-card__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-gold-pale);
+  color: var(--color-gold);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.c-info-card--dark .c-info-card__icon { background: rgba(196,146,42,.2); color: var(--color-gold-light); }
+.c-info-card__title { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-on-surface); }
+.c-info-card--dark .c-info-card__title { color: #fff; }
+.c-info-card__sub { font-size: .78rem; color: var(--color-text-muted); }
+.c-info-card--dark .c-info-card__sub { color: rgba(255,255,255,.4); }
+.c-info-rows { display: flex; flex-direction: column; gap: 1rem; }
+.c-info-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.c-info-row__label { font-size: .8rem; color: var(--color-text-muted); font-weight: 500; padding-top: .1rem; }
+.c-info-card--dark .c-info-row__label { color: rgba(255,255,255,.4); }
+.c-info-row__val { font-size: .9rem; color: var(--color-on-surface); font-weight: 600; text-align: right; }
+.c-info-card--dark .c-info-row__val { color: #fff; }
+.c-info-row__val--gold { color: var(--color-gold); font-weight: 700; }
+a.c-info-row__val { transition: color var(--duration-150); }
+a.c-info-row__val:hover { color: var(--color-gold); }
+
+/* Pulse */
+.c-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .75rem;
+  font-weight: 700;
+  color: #16a34a;
+  background: #dcfce7;
+  padding: .3rem .75rem;
+  border-radius: var(--radius-full);
+}
+.c-pulse__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  animation: pulseDot 1.5s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: .7; }
+}
+
+/* WhatsApp */
+.c-wa-card {
+  background: linear-gradient(135deg, #1fad57 0%, #16a34a 100%);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 12px 40px rgba(22,163,74,.25);
+}
+.c-wa-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.c-wa-card__title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; line-height: 1.25; }
+.c-wa-card__sub { font-size: .875rem; color: rgba(255,255,255,.8); line-height: 1.6; }
+.c-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  width: 100%;
+  padding: .85rem 1.5rem;
+  background: #fff;
+  color: #16a34a;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: .95rem;
+  transition: transform var(--duration-200), box-shadow var(--duration-200);
+  text-decoration: none;
+}
+.c-wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+
+/* Map */
+.c-map-inner { border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl); position: relative; }
+.c-map-inner iframe { display: block; }
+.c-map-overlay {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-lg);
+  max-width: 260px;
+}
+.c-map-overlay__title { font-family: var(--font-serif); font-size: 1rem; font-weight: 700; color: var(--color-on-surface); margin-bottom: .25rem; }
+.c-map-overlay__sub { font-size: .8rem; color: var(--color-text-secondary); line-height: 1.55; }
+.c-map-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .75rem; }
+.c-map-tag {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: .2rem .6rem;
+  border-radius: var(--radius-full);
+  background: var(--color-gold-pale);
+  color: var(--color-gold);
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .c-hero { grid-template-columns: 1fr; }
+  .c-hero__divider { display: none; }
+  .c-hero__right { display: none; }
+  .c-hero__left { min-height: 70vh; padding-top: calc(var(--header-h, 80px) + 3rem); }
+  .c-grid { grid-template-columns: 1fr; }
+  .c-info-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .c-info-card, .c-wa-card { flex: 1; min-width: 240px; }
+}
+@media (max-width: 640px) {
+  .cf__row { grid-template-columns: 1fr; }
+  .c-info-sidebar { flex-direction: column; }
+  .c-hero__left { padding-inline: 1.5rem; }
+}
+</style>

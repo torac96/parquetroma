@@ -1,0 +1,273 @@
+---
+import PageLayout    from '../../layouts/PageLayout.astro';
+import PageHero      from '../../components/sections/PageHero.astro';
+import TrustBar      from '../../components/sections/TrustBar.astro';
+import CtaBand       from '../../components/sections/CtaBand.astro';
+import { url }       from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Chi Siamo', url: '/chi-siamo/' }];
+---
+
+<PageLayout
+  title="Chi Siamo | ParquetRoma — 20+ Anni di Maestria Artigianale a Roma"
+  description="Scopri la storia di ParquetRoma: 20+ anni di passione per il legno, expertise artigianale e centinaia di famiglie romane soddisfatte."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/craftsman-workshop/1920/800"
+>
+  <PageHero
+    eyebrow="La Nostra Storia"
+    title="Passione per il Legno,<br><em>Oltre 20 Anni di Maestria</em>"
+    subtitle="Siamo artigiani del parquet a Roma. Non vendiamo pavimenti — creiamo spazi in cui le famiglie vivono felici per decenni."
+    image="https://picsum.photos/seed/craftsman-workshop/1920/800"
+    breadcrumbs={[{ name: 'Chi Siamo', href: '' }]}
+  />
+
+  <!-- STORIA -->
+  <section class="section" aria-labelledby="storia-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__image-col reveal-left">
+          <div class="about__image-wrapper tilt-card">
+            <img
+              src="https://picsum.photos/seed/craftsman-detail/600/750"
+              alt="Artigiano che lavora il parquet a Roma"
+              class="about__portrait"
+              width="600"
+              height="750"
+              loading="lazy"
+            />
+            <div class="about__experience-badge">
+              <span class="about__experience-number">2003</span>
+              <span class="about__experience-label">Anno di<br>Fondazione</span>
+            </div>
+          </div>
+        </div>
+        <div class="about__content reveal-right">
+          <p class="section__eyebrow">La Nostra Storia</p>
+          <h2 class="section__title" id="storia-title">Da Una Bottega Artigiana<br><em>a 500+ Famiglie Felici</em></h2>
+          <p class="about__lead">Tutto è iniziato nel 2003 con un martelletto, una passione profonda per il legno e la convinzione che un pavimento fatto bene cambia la vita in una casa.</p>
+          <p class="about__body">Negli anni abbiamo affinato ogni tecnica — dalla tradizionale spina di pesce ai pattern diagonali contemporanei, dalle essenze classiche come quercia e noce alle scelte più audaci come bambù carbonizzato e wengé massiccio. Il legno non mente: ogni essenza ha una storia, una personalità, e noi sappiamo come farla emergere al meglio.</p>
+          <p class="about__body">Oggi collaboriamo con architetti, interior designer e privati in tutta Roma e nel Lazio. Il nostro approccio non è mai cambiato: ascoltiamo prima, consigliamo dopo, e lavoriamo come se stessimo sistemando casa nostra.</p>
+          <div class="about__area" style="margin-top:2rem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Operiamo a <strong>Roma</strong> e in tutta la <strong>regione Lazio</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Valori -->
+      <div class="values-grid stagger-grid" role="list">
+        <div class="value-block" role="listitem">
+          <div class="value-block__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="value-block__title">Qualità Assoluta</h3>
+          <p class="value-block__text">Solo materiali premium certificati. Nessun compromesso sulla qualità dei legni che installiamo.</p>
+        </div>
+        <div class="value-block" role="listitem">
+          <div class="value-block__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="value-block__title">Puntualità</h3>
+          <p class="value-block__text">Rispettiamo ogni scadenza. Il tuo tempo è prezioso quanto il tuo spazio.</p>
+        </div>
+        <div class="value-block" role="listitem">
+          <div class="value-block__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="value-block__title">Trasparenza</h3>
+          <p class="value-block__text">Preventivi chiari, nessuna sorpresa. Sai sempre cosa paghi e perché.</p>
+        </div>
+        <div class="value-block" role="listitem">
+          <div class="value-block__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="value-block__title">Eccellenza</h3>
+          <p class="value-block__text">Ogni dettaglio conta. Dal bordo perimetrale alla finitura finale: perfetto o si rifà.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section section--alt" aria-labelledby="timeline-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">La Nostra Evoluzione</p>
+        <h2 class="section__title" id="timeline-title">Vent'anni di <em>Storia</em></h2>
+        <p class="section__subtitle">Da un piccolo laboratorio artigiano a punto di riferimento del parquet a Roma.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline__item">
+          <div class="timeline__dot" aria-hidden="true">03</div>
+          <div class="timeline__content">
+            <p class="timeline__year">2003</p>
+            <h3 class="timeline__title">L'Inizio</h3>
+            <p class="timeline__text">Apertura del laboratorio artigiano. I primi progetti per famiglie nel quartiere Parioli. La qualità del lavoro passa di bocca in bocca.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot" aria-hidden="true">08</div>
+          <div class="timeline__content">
+            <p class="timeline__year">2008</p>
+            <h3 class="timeline__title">La Prima Grande Commessa</h3>
+            <p class="timeline__text">Un complesso residenziale di lusso ai Parioli — 12 appartamenti, 800 mq totali. Il momento che ha cambiato tutto.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot" aria-hidden="true">13</div>
+          <div class="timeline__content">
+            <p class="timeline__year">2013</p>
+            <h3 class="timeline__title">Espansione nel Lazio</h3>
+            <p class="timeline__text">Espansione dei servizi all'intera regione Lazio. Primo accordo con studi di architettura di prestigio a Roma.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot" aria-hidden="true">18</div>
+          <div class="timeline__content">
+            <p class="timeline__year">2018</p>
+            <h3 class="timeline__title">300 Progetti</h3>
+            <p class="timeline__text">Raggiungiamo i 300 progetti completati. Aggiunta del servizio installazione porte per offrire una soluzione completa.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot" aria-hidden="true">23</div>
+          <div class="timeline__content">
+            <p class="timeline__year">2023</p>
+            <h3 class="timeline__title">20 Anni, 500+ Progetti</h3>
+            <p class="timeline__text">Celebriamo il ventennale con oltre 500 progetti, 127 recensioni 5 stelle e il riconoscimento come punto di riferimento del settore a Roma.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <TrustBar />
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <CtaBand
+        title="Iniziamo il Tuo Progetto Insieme"
+        text="Sopralluogo gratuito, preventivo trasparente, risultato garantito."
+      />
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+.value-block {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem 1.75rem;
+  border: 1px solid var(--color-border-ui);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-300) var(--ease-out), box-shadow var(--duration-300);
+}
+.value-block:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.value-block__icon {
+  width: 64px;
+  height: 64px;
+  background: var(--color-gold-pale);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  margin: 0 auto 1.25rem;
+}
+.dark .value-block__icon { background: rgba(196,146,42,.12); }
+.value-block__title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: .6rem;
+}
+.value-block__text {
+  font-size: .875rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 720px;
+  margin-inline: auto;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-gold), var(--color-border-ui));
+  border-radius: 2px;
+}
+.timeline__item {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  position: relative;
+}
+.timeline__dot {
+  width: 50px;
+  height: 50px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: .9rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 5px var(--color-surface), var(--shadow-md);
+}
+.timeline__content { padding-top: .75rem; }
+.timeline__year {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: .35rem;
+}
+.timeline__title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: .5rem;
+}
+.timeline__text {
+  font-size: .9rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+@media (max-width: 900px) {
+  .values-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .values-grid { grid-template-columns: 1fr; }
+}
+</style>

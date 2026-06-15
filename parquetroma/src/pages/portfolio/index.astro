@@ -1,0 +1,123 @@
+---
+import PageLayout    from '../../layouts/PageLayout.astro';
+import PageHero      from '../../components/sections/PageHero.astro';
+import ProjectCard   from '../../components/cards/ProjectCard.astro';
+import CtaBand       from '../../components/sections/CtaBand.astro';
+import { portfolio, portfolioCategories } from '../../data/portfolio';
+import { url }       from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Portfolio', url: '/portfolio/' }];
+---
+
+<PageLayout
+  title="Portfolio Parquet Roma | 10 Progetti Prima e Dopo | ParquetRoma"
+  description="Guarda le nostre trasformazioni reali: 10 progetti di posa parquet a Roma con foto prima e dopo. Testaccio, Parioli, EUR, Trastevere e altri quartieri di Roma."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/portfolio-hero/1920/800"
+>
+  <PageHero
+    eyebrow="Il Nostro Lavoro"
+    title="Portfolio<br><em>Trasformazioni Reali</em>"
+    subtitle="10 progetti che raccontano il nostro lavoro. Scorri il prima e il dopo — trascina il cursore per vedere la magia del parquet."
+    image="https://picsum.photos/seed/portfolio-hero/1920/800"
+    breadcrumbs={[{ name: 'Portfolio', href: '' }]}
+  />
+
+  <!-- PORTFOLIO GRID -->
+  <section class="section" aria-labelledby="portfolio-grid-title">
+    <div class="container">
+      <h2 class="sr-only" id="portfolio-grid-title">Progetti di posa parquet a Roma</h2>
+
+      <!-- Filtri -->
+      <div class="portfolio__filters" role="tablist" aria-label="Filtra per categoria">
+        {portfolioCategories.map(cat => (
+          <button
+            class:list={['portfolio__filter', { 'portfolio__filter--active': cat.id === 'all' }]}
+            data-filter={cat.id}
+            role="tab"
+            aria-selected={cat.id === 'all' ? 'true' : 'false'}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <div class="portfolio__grid stagger-grid" id="portfolio-grid">
+        {portfolio.map(project => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+
+      <!-- CTA inline -->
+      <div class="portfolio__cta">
+        <p>Il tuo progetto potrebbe essere il prossimo.</p>
+        <a href={url('/contatti/')} class="btn btn--primary btn--lg">Richiedi il Tuo Preventivo Gratuito</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="section section--alt">
+    <div class="container">
+      <CtaBand
+        title="Vuoi una Trasformazione Come Queste?"
+        text="Sopralluogo gratuito entro 48 ore. Preventivo dettagliato senza sorprese."
+      />
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.portfolio__filters {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.portfolio__filter {
+  padding: .55rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  border: 1px solid var(--color-border-ui);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background var(--duration-200), color var(--duration-200), border-color var(--duration-200);
+}
+.portfolio__filter:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+.portfolio__filter--active {
+  background: var(--color-gold);
+  color: #fff;
+  border-color: var(--color-gold);
+}
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.portfolio__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.portfolio__cta p {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 900px) {
+  .portfolio__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .portfolio__grid { grid-template-columns: 1fr; }
+}
+</style>
