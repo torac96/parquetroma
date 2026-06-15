@@ -54,6 +54,7 @@ interface Props {
     import { initPortfolioFilter } from '../scripts/ui/portfolioFilter';
     import { initFaqAccordion }    from '../scripts/ui/faqAccordion';
     import { initTheme, toggleTheme } from '../scripts/theme';
+    import { ScrollTrigger }       from '../scripts/animations/initGSAP';
 
     function initAllAnimations(): void {
       initHeroAnimations();
@@ -80,6 +81,7 @@ interface Props {
     document.addEventListener('astro:after-swap', () => {
       initHeader();
       initAllAnimations();
+      requestAnimationFrame(() => ScrollTrigger.refresh());
     });
 
     /* Dark mode toggle — delegated to any [data-theme-toggle] button */

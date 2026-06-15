@@ -17,5 +17,6 @@ export { gsap, ScrollTrigger };
 /* Cleanup on Astro View Transitions */
 document.addEventListener('astro:before-swap', () => {
   ScrollTrigger.getAll().forEach(st => st.kill());
+  ScrollTrigger.clearScrollMemory();
   gsap.killTweensOf('*');
 });

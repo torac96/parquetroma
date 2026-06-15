@@ -12,7 +12,7 @@ const {
   eyebrow,
   title,
   subtitle,
-  image = 'https://picsum.photos/seed/parquet-hero/1920/600',
+  image = 'https://picsum.photos/seed/parquet-hero/1920/800',
   breadcrumbs = [],
   actions = false,
 } = Astro.props;
@@ -20,7 +20,7 @@ const {
 
 <section class="page-hero">
   <div class="page-hero__bg" aria-hidden="true">
-    <img src={image} alt="" width="1920" height="600" loading="eager" fetchpriority="high" />
+    <img src={image} alt="" width="1920" height="800" loading="eager" fetchpriority="high" decoding="async" />
     <div class="page-hero__overlay"></div>
   </div>
 

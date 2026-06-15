@@ -13,7 +13,11 @@ export default defineConfig({
     }),
   ],
   image: {
-    remotePatterns: [{ hostname: 'picsum.photos' }, { hostname: 'ui-avatars.com' }],
+    remotePatterns: [
+      { hostname: 'picsum.photos' },
+      { hostname: 'fastly.picsum.photos' },
+      { hostname: 'ui-avatars.com' },
+    ],
   },
   vite: {
     plugins: [tailwindcss()],

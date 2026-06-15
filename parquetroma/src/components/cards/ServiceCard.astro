@@ -1,6 +1,7 @@
 ---
-import type { Service } from '../../data/services';
-import { url } from '../../utils/url';
+import { Image }         from 'astro:assets';
+import type { Service }  from '../../data/services';
+import { url }           from '../../utils/url';
 
 interface Props {
   service: Service;
@@ -13,12 +14,13 @@ const { service } = Astro.props;
   aria-labelledby={`svc-${service.id}`}
 >
   <div class="service-card__image">
-    <img
+    <Image
       src={service.image.src}
       alt={service.image.alt}
       width={service.image.width}
       height={service.image.height}
       loading="lazy"
+      decoding="async"
     />
     {service.isFeatured && <span class="service-card__badge">Servizio Principale</span>}
   </div>
