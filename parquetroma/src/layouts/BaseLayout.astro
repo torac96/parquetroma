@@ -112,7 +112,7 @@ if (schema) {
 
   <!-- Structured Data (one script per schema) -->
   {schemas.map(s => (
-    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(s)} />
   ))}
 
   <ClientRouter />

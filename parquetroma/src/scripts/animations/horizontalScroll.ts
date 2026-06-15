@@ -1,4 +1,4 @@
-import { gsap, ScrollTrigger, prefersReducedMotion } from './initGSAP';
+import { gsap, prefersReducedMotion } from './initGSAP';
 
 export function initHorizontalScroll(): void {
   const hSection = document.getElementById('hscroll');

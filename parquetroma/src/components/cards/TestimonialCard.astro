@@ -13,11 +13,11 @@ const stars = Array.from({ length: testimonial.rating });
 ---
 
 {variant === 'google' ? (
-  <article class="testimonial-card testimonial-card--google" role="listitem">
+  <article class="testimonial-card testimonial-card--google">
     <div class="testimonial-card__google-rating">
       <span class="testimonial-card__google-score">5.0</span>
       <div>
-        <div class="testimonial-card__stars" aria-label="5 stelle su 5">
+        <div class="testimonial-card__stars" role="img" aria-label="5 stelle su 5">
           {stars.map(() => (
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#C4922A" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           ))}
@@ -29,8 +29,8 @@ const stars = Array.from({ length: testimonial.rating });
     <a href={url('/testimonianze/')} class="btn btn--secondary btn--sm">Leggi tutte</a>
   </article>
 ) : (
-  <article class="testimonial-card" role="listitem">
-    <div class="testimonial-card__stars" aria-label={`${testimonial.rating} stelle su 5`}>
+  <article class="testimonial-card">
+    <div class="testimonial-card__stars" role="img" aria-label={`${testimonial.rating} stelle su 5`}>
       {stars.map(() => (
         <svg width="15" height="15" viewBox="0 0 24 24" fill="#C4922A" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       ))}

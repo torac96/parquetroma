@@ -5,15 +5,13 @@ export function initBASliders(): void {
     if (!before || !handle) return;
 
     let dragging = false;
-    let startX = 0;
-    let startPct = 50;
     let currentPct = 50;
 
     function setPosition(pct: number): void {
       const clamped = Math.min(Math.max(pct, 2), 98);
       currentPct = clamped;
-      before.style.width = `${clamped}%`;
-      handle.style.left  = `${clamped}%`;
+      before!.style.width = `${clamped}%`;
+      handle!.style.left  = `${clamped}%`;
     }
 
     function getPct(clientX: number): number {
@@ -21,10 +19,8 @@ export function initBASliders(): void {
       return ((clientX - r.left) / r.width) * 100;
     }
 
-    slider.addEventListener('mousedown', (e: MouseEvent) => {
+    slider.addEventListener('mousedown', () => {
       dragging = true;
-      startX = e.clientX;
-      startPct = currentPct;
       slider.style.cursor = 'col-resize';
     });
 
@@ -40,9 +36,8 @@ export function initBASliders(): void {
     });
 
     /* Touch */
-    slider.addEventListener('touchstart', (e: TouchEvent) => {
+    slider.addEventListener('touchstart', () => {
       dragging = true;
-      startX = e.touches[0].clientX;
     }, { passive: true });
 
     window.addEventListener('touchmove', (e: TouchEvent) => {
