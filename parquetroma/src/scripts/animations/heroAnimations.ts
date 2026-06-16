@@ -48,6 +48,9 @@ export function initHeroAnimations(): void {
     eyebrow.innerHTML = text.split('').map(c =>
       c === ' ' ? ' ' : `<span style="display:inline-block;opacity:0;transform:translateY(10px)">${c}</span>`
     ).join('');
+    // Il container ha CSS opacity:0 — va ripristinato a 1 dopo il rewrite
+    // (i singoli char-span rimangono a opacity:0 tramite il loro inline style)
+    gsap.set(eyebrow, { opacity: 1 });
     tl.to(eyebrow.querySelectorAll('span'), {
       opacity: 1, y: 0, duration: 0.4, stagger: 0.025, ease: 'power2.out',
     }, 0.5);
