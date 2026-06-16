@@ -1,0 +1,168 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TrustBar         from '../../components/sections/TrustBar.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import { portfolio }    from '../../data/portfolio';
+import { testimonials } from '../../data/testimonials';
+import { SITE_CONFIG }  from '../../data/config';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Parquet EUR Roma', url: '/parquet-eur-roma/' }];
+
+const localServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Posa Parquet EUR Roma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: [
+    { '@type': 'Place', name: 'EUR, Roma' },
+    { '@type': 'Place', name: 'Montagnola, Roma' },
+    { '@type': 'Place', name: 'Laurentino, Roma' },
+    { '@type': 'Place', name: 'Torrino, Roma' },
+  ],
+  description: 'Posa parquet all\'EUR Roma: esperienza con uffici direzionali e residenziale di lusso. Frassino, quercia e noce per ambienti professionali e abitativi premium.',
+};
+
+const eurProjects = portfolio.filter(p => ['eur-studio', 'eur-camera'].includes(p.id));
+const studioArch  = testimonials.find(t => t.id === 'studio-arch')!;
+
+const nearbyAreas = ['Montagnola', 'Laurentino', 'Torrino', 'Mostacciano', 'Cecchignola', 'Spinaceto'];
+
+const essenzeProfessionali = [
+  { name: 'Frassino Grigio', desc: 'La scelta moderna per uffici e showroom. Toni neutrali e contemporanei che si adattano a qualsiasi palette di interior design.', css: 'background:radial-gradient(ellipse, #a0a090 0%, #707060 100%)' },
+  { name: 'Quercia Naturale', desc: 'Classica e universale. Crea ambienti caldi e professionali, ideale per studi legali, commercialisti e uffici di rappresentanza.', css: 'background:radial-gradient(ellipse, #c8923a 0%, #6b4818 100%)' },
+  { name: 'Noce Americano', desc: 'Il legno dell\'autorità. Per sale riunioni e uffici dirigenziali che vogliono comunicare solidità ed eleganza.', css: 'background:radial-gradient(ellipse, #4a3020 0%, #1a0a04 100%)' },
+];
+---
+
+<PageLayout
+  title="Parquet EUR Roma | Uffici e Residenze Premium | ParquetRoma"
+  description="Posa parquet all'EUR Roma: esperienza con spazi direzionali e residenziale di lusso. Frassino, quercia, noce. Tempi garantiti per cantieri. Preventivo gratuito."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/eur-after/1920/800"
+  schema={localServiceSchema}
+>
+
+  <PageHero
+    eyebrow="Quartiere EUR"
+    title="Parquet EUR Roma<br><em>Uffici e Residenze di Classe</em>"
+    subtitle="L'EUR è un quartiere unico: architettura razionalista degli anni '40, moderni grattacieli direzionali e residenziale premium. Ogni spazio ha le sue esigenze — e noi le conosciamo."
+    image="https://picsum.photos/seed/eur-after/1920/800"
+    breadcrumbs={[{ name: 'Parquet EUR Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+      <a href={url('/architetti-interior-designer-roma/')} class="btn btn--ghost btn--lg">Servizio B2B</a>
+    </div>
+  </PageHero>
+
+  <!-- PROGETTI EUR -->
+  <section class="section" aria-labelledby="proj-eur-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">I Nostri Lavori all'EUR</p>
+        <h2 class="section__title" id="proj-eur-title">Progetti Completati<br><em>nel Quartiere EUR</em></h2>
+      </div>
+      <div class="grid grid--2 stagger-grid" style="max-width:900px;margin:0 auto">
+        {eurProjects.map(p => (
+          <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--color-border)">
+              <img src={p.before} alt={`Prima — ${p.title}`} width="450" height="300" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+              <img src={p.after}  alt={`Dopo — ${p.title}`}  width="450" height="300" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+            </div>
+            <div style="padding:1.5rem">
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem">
+                {p.tags.map(tag => (
+                  <span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--color-gold-pale);color:var(--color-accent);padding:0.2rem 0.6rem;border-radius:99px;font-weight:600">{tag}</span>
+                ))}
+              </div>
+              <h3 style="font-family:var(--font-serif);font-size:1.2rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{p.title}</h3>
+              <p style="font-size:0.875rem;color:var(--color-text-secondary);margin:0 0 1rem;line-height:1.6">{p.desc}</p>
+              <blockquote style="font-size:0.8rem;font-style:italic;color:var(--color-text-muted);border-left:2px solid var(--color-accent);padding-left:0.75rem;margin:0">"{p.quote}"</blockquote>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ESSENZE PER UFFICI -->
+  <section class="section section--alt" aria-labelledby="essenze-eur-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Per Uffici e Showroom</p>
+        <h2 class="section__title" id="essenze-eur-title">I Legni Giusti<br><em>per Spazi Professionali</em></h2>
+        <p class="section__subtitle">Il parquet in un ufficio o showroom lavora anche come elemento di brand identity. Scegliamo insieme l'essenza che comunica i valori del tuo business.</p>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {essenzeProfessionali.map(e => (
+          <div class="reveal-up" style="border:1px solid var(--color-border);border-radius:12px;overflow:hidden">
+            <div style={`height:110px;${e.css}`} aria-hidden="true"></div>
+            <div style="padding:1.25rem">
+              <h3 style="font-family:var(--font-serif);font-size:1rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{e.name}</h3>
+              <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0;line-height:1.6">{e.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B CTA -->
+  <section class="section" aria-labelledby="b2b-eur-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Partner per i Cantieri EUR</span>
+          <h2 class="service-detail__title" id="b2b-eur-title">Architetti e Designer<br><em>Ci Scelgono all'EUR</em></h2>
+          <p class="service-detail__desc">Collaboriamo con studi di architettura e interior design che lavorano all'EUR e nei quartieri circostanti. Offriamo documentazione tecnica completa, rispetto delle scadenze e un referente dedicato per ogni cantiere.</p>
+          <blockquote style="border-left:3px solid var(--color-accent);padding-left:1rem;margin:1.5rem 0;font-style:italic;color:var(--color-text-secondary)">
+            "{studioArch.quote}"
+            <cite style="display:block;margin-top:0.5rem;font-style:normal;font-size:0.875rem;font-weight:600;color:var(--color-on-surface)">— {studioArch.name} · {studioArch.role}</cite>
+          </blockquote>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap">
+            <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+            <a href={url('/architetti-interior-designer-roma/')} class="btn btn--ghost">Servizio per Professionisti</a>
+          </div>
+        </div>
+        <div class="service-detail__image clip-reveal">
+          <img
+            src="https://picsum.photos/seed/eur-studio-after/900/675"
+            alt="Studio EUR — parquet frassino grigio per interior designer Roma"
+            width="900"
+            height="675"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREA DI COPERTURA -->
+  <section class="section section--alt" aria-labelledby="area-eur-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Area di Copertura</p>
+        <h2 class="section__title" id="area-eur-title">Operiamo all'EUR<br><em>e Quartieri Circostanti</em></h2>
+      </div>
+      <div class="reveal-up" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;max-width:700px;margin:0 auto">
+        {['EUR', ...nearbyAreas].map((area, i) => (
+          <span style={`padding:0.5rem 1.25rem;border-radius:99px;font-size:0.9rem;font-weight:${i===0?'700':'400'};background:${i===0?'var(--color-accent)':'var(--color-surface-raised)'};color:${i===0?'#fff':'var(--color-on-surface)'};border:1px solid ${i===0?'var(--color-accent)':'var(--color-border)'}`}>{area}</span>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:3rem" class="reveal-up">
+        <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo Gratuito</a>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>

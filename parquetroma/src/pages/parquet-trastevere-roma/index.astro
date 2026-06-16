@@ -1,0 +1,160 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TrustBar         from '../../components/sections/TrustBar.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import { portfolio }    from '../../data/portfolio';
+import { testimonials } from '../../data/testimonials';
+import { SITE_CONFIG }  from '../../data/config';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Parquet Trastevere Roma', url: '/parquet-trastevere-roma/' }];
+
+const localServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Posa e Restauro Parquet Trastevere Roma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: [
+    { '@type': 'Place', name: 'Trastevere, Roma' },
+    { '@type': 'Place', name: 'Testaccio, Roma' },
+    { '@type': 'Place', name: 'Ostiense, Roma' },
+    { '@type': 'Place', name: 'Aventino, Roma' },
+  ],
+  description: 'Posa e restauro parquet a Trastevere Roma. Esperienza con palazzi storici d\'epoca, materiali tradizionali e tecniche di recupero del legno antico.',
+};
+
+const trastevereProject = portfolio.find(p => p.id === 'trastevere')!;
+const testaccioProject  = portfolio.find(p => p.id === 'testaccio')!;
+const annaR = testimonials.find(t => t.id === 'anna-r')!;
+
+const nearbyAreas = ['Testaccio', 'Ostiense', 'Aventino', 'Gianicolo', 'Pigneto', 'Nomentano'];
+
+const caratteristicheQuartiere = [
+  { title: 'Palazzi Storici del \'600–\'800', text: 'Trastevere ospita alcuni dei palazzi storici più antichi di Roma. I parquet d\'epoca in questi immobili meritano restauro, non sostituzione.' },
+  { title: 'Pavimenti in Legno Antichi',    text: 'Spesso i pavimenti originali sono in legno massello di castagno o quercia — materiali eccellenti che con la levigatura tornano come nuovi.' },
+  { title: 'Appartamenti di Charme',        text: 'Il fascino bohémien di Trastevere si sposa perfettamente con il parquet in rovere vintage o il noce con venatura autentica.' },
+  { title: 'Contesto Architettonico',       text: 'Ogni scelta di essenza e pattern deve rispettare il contesto storico. Conosciamo il quartiere e consigliamo in modo appropriato.' },
+];
+---
+
+<PageLayout
+  title="Parquet Trastevere Roma | Posa e Restauro Storici | ParquetRoma"
+  description="Posa e restauro parquet a Trastevere Roma: esperienza con palazzi storici d'epoca, materiali tradizionali, recupero parquet antico. Preventivo gratuito nel quartiere."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/trastevere-after/1920/800"
+  schema={localServiceSchema}
+>
+
+  <PageHero
+    eyebrow="Quartiere Trastevere"
+    title="Parquet Trastevere<br><em>Storia e Artigianato</em>"
+    subtitle="Trastevere è il quartiere della Roma storica per eccellenza. I suoi palazzi d'epoca ospitano parquet con decenni di storia — e noi sappiamo come restaurarli o come porne di nuovi rispettando il contesto."
+    image="https://picsum.photos/seed/trastevere-after/1920/800"
+    breadcrumbs={[{ name: 'Parquet Trastevere Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+      <a href={url('/restauro-parquet-roma/')} class="btn btn--ghost btn--lg">Scopri il Restauro</a>
+    </div>
+  </PageHero>
+
+  <!-- CONTESTO QUARTIERE -->
+  <section class="section" aria-labelledby="contesto-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Il Quartiere</p>
+        <h2 class="section__title" id="contesto-title">Trastevere:<br><em>un Caso a Sé</em></h2>
+        <p class="section__subtitle">Lavorare a Trastevere richiede una sensibilità speciale. Il contesto storico impone scelte appropriate, e la presenza frequente di parquet antichi richiede competenze di restauro che non tutti hanno.</p>
+      </div>
+      <div class="grid grid--4 stagger-grid">
+        {caratteristicheQuartiere.map(c => (
+          <div class="feature-card reveal-up">
+            <h3 class="feature-card__title">{c.title}</h3>
+            <p class="feature-card__text">{c.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGETTO TRASTEVERE -->
+  <section class="section section--alt" aria-labelledby="proj-trast-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__image clip-reveal">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">
+            <img src={trastevereProject.before} alt="Prima del restauro — Palazzo Storico Trastevere" width="450" height="338" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px 0 0 6px" />
+            <img src={trastevereProject.after}  alt="Dopo il restauro — Palazzo Storico Trastevere"  width="450" height="338" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:0 6px 6px 0" />
+          </div>
+        </div>
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Progetto a Trastevere</span>
+          <h2 class="service-detail__title" id="proj-trast-title">{trastevereProject.title}</h2>
+          <p class="service-detail__desc">{trastevereProject.desc}</p>
+          <ul class="features-list" role="list">
+            <li>Essenza: {trastevereProject.wood}</li>
+            <li>Pattern: {trastevereProject.pattern}</li>
+            <li>Superficie: {trastevereProject.size}</li>
+            <li>Intervento: restauro completo con rispetto dei materiali originali del XVII secolo</li>
+          </ul>
+          <blockquote style="border-left:3px solid var(--color-accent);padding-left:1rem;margin:1.5rem 0;font-style:italic;color:var(--color-text-secondary)">
+            "{annaR.quote}"
+            <cite style="display:block;margin-top:0.5rem;font-style:normal;font-size:0.875rem;font-weight:600;color:var(--color-on-surface)">— {annaR.name} · {annaR.role}</cite>
+          </blockquote>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap">
+            <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo</a>
+            <a href={url('/restauro-parquet-roma/')} class="btn btn--ghost">Scopri il Restauro</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANCHE TESTACCIO -->
+  <section class="section" aria-labelledby="testaccio-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="service-detail service-detail--reverse reveal-up">
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Altro Progetto Vicino</span>
+          <h2 class="service-detail__title" id="testaccio-title">{testaccioProject.title}</h2>
+          <p class="service-detail__desc">{testaccioProject.desc}</p>
+          <ul class="features-list" role="list">
+            <li>{testaccioProject.wood} · posa {testaccioProject.pattern}</li>
+            <li>{testaccioProject.size} di superficie trattata</li>
+          </ul>
+        </div>
+        <div class="service-detail__image clip-reveal">
+          <img src={testaccioProject.after} alt={testaccioProject.title} width="900" height="675" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREA DI COPERTURA -->
+  <section class="section section--alt" aria-labelledby="area-trast-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Area di Copertura</p>
+        <h2 class="section__title" id="area-trast-title">Operiamo a Trastevere<br><em>e Dintorni</em></h2>
+      </div>
+      <div class="reveal-up" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;max-width:700px;margin:0 auto">
+        {['Trastevere', ...nearbyAreas].map((area, i) => (
+          <span style={`padding:0.5rem 1.25rem;border-radius:99px;font-size:0.9rem;font-weight:${i===0?'700':'400'};background:${i===0?'var(--color-accent)':'var(--color-surface-raised)'};color:${i===0?'#fff':'var(--color-on-surface)'};border:1px solid ${i===0?'var(--color-accent)':'var(--color-border)'}`}>{area}</span>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:3rem" class="reveal-up">
+        <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo Gratuito</a>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>

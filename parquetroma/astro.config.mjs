@@ -10,6 +10,15 @@ export default defineConfig({
     sitemap({
       changefreq: 'monthly',
       priority: 0.7,
+      serialize(item) {
+        if (item.url.endsWith('/parquetroma/') || item.url.endsWith('/parquetroma')) return { ...item, priority: 1.0 };
+        if (item.url.includes('/posa-parquet-roma/')) return { ...item, priority: 0.9 };
+        if (item.url.includes('/preventivo-parquet-roma/')) return { ...item, priority: 0.9 };
+        if (item.url.includes('/levigatura-parquet-roma/')) return { ...item, priority: 0.85 };
+        if (item.url.includes('/parquettista-roma/')) return { ...item, priority: 0.85 };
+        if (item.url.includes('/blog/')) return { ...item, priority: 0.6, changefreq: 'weekly' };
+        return item;
+      },
     }),
   ],
   image: {

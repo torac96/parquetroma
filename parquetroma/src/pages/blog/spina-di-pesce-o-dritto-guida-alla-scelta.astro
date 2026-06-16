@@ -1,0 +1,189 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import TrustBar   from '../../components/sections/TrustBar.astro';
+import { SITE_CONFIG } from '../../data/config';
+import { url }    from '../../utils/url';
+
+const breadcrumbs = [
+  { name: 'Blog', url: '/blog/' },
+  { name: 'Spina di Pesce o Dritto', url: '/blog/spina-di-pesce-o-dritto-guida-alla-scelta/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Spina di Pesce o Posa Dritta? Guida alla Scelta del Pattern',
+  description: 'Come scegliere il pattern di posa del parquet: spina di pesce, dritto, diagonale, chevron. Pro e contro con esempi reali da Roma.',
+  author: { '@type': 'Organization', name: 'ParquetRoma', url: SITE_CONFIG.url },
+  publisher: {
+    '@type': 'Organization',
+    name: 'ParquetRoma',
+    logo: { '@type': 'ImageObject', url: `${SITE_CONFIG.url}/favicon.svg` },
+  },
+  datePublished: '2026-05-20',
+  dateModified:  '2026-05-20',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_CONFIG.url}/blog/spina-di-pesce-o-dritto-guida-alla-scelta/` },
+  image: 'https://picsum.photos/seed/parquet-herringbone/1200/630',
+};
+
+const pattern = [
+  {
+    name: 'Posa Dritta',
+    pros: ['Costo di posa minore (meno scarto)', 'Visivamente neutra — non "compete" con i mobili', 'Amplifica la lunghezza dello spazio', 'La scelta più rapida da eseguire'],
+    cons: ['Meno carattere e personalità', 'Può rendere piatti gli ambienti molto ampi', 'Monotona in stanze di forma quadrata'],
+    ideale: 'Corridoi, ambienti open plan molto lunghi, ambienti moderni e minimalisti dove il parquet è un elemento neutro.',
+    css: 'background:repeating-linear-gradient(90deg, #8b6a3e 0 8px, #6b4f2e 8px 16px)',
+  },
+  {
+    name: 'Spina di Pesce',
+    pros: ['Eleganza senza tempo — classico e contemporaneo', 'Crea movimento visivo e profondità', 'Valore percepito più alto per l\'immobile', 'Si abbina a qualsiasi stile di arredo'],
+    cons: ['Costo di posa superiore (20–40% in più)', 'Più scarto di materiale (~10–15%)', 'Tempo di posa maggiore'],
+    ideale: 'Soggiorni, camere da letto, ingressi. Qualsiasi stanza dove il parquet è un elemento decorativo protagonista.',
+    css: 'background:repeating-linear-gradient(45deg, #8b6a3e 0 4px, #6b4f2e 4px 8px)',
+  },
+  {
+    name: 'Chevron (a V)',
+    pros: ['Effetto scenografico unico', 'Le tavole si incontrano formando una V perfetta', 'Estrema raffinatezza — raramente visto'],
+    cons: ['Il più costoso da posare', 'Richiede tavole tagliate a 45° (costo materiale extra)', 'Solo esperti: errori si vedono subito'],
+    ideale: 'Ambienti di lusso, sale di rappresentanza, ville. Per chi vuole il massimo dell\'impatto visivo.',
+    css: 'background:repeating-linear-gradient(135deg, #7a5a30 0 4px, #5a4020 4px 8px)',
+  },
+  {
+    name: 'Posa Diagonale',
+    pros: ['Allarga visivamente le stanze quadrate', 'Più dinamismo della posa dritta', 'Costo intermedio tra dritto e spina'],
+    cons: ['Più scarto agli angoli', 'Non universale — meglio valutarla caso per caso'],
+    ideale: 'Stanze di forma quadrata, ambienti dove la posa dritta sarebbe troppo piatta e la spina di pesce troppo cara.',
+    css: 'background:repeating-linear-gradient(45deg, #8b6a3e 0 8px, #9b7a50 8px 16px)',
+  },
+];
+---
+
+<PageLayout
+  title="Spina di Pesce o Posa Dritta? Guida al Pattern | ParquetRoma"
+  description="Come scegliere il pattern di posa del parquet: spina di pesce, dritto, chevron, diagonale. Pro, contro e quando usare ciascuno — con esempi reali da Roma."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parquet-herringbone/1200/630"
+  schema={articleSchema}
+>
+
+  <article style="max-width:780px;margin:0 auto;padding:4rem 1.5rem">
+
+    <header style="margin-bottom:3rem">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem">
+        <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--color-gold-pale);color:var(--color-accent);padding:0.25rem 0.75rem;border-radius:99px;font-weight:600">Guide & Consigli</span>
+        <span style="font-size:0.8rem;color:var(--color-text-muted)">7 min di lettura</span>
+      </div>
+      <h1 style="font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.25;color:var(--color-on-surface);margin:0 0 1rem">
+        Spina di Pesce o Posa Dritta?<br><em>Guida alla Scelta del Pattern</em>
+      </h1>
+      <p style="font-size:1.1rem;color:var(--color-text-secondary);line-height:1.7;margin:0 0 1.5rem">La scelta del pattern è fondamentale quanto quella dell'essenza. Può cambiare completamente la percezione dello spazio. Ecco come orientarsi.</p>
+      <div style="display:flex;align-items:center;gap:1rem;padding:1rem 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)">
+        <div>
+          <strong style="font-size:0.9rem;color:var(--color-on-surface)">Team ParquetRoma</strong>
+          <span style="display:block;font-size:0.78rem;color:var(--color-text-muted)">Pubblicato il 20 Maggio 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="prose" style="color:var(--color-text-secondary);line-height:1.8;font-size:1rem">
+
+      <p>Una delle domande più frequenti che riceviamo durante il sopralluogo è: "Meglio la spina di pesce o la posa dritta?" La risposta dipende da tre fattori: la forma della stanza, il budget e lo stile che vuoi comunicare. In questa guida ti spieghiamo tutto.</p>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">I 4 Pattern Principali a Confronto</h2>
+
+      {pattern.map(p => (
+        <div style="margin:2rem 0;border:1px solid var(--color-border);border-radius:12px;overflow:hidden">
+          <div style={`height:80px;${p.css};opacity:0.75`} aria-hidden="true"></div>
+          <div style="padding:1.5rem">
+            <h3 style="font-family:var(--font-serif);font-size:1.2rem;margin:0 0 1rem;color:var(--color-on-surface)">{p.name}</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem">
+              <div>
+                <p style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:600;color:var(--color-accent);margin:0 0 0.5rem">Pro</p>
+                <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem">
+                  {p.pros.map(pro => <li style="margin-bottom:0.25rem">{pro}</li>)}
+                </ul>
+              </div>
+              <div>
+                <p style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:600;color:var(--color-text-muted);margin:0 0 0.5rem">Contro</p>
+                <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem">
+                  {p.cons.map(con => <li style="margin-bottom:0.25rem">{con}</li>)}
+                </ul>
+              </div>
+            </div>
+            <div style="background:var(--color-surface-raised);border-radius:8px;padding:0.75rem 1rem">
+              <p style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:600;color:var(--color-on-surface);margin:0 0 0.25rem">Ideale per</p>
+              <p style="font-size:0.875rem;margin:0;color:var(--color-text-secondary)">{p.ideale}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">Regola Aurea: La Forma della Stanza</h2>
+
+      <p>Se dovessimo darti un solo consiglio pratico, sarebbe questo:</p>
+
+      <ul>
+        <li><strong>Stanza rettangolare lunga</strong> → posa dritta parallela alla lunghezza (amplifica ancora di più)</li>
+        <li><strong>Stanza quadrata</strong> → spina di pesce o diagonale (aggiunge dinamismo, rompe la monotonia)</li>
+        <li><strong>Open space grande</strong> → spina di pesce (crea una texture che valorizza la metratura)</li>
+        <li><strong>Camera da letto</strong> → posa dritta o spina di pesce a seconda del budget</li>
+        <li><strong>Corridoio</strong> → posa dritta parallela alla lunghezza (obbligatorio praticamente)</li>
+      </ul>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">Quanto Incide il Pattern sul Costo Finale?</h2>
+
+      <p>Il pattern influisce sia sul costo della posa che sulla quantità di materiale necessario. Ecco una stima comparativa per 80 mq di quercia prefinita media (€45/mq materiale):</p>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+        <table style="width:100%;border-collapse:collapse;font-size:0.9rem">
+          <thead>
+            <tr style="background:var(--color-surface-raised)">
+              <th style="padding:0.75rem 1rem;text-align:left;border-bottom:2px solid var(--color-border);font-weight:600;color:var(--color-on-surface)">Pattern</th>
+              <th style="padding:0.75rem 1rem;text-align:right;border-bottom:2px solid var(--color-border);font-weight:600;color:var(--color-on-surface)">Scarto mat.</th>
+              <th style="padding:0.75rem 1rem;text-align:right;border-bottom:2px solid var(--color-border);font-weight:600;color:var(--color-on-surface)">Costo posa</th>
+              <th style="padding:0.75rem 1rem;text-align:right;border-bottom:2px solid var(--color-border);font-weight:600;color:var(--color-on-surface)">Totale stimato</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Posa dritta',     '5%',  '€16/mq', '~€5.080'],
+              ['Posa diagonale',  '12%', '€20/mq', '~€5.634'],
+              ['Spina di pesce',  '12%', '€26/mq', '~€6.114'],
+              ['Chevron',         '18%', '€35/mq', '~€7.150'],
+            ].map(([pattern, scarto, posa, totale]) => (
+              <tr style="border-bottom:1px solid var(--color-border)">
+                <td style="padding:0.75rem 1rem;color:var(--color-on-surface)">{pattern}</td>
+                <td style="padding:0.75rem 1rem;text-align:right;color:var(--color-text-secondary)">{scarto}</td>
+                <td style="padding:0.75rem 1rem;text-align:right;color:var(--color-text-secondary)">{posa}</td>
+                <td style="padding:0.75rem 1rem;text-align:right;font-weight:600;color:var(--color-accent)">{totale}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p style="font-size:0.78rem;color:var(--color-text-muted);font-style:italic;margin-top:0.5rem">* Stime indicative su 80 mq con quercia prefinita a €45/mq. Il costo reale dipende dalle condizioni del cantiere.</p>
+      </div>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">La Nostra Raccomandazione</h2>
+
+      <p>Se il budget lo consente, la spina di pesce è quasi sempre la scelta giusta per i soggiorni. Non per moda — ma perché crea un pavimento che continua a piacere nel tempo, indipendentemente dalle tendenze dell'arredo.</p>
+      <p>Per camere da letto e ambienti funzionali dove il parquet è un elemento di sfondo, la posa dritta è razionale ed elegante allo stesso tempo.</p>
+      <p>Il chevron? Solo se sei sicuro di volerlo. È un pattern d'autore che richiede committment: non si torna indietro facilmente.</p>
+
+    </div>
+
+    <div style="margin-top:3rem;padding:2rem;background:var(--color-surface-raised);border-radius:12px;border:1px solid var(--color-border);text-align:center">
+      <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin:0 0 0.75rem;color:var(--color-on-surface)">Non sai quale pattern scegliere?</h3>
+      <p style="color:var(--color-text-secondary);margin:0 0 1.5rem">Durante il sopralluogo gratuito ti mostriamo campioni fisici e simulazioni per la tua stanza.</p>
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Sopralluogo Gratuito</a>
+    </div>
+
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--color-border);display:flex;justify-content:space-between;align-items:center">
+      <a href={url('/blog/')} style="font-size:0.875rem;color:var(--color-accent);text-decoration:none">← Torna al Blog</a>
+      <a href={url('/blog/come-mantenere-parquet-guida-completa/')} style="font-size:0.875rem;color:var(--color-accent);text-decoration:none">Articolo successivo →</a>
+    </div>
+
+  </article>
+
+  <TrustBar />
+
+</PageLayout>

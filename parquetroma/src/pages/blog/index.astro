@@ -1,0 +1,126 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero   from '../../components/sections/PageHero.astro';
+import TrustBar   from '../../components/sections/TrustBar.astro';
+import { url }    from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Blog', url: '/blog/' }];
+
+const articles = [
+  {
+    slug:    'quanto-costa-posa-parquet-roma',
+    title:   'Quanto Costa la Posa del Parquet a Roma? Prezzi 2026',
+    excerpt: 'Guida completa e trasparente ai costi di posa parquet a Roma: prezzi al mq per ogni tipo di intervento, senza sorprese.',
+    date:    '2026-06-01',
+    dateLabel: '1 Giugno 2026',
+    category: 'Prezzi & Preventivi',
+    readTime: '5 min',
+    image:   'https://picsum.photos/seed/parquet-costs/600/400',
+  },
+  {
+    slug:    'spina-di-pesce-o-dritto-guida-alla-scelta',
+    title:   'Spina di Pesce o Posa Dritta? Guida alla Scelta del Pattern',
+    excerpt: 'Come scegliere il pattern di posa: spina di pesce, dritto, diagonale, chevron. Pro e contro con esempi reali di Roma.',
+    date:    '2026-05-20',
+    dateLabel: '20 Maggio 2026',
+    category: 'Guide & Consigli',
+    readTime: '7 min',
+    image:   'https://picsum.photos/seed/parquet-herringbone/600/400',
+  },
+  {
+    slug:    'come-mantenere-parquet-guida-completa',
+    title:   'Come Mantenere il Parquet: Guida Completa alla Manutenzione',
+    excerpt: 'Tutto sulla cura del parquet in legno: pulizia quotidiana, protezione, oliatura e quando è il momento di levigare.',
+    date:    '2026-05-10',
+    dateLabel: '10 Maggio 2026',
+    category: 'Manutenzione',
+    readTime: '6 min',
+    image:   'https://picsum.photos/seed/parquet-maintenance/600/400',
+  },
+];
+
+const categories = ['Tutti', 'Prezzi & Preventivi', 'Guide & Consigli', 'Manutenzione', 'Essenze', 'Quartieri Roma'];
+---
+
+<PageLayout
+  title="Blog Parquet Roma | Guide, Prezzi e Consigli | ParquetRoma"
+  description="Guide pratiche sulla posa parquet a Roma: prezzi 2026, come scegliere il pattern, manutenzione del legno e consigli degli artigiani. Dal team ParquetRoma."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parquet-blog/1920/800"
+>
+
+  <PageHero
+    eyebrow="Risorse Gratuite"
+    title="Blog & Guide<br><em>sul Parquet a Roma</em>"
+    subtitle="Articoli pratici scritti dai nostri artigiani: prezzi reali, consigli su come scegliere il legno giusto, trucchi per la manutenzione e ispirazioni per la tua casa a Roma."
+    image="https://picsum.photos/seed/parquet-blog/1920/800"
+    breadcrumbs={[{ name: 'Blog', href: '' }]}
+  />
+
+  <!-- ARTICOLI -->
+  <section class="section" aria-labelledby="blog-title">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Articoli Recenti</p>
+        <h2 class="section__title" id="blog-title">Leggi, Impara,<br><em>Scegli con Consapevolezza</em></h2>
+      </div>
+
+      <!-- Categorie -->
+      <div class="reveal-up" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:3rem">
+        {categories.map((cat, i) => (
+          <span style={`padding:0.4rem 1rem;border-radius:99px;font-size:0.85rem;cursor:pointer;background:${i===0?'var(--color-accent)':'transparent'};color:${i===0?'#fff':'var(--color-text-secondary)'};border:1px solid ${i===0?'var(--color-accent)':'var(--color-border)'};transition:all 0.2s`}>{cat}</span>
+        ))}
+      </div>
+
+      <!-- Griglia articoli -->
+      <div class="grid grid--3 stagger-grid">
+        {articles.map(article => (
+          <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s var(--ease-out),box-shadow 0.3s var(--ease-out)" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <a href={url(`/blog/${article.slug}/`)} style="display:block;overflow:hidden;aspect-ratio:3/2">
+              <img
+                src={article.image}
+                alt={article.title}
+                width="600"
+                height="400"
+                loading="lazy"
+                style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s var(--ease-out)"
+              />
+            </a>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1">
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+                <span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--color-gold-pale);color:var(--color-accent);padding:0.2rem 0.6rem;border-radius:99px;font-weight:600">{article.category}</span>
+                <span style="font-size:0.75rem;color:var(--color-text-muted)">{article.readTime} di lettura</span>
+              </div>
+              <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin:0 0 0.75rem;color:var(--color-on-surface);line-height:1.4">
+                <a href={url(`/blog/${article.slug}/`)} style="color:inherit;text-decoration:none">{article.title}</a>
+              </h3>
+              <p style="font-size:0.875rem;color:var(--color-text-secondary);margin:0 0 1.5rem;line-height:1.6;flex:1">{article.excerpt}</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--color-border-ui)">
+                <time datetime={article.date} style="font-size:0.78rem;color:var(--color-text-muted)">{article.dateLabel}</time>
+                <a href={url(`/blog/${article.slug}/`)} style="font-size:0.85rem;font-weight:600;color:var(--color-accent);text-decoration:none">Leggi →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER CTA -->
+  <section class="section section--alt" aria-labelledby="blog-cta-title">
+    <div class="container" style="text-align:center">
+      <div class="reveal-up">
+        <p class="section__eyebrow">Hai un Progetto?</p>
+        <h2 class="section__title" id="blog-cta-title">Parla con un<br><em>Artigiano Vero</em></h2>
+        <p class="section__subtitle" style="max-width:480px;margin:0 auto 2rem">Le guide sono utili, ma niente vale un sopralluogo gratuito. Veniamo da te, vediamo lo spazio e ti consigliamo la soluzione migliore.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+          <a href="tel:+390612345678" class="btn btn--ghost btn--lg">+39 06 1234 5678</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+
+</PageLayout>
