@@ -1,0 +1,172 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TrustBar         from '../../components/sections/TrustBar.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import { portfolio }    from '../../data/portfolio';
+import { testimonials } from '../../data/testimonials';
+import { SITE_CONFIG }  from '../../data/config';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Parquet Parioli Roma', url: '/parquet-parioli-roma/' }];
+
+const localServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Posa Parquet Parioli Roma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: [
+    { '@type': 'Place', name: 'Parioli, Roma' },
+    { '@type': 'Place', name: 'Flaminio, Roma' },
+    { '@type': 'Place', name: 'Prati, Roma' },
+    { '@type': 'Place', name: 'Vigna Clara, Roma' },
+  ],
+  description: 'Installazione parquet di lusso ai Parioli e quartieri limitrofi. Esperienza con ville e appartamenti premium del quartiere residenziale più esclusivo di Roma.',
+};
+
+const parioliProjects = portfolio.filter(p =>
+  ['parioli', 'prati-penthouse'].includes(p.id)
+);
+
+const nearbyAreas = ['Flaminio', 'Prati', 'Trionfale', 'Vigna Clara', 'Della Vittoria', 'Balduina', 'Salario', 'Nomentano'];
+
+const essenzeParioli = [
+  { name: 'Noce Americano',  desc: 'La scelta classica per le ville dei Parioli. Toni scuri e venatura sinuosa che si adattano agli ambienti di grande metratura.', css: 'background:radial-gradient(ellipse, #4a3020 0%, #231508 100%)' },
+  { name: 'Quercia Sbiancata', desc: 'Per gli atтici moderni che puntano sulla luminosità. Amplifica la luce naturale degli spazi open plan.', css: 'background:radial-gradient(ellipse, #e0d0b8 0%, #a89878 100%)' },
+  { name: 'Quercia Affumicata', desc: 'Per ambienti di carattere. Il contrasto con le pareti chiare tipiche dei palazzi d\'epoca è straordinario.', css: 'background:radial-gradient(ellipse, #2a1808 0%, #0f0804 100%)' },
+];
+
+const giuliaM  = testimonials.find(t => t.id === 'giulia-m')!;
+const fabrizioC = testimonials.find(t => t.id === 'fabrizio-c')!;
+---
+
+<PageLayout
+  title="Parquet Parioli Roma | Installazione Lusso | ParquetRoma"
+  description="Posa parquet ai Parioli Roma: esperienza con ville e appartamenti premium del quartiere più esclusivo. Noce, quercia sbiancata, spina di pesce. Preventivo gratuito."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parioli-after/1920/800"
+  schema={localServiceSchema}
+>
+
+  <PageHero
+    eyebrow="Quartiere Parioli"
+    title="Parquet Parioli Roma<br><em>dal 2003</em>"
+    subtitle="Lavoriamo ai Parioli da oltre 20 anni. Conosciamo le ville, i palazzi d'epoca e i moderni atтichi di questo quartiere e sappiamo quale parquet valorizza ogni spazio."
+    image="https://picsum.photos/seed/parioli-after/1920/800"
+    breadcrumbs={[{ name: 'Parquet Parioli Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+      <a href="tel:+390612345678" class="btn btn--ghost btn--lg">Chiama Ora</a>
+    </div>
+  </PageHero>
+
+  <!-- PROGETTI PARIOLI -->
+  <section class="section" aria-labelledby="proj-parioli-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">I Nostri Lavori ai Parioli</p>
+        <h2 class="section__title" id="proj-parioli-title">Progetti Completati<br><em>nel Quartiere</em></h2>
+      </div>
+      <div class="grid grid--2 stagger-grid" style="max-width:900px;margin:0 auto">
+        {parioliProjects.map(p => (
+          <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--color-border)">
+              <img src={p.before} alt={`Prima — ${p.title}`} width="450" height="300" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+              <img src={p.after}  alt={`Dopo — ${p.title}`}  width="450" height="300" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+            </div>
+            <div style="padding:1.5rem">
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem">
+                {p.tags.map(tag => (
+                  <span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--color-gold-pale);color:var(--color-accent);padding:0.2rem 0.6rem;border-radius:99px;font-weight:600">{tag}</span>
+                ))}
+              </div>
+              <h3 style="font-family:var(--font-serif);font-size:1.2rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{p.title}</h3>
+              <p style="font-size:0.875rem;color:var(--color-text-secondary);margin:0 0 1rem;line-height:1.6">{p.desc}</p>
+              <blockquote style="font-size:0.8rem;font-style:italic;color:var(--color-text-muted);border-left:2px solid var(--color-accent);padding-left:0.75rem;margin:0">"{p.quote}"</blockquote>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ESSENZE AI PARIOLI -->
+  <section class="section section--alt" aria-labelledby="essenze-parioli-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Le Scelte del Quartiere</p>
+        <h2 class="section__title" id="essenze-parioli-title">I Legni più Richiesti<br><em>ai Parioli</em></h2>
+        <p class="section__subtitle">I Parioli sono un quartiere residenziale esclusivo. Le famiglie che ci vivono scelgono essenze di alto pregio che riflettono lo stile dell'immobile.</p>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {essenzeParioli.map(e => (
+          <div class="reveal-up" style="border:1px solid var(--color-border);border-radius:12px;overflow:hidden">
+            <div style={`height:110px;${e.css}`} aria-hidden="true"></div>
+            <div style="padding:1.25rem">
+              <h3 style="font-family:var(--font-serif);font-size:1rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{e.name}</h3>
+              <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0;line-height:1.6">{e.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIANZE PARIOLI -->
+  <section class="section" aria-labelledby="testi-parioli-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Chi ci ha Scelto ai Parioli</p>
+        <h2 class="section__title" id="testi-parioli-title">Famiglie dei Parioli<br><em>Soddisfatte</em></h2>
+      </div>
+      <div class="grid grid--2 stagger-grid" style="max-width:900px;margin:0 auto">
+        {[giuliaM, fabrizioC].map(t => (
+          <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;padding:2rem">
+            <div style="display:flex;gap:0.2rem;margin-bottom:1rem">
+              {Array.from({length:t.rating}).map(() => (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#C4922A" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              ))}
+            </div>
+            <blockquote style="font-size:0.93rem;line-height:1.7;color:var(--color-on-surface);margin:0 0 1.5rem;font-style:italic">"{t.quote}"</blockquote>
+            <div style="display:flex;align-items:center;gap:0.75rem;padding-top:1rem;border-top:1px solid var(--color-border-ui)">
+              <img src={t.avatar} alt={t.name} width="40" height="40" loading="lazy" style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0" />
+              <div>
+                <strong style="font-size:0.9rem;display:block;color:var(--color-on-surface)">{t.name}</strong>
+                <span style="font-size:0.78rem;color:var(--color-text-muted)">{t.role}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AREA DI COPERTURA -->
+  <section class="section section--alt" aria-labelledby="area-parioli-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Area di Copertura</p>
+        <h2 class="section__title" id="area-parioli-title">Operiamo ai Parioli<br><em>e Quartieri Limitrofi</em></h2>
+      </div>
+      <div class="reveal-up" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;max-width:700px;margin:0 auto">
+        {['Parioli', ...nearbyAreas].map((area, i) => (
+          <span style={`padding:0.5rem 1.25rem;border-radius:99px;font-size:0.9rem;font-weight:${i===0?'700':'400'};background:${i===0?'var(--color-accent)':'var(--color-surface-raised)'};color:${i===0?'#fff':'var(--color-on-surface)'};border:1px solid ${i===0?'var(--color-accent)':'var(--color-border)'}`}>{area}</span>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:3rem" class="reveal-up">
+        <p style="color:var(--color-text-secondary);margin-bottom:1.5rem">Lavoriamo in tutta Roma e provincia. <a href={url('/contatti/')} style="color:var(--color-accent)">Contattaci</a> per verificare disponibilità nella tua zona.</p>
+        <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo Gratuito</a>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>

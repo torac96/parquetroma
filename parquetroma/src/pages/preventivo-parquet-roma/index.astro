@@ -1,0 +1,206 @@
+---
+import PageLayout      from '../../layouts/PageLayout.astro';
+import PageHero        from '../../components/sections/PageHero.astro';
+import TrustBar        from '../../components/sections/TrustBar.astro';
+import { SITE_CONFIG } from '../../data/config';
+import { url }         from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Preventivo Parquet Roma', url: '/preventivo-parquet-roma/' }];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Preventivo Gratuito Posa Parquet Roma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: { '@type': 'City', name: 'Roma' },
+  description: 'Preventivo gratuito e senza impegno per posa parquet, levigatura e restauro a Roma. Sopralluogo entro 48 ore.',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    description: 'Sopralluogo e preventivo completamente gratuiti',
+  },
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Come richiedere un preventivo parquet Roma',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Richiedi il sopralluogo', text: 'Compila il form o chiama: veniamo da te entro 48 ore.' },
+    { '@type': 'HowToStep', position: 2, name: 'Sopralluogo gratuito', text: 'Misuriamo lo spazio, valutiamo il sottofondo, capiamo le tue esigenze e preferenze di stile.' },
+    { '@type': 'HowToStep', position: 3, name: 'Preventivo dettagliato', text: 'Ti inviamo un preventivo chiaro con materiali, pattern, tempi e costi. Zero costi nascosti.' },
+  ],
+};
+
+const garanzie = [
+  { icon: '€0',   title: 'Sopralluogo Gratuito',    text: 'Veniamo da te senza nessun costo. Neanche il viaggio.' },
+  { icon: '€0',   title: 'Preventivo Gratuito',     text: 'Il preventivo è completamente gratuito e senza impegno.' },
+  { icon: '24h',  title: 'Risposta in 24 Ore',      text: 'Ti rispondiamo entro 24 ore dalla tua richiesta.' },
+  { icon: '5★',   title: 'Soddisfazione Garantita', text: '127 recensioni a 5 stelle. La tua soddisfazione è la nostra priorità.' },
+];
+
+const WA_HREF = "https://wa.me/390612345678?text=Ciao%2C%20vorrei%20un%20preventivo%20per%20la%20posa%20del%20parquet.";
+---
+
+<PageLayout
+  title="Preventivo Parquet Roma Gratuito | Sopralluogo in 48h | ParquetRoma"
+  description="Richiedi un preventivo gratuito per posa parquet a Roma. Sopralluogo entro 48 ore, stima costi trasparente. Parquet, levigatura, restauro e porte. Chiama o scrivi ora!"
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parquet-contact-dark/1920/800"
+  schema={[serviceSchema, howToSchema]}
+>
+
+  <PageHero
+    eyebrow="Zero Costi, Zero Impegni"
+    title="Preventivo Parquet Roma<br><em>Gratuito e Senza Sorprese</em>"
+    subtitle="Sopralluogo gratuito entro 48 ore. Preventivo dettagliato con materiali, pattern, tempistiche e costi reali. Nessun costo nascosto, nessun impegno."
+    image="https://picsum.photos/seed/parquet-contact-dark/1920/800"
+    breadcrumbs={[{ name: 'Preventivo Parquet Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href="tel:+390612345678" class="btn btn--primary btn--lg">Chiama Subito</a>
+      <a href={WA_HREF} class="btn btn--ghost btn--lg" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </PageHero>
+
+  <!-- GARANZIE -->
+  <section class="section" aria-labelledby="garanzie-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Le Nostre Garanzie</p>
+        <h2 class="section__title" id="garanzie-title">Preventivo Senza<br><em>Nessuna Sorpresa</em></h2>
+      </div>
+      <div class="grid grid--4 stagger-grid">
+        {garanzie.map(g => (
+          <div class="feature-card reveal-up" style="text-align:center">
+            <div style="font-size:1.75rem;font-weight:700;color:var(--color-accent);font-family:var(--font-serif);margin-bottom:0.75rem" aria-hidden="true">{g.icon}</div>
+            <h3 class="feature-card__title">{g.title}</h3>
+            <p class="feature-card__text">{g.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COME FUNZIONA -->
+  <section class="section section--alt" aria-labelledby="come-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Come Funziona</p>
+        <h2 class="section__title" id="come-title">Tre Passi verso<br><em>il Tuo Preventivo</em></h2>
+      </div>
+      <ol class="processo__list stagger-grid" role="list">
+        <li class="processo__item reveal-up">
+          <span class="processo__num" aria-hidden="true">01</span>
+          <div class="processo__content">
+            <h3 class="processo__title">Contattaci</h3>
+            <p class="processo__text">Compila il form, chiama o scrivici su WhatsApp. Ti risponderemo entro 24 ore per fissare il sopralluogo gratuito nel momento più comodo per te.</p>
+          </div>
+        </li>
+        <li class="processo__item reveal-up">
+          <span class="processo__num" aria-hidden="true">02</span>
+          <div class="processo__content">
+            <h3 class="processo__title">Sopralluogo Gratuito</h3>
+            <p class="processo__text">Veniamo da te entro 48 ore. Misuriamo lo spazio, valutiamo il sottofondo e ascoltiamo le tue esigenze. Nessun costo, nessun impegno di acquisto.</p>
+          </div>
+        </li>
+        <li class="processo__item reveal-up">
+          <span class="processo__num" aria-hidden="true">03</span>
+          <div class="processo__content">
+            <h3 class="processo__title">Preventivo Dettagliato</h3>
+            <p class="processo__text">Ricevi un preventivo trasparente con essenze consigliate, pattern, tempistiche e costo finale. Tutto per iscritto. Hai tempo per valutare senza fretta.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FORM CONTATTO -->
+  <section class="section" id="form" aria-labelledby="form-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <h2 class="contact-info__title" id="form-title">Richiedi il Tuo<br><em>Preventivo Gratuito</em></h2>
+          <p class="contact-info__intro">Raccontaci il tuo progetto. Più dettagli ci fornisci, più preciso sarà il preventivo.</p>
+          <ul class="contact-details" role="list">
+            <li class="contact-details__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.27a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .4h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.26a16 16 0 006.29 6.29l1.23-1.23a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+390612345678" class="contact-details__link">+39 06 1234 5678</a>
+            </li>
+            <li class="contact-details__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <a href={WA_HREF} class="contact-details__link" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </li>
+            <li class="contact-details__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:info@parquetroma.it" class="contact-details__link">info@parquetroma.it</a>
+            </li>
+            <li class="contact-details__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Lun–Ven: 08:00–18:00 · Sab: 09:00–13:00</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form reveal-right" name="preventivo" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+          <input type="hidden" name="form-name" value="preventivo" />
+          <p hidden><label>Non compilare: <input name="bot-field" /></label></p>
+
+          <div class="form-row">
+            <label class="form-label" for="prv-nome">Nome e Cognome *</label>
+            <input class="form-input" type="text" id="prv-nome" name="nome" required placeholder="Mario Rossi" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="prv-email">Email *</label>
+            <input class="form-input" type="email" id="prv-email" name="email" required placeholder="mario@email.it" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="prv-tel">Telefono</label>
+            <input class="form-input" type="tel" id="prv-tel" name="telefono" placeholder="+39 3XX XXX XXXX" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="prv-servizio">Servizio richiesto</label>
+            <select class="form-input" id="prv-servizio" name="servizio">
+              <option value="">Seleziona...</option>
+              <option value="posa-nuova">Posa parquet nuovo</option>
+              <option value="levigatura">Levigatura / restauro parquet</option>
+              <option value="porte">Installazione porte</option>
+              <option value="consulenza">Consulenza e design</option>
+              <option value="altro">Altro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="prv-mq">Metratura approssimativa (mq)</label>
+            <input class="form-input" type="text" id="prv-mq" name="metratura" placeholder="Es: 80 mq" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="prv-msg">Descrivi il tuo progetto</label>
+            <textarea class="form-input form-textarea" id="prv-msg" name="messaggio" rows="4" placeholder="Raccontaci dove si trova l'immobile, che tipo di parquet vorresti, se è una nuova posa o un restauro..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg" style="width:100%">Invia Richiesta Preventivo</button>
+          <p style="font-size:0.8rem;color:var(--color-text-muted);margin-top:0.75rem;text-align:center">Risponderemo entro 24 ore. Nessun impegno richiesto.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <!-- CTA ALTERNATIVA -->
+  <section class="section section--alt" style="text-align:center" aria-labelledby="alt-cta-title">
+    <div class="container reveal-up">
+      <h2 class="section__title" id="alt-cta-title">Preferisci chiamare<br><em>direttamente?</em></h2>
+      <p class="section__subtitle" style="max-width:480px;margin:0 auto 2rem">Siamo disponibili lunedì-venerdì 8:00–18:00 e sabato 9:00–13:00.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="tel:+390612345678" class="btn btn--primary btn--lg">+39 06 1234 5678</a>
+        <a href={WA_HREF} class="btn btn--ghost btn--lg" target="_blank" rel="noopener noreferrer">Scrivi su WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

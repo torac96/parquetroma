@@ -1,0 +1,179 @@
+---
+import PageLayout    from '../../layouts/PageLayout.astro';
+import PageHero      from '../../components/sections/PageHero.astro';
+import TrustBar      from '../../components/sections/TrustBar.astro';
+import CtaBand       from '../../components/sections/CtaBand.astro';
+import { portfolio } from '../../data/portfolio';
+import { SITE_CONFIG } from '../../data/config';
+import { url }       from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Parquet Wengé Roma', url: '/parquet-wenge-roma/' }];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Parquet Wengé Roma',
+  description: 'Installazione parquet in wengé africano a Roma. Colore quasi nero, venatura fitta, impatto visivo straordinario. Per ambienti di grande carattere e personalità.',
+  brand: { '@type': 'Brand', name: 'ParquetRoma' },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    seller: { '@id': `${SITE_CONFIG.url}/#business` },
+  },
+};
+
+const wengeProject = portfolio.find(p => p.id === 'centro-storico')!;
+
+const faqWenge = [
+  {
+    q: 'Il wengé è difficile da lavorare?',
+    a: 'Il wengé è un legno che richiede esperienza. Ha una durezza elevata (Janka ~1630 lbf), il che lo rende difficile da tagliare e piallare. Le sue fibre a poro aperto devono essere stuccate accuratamente prima della finitura. Per questo motivo è fondamentale affidarsi a un parquettista esperto che abbia già lavorato con questa essenza.'
+  },
+  {
+    q: 'Come si mantiene il parquet in wengé?',
+    a: 'Il wengé tende a schiarirsi leggermente nel tempo per effetto della luce UV. Consigliamo un\'oliatura con prodotti specifici 1–2 volte l\'anno per mantenere il colore intenso. Da evitare: prodotti troppo aggressivi, acqua in eccesso, esposizione prolungata alla luce solare diretta.'
+  },
+  {
+    q: 'Il wengé è sostenibile?',
+    a: 'Il wengé è un legno africano la cui disponibilità è in calo. Utilizziamo esclusivamente wengé certificato CITES e da fornitori con tracciabilità documentata. In alternativa, esistono legni europei colorati con fumigazione che imitano l\'estetica del wengé con minore impatto ambientale.'
+  },
+  {
+    q: 'Quali pattern si abbinano meglio al wengé?',
+    a: 'La posa dritta è la scelta classica per il wengé: la linearità della tavola esalta la venatura fitta creando un effetto uniforme e potente. La posa diagonale aggiunge dinamismo. La spina di pesce con wengé è rara ma di grandissimo impatto per chi vuole un risultato assolutamente unico.'
+  },
+];
+---
+
+<PageLayout
+  title="Parquet Wengé Roma | Pavimenti Africani di Lusso | ParquetRoma"
+  description="Parquet wengé Roma: installiamo pavimenti in wengé africano massello. Colore quasi nero, venatura fitta, impatto visivo unico. Per ambienti di grande personalità. Preventivo gratuito."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/centrostorico-after/1920/800"
+  schema={productSchema}
+>
+
+  <PageHero
+    eyebrow="Legno Africano Raro"
+    title="Parquet Wengé Roma<br><em>Impatto Visivo Assoluto</em>"
+    subtitle="Il wengé è uno dei legni più scuri e scenografici in assoluto. Colore quasi-nero con venatura fitta chiara. Per chi non vuole compromessi: è un pavimento che definisce l'intera stanza."
+    image="https://picsum.photos/seed/centrostorico-after/1920/800"
+    breadcrumbs={[{ name: 'Parquet Wengé Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Preventivo Gratuito</a>
+      <a href={url('/posa-parquet-roma/')} class="btn btn--ghost btn--lg">Come Lavoriamo</a>
+    </div>
+  </PageHero>
+
+  <!-- CASE STUDY -->
+  <section class="section" aria-labelledby="case-wenge-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__image clip-reveal">
+          <img
+            src={wengeProject.after}
+            alt={`${wengeProject.title} — parquet wengé Roma`}
+            width="900"
+            height="675"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Case Study — {wengeProject.title}</span>
+          <h2 class="service-detail__title" id="case-wenge-title">Wengé per<br><em>un'Autorità di Classe</em></h2>
+          <p class="service-detail__desc">{wengeProject.desc}</p>
+          <ul class="features-list" role="list">
+            <li>Essenza: {wengeProject.wood} massello africano</li>
+            <li>Pattern: {wengeProject.pattern} — per la massima sobrietà e uniformità</li>
+            <li>Superficie: {wengeProject.size}</li>
+            <li>Finitura: oliatura naturale per mantenere l'aspetto autentico</li>
+          </ul>
+          <blockquote style="border-left:3px solid var(--color-accent);padding-left:1rem;margin:1.5rem 0;font-style:italic;color:var(--color-text-secondary)">
+            "{wengeProject.quote}"
+          </blockquote>
+          <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARATTERISTICHE -->
+  <section class="section section--alt" aria-labelledby="tech-wenge-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Scheda Tecnica</p>
+        <h2 class="section__title" id="tech-wenge-title">Perché il Wengé<br><em>è un Legno Unico</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        <div class="feature-card reveal-up">
+          <h3 class="feature-card__title">Colore e Venatura</h3>
+          <p class="feature-card__text">Marrone molto scuro quasi nero con fini striature chiare. Ogni tavola è diversa — il risultato è un pavimento con trama unica e irripetibile.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <h3 class="feature-card__title">Durezza Estrema</h3>
+          <p class="feature-card__text">Janka ~1630 lbf — tra i legni più duri disponibili per pavimentazioni. Resistenza eccezionale a graffi e usura intensa, ideale per ambienti commerciali.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <h3 class="feature-card__title">Posa Specializzata</h3>
+          <p class="feature-card__text">Richiede attrezzi specifici e mani esperte. La stuccatura dei pori aperti è fondamentale per una finitura perfetta. Non è un legno per principianti.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <h3 class="feature-card__title">Ambienti Consigliati</h3>
+          <p class="feature-card__text">Studi professionali, ambienti di rappresentanza, living con arredi chiari o metallici. Il contrasto con pareti bianche è straordinario.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <h3 class="feature-card__title">Manutenzione</h3>
+          <p class="feature-card__text">Oliatura 1–2 volte l'anno per mantenere colore e idratazione. Evitare esposizione UV prolungata (tende a schiarirsi). Pulizia con prodotti specifici pH neutro.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <h3 class="feature-card__title">Certificazione</h3>
+          <p class="feature-card__text">Utilizziamo solo wengé certificato CITES con tracciabilità documentata. Su richiesta forniamo tutta la documentazione d'origine del materiale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-wenge-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Domande Frequenti</p>
+        <h2 class="section__title" id="faq-wenge-title">Tutto sul<br><em>Parquet Wengé</em></h2>
+      </div>
+      <div class="faq-accordion reveal-up" style="max-width:800px;margin:0 auto">
+        {faqWenge.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">{f.q}</summary>
+            <div class="faq-answer"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ALTRE ESSENZE -->
+  <section class="section section--alt" aria-labelledby="altre-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container" style="text-align:center">
+      <div class="reveal-up">
+        <p class="section__eyebrow">Esplora Altre Essenze</p>
+        <h2 class="section__title" id="altre-title">Non Solo Wengé:<br><em>Tutte le Essenze</em></h2>
+        <p class="section__subtitle" style="max-width:480px;margin:0 auto 2rem">Lavoriamo con sei essenze di prima qualità. Ogni legno ha la sua personalità — aiutiamo a trovare quella giusta per il tuo spazio.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href={url('/parquet-quercia-roma/')} class="btn btn--secondary">Quercia</a>
+          <a href={url('/parquet-noce-roma/')} class="btn btn--secondary">Noce</a>
+          <a href={url('/posa-parquet-roma/')} class="btn btn--ghost btn--lg">Tutti i Servizi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>

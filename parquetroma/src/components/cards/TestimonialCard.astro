@@ -1,5 +1,4 @@
 ---
-import { Image }             from 'astro:assets';
 import type { Testimonial }  from '../../data/testimonials';
 import { url }               from '../../utils/url';
 
@@ -37,11 +36,11 @@ const stars = Array.from({ length: testimonial.rating });
     </div>
     <blockquote class="testimonial-card__quote">"{testimonial.quote}"</blockquote>
     <div class="testimonial-card__author">
-      <Image
+      <img
         src={testimonial.avatar}
         alt={testimonial.name}
-        width={48}
-        height={48}
+        width="48"
+        height="48"
         loading="lazy"
         decoding="async"
       />

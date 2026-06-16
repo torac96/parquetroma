@@ -1,0 +1,241 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TrustBar         from '../../components/sections/TrustBar.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import TestimonialCard  from '../../components/cards/TestimonialCard.astro';
+import { testimonials } from '../../data/testimonials';
+import { SITE_CONFIG }  from '../../data/config';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Levigatura Parquet Roma', url: '/levigatura-parquet-roma/' }];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Levigatura Parquet Roma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: { '@type': 'City', name: 'Roma' },
+  description: 'Levigatura professionale del parquet a Roma: ripristino pavimenti in legno esistenti senza sostituzione. Macchine silenziose, nessuna polvere.',
+  serviceType: 'Levigatura Parquet',
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Come funziona la levigatura del parquet a Roma',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Valutazione gratuita', text: 'Veniamo a valutare le condizioni del tuo parquet: profondità dei graffi, stato della finitura, spessore residuo delle doghe.' },
+    { '@type': 'HowToStep', position: 2, name: 'Levigatura grezza', text: 'Rimozione della vecchia finitura con macchinari professionali a bassa emissione di polvere.' },
+    { '@type': 'HowToStep', position: 3, name: 'Levigatura fine', text: 'Passate successive con grane sempre più fini per ottenere una superficie perfettamente liscia.' },
+    { '@type': 'HowToStep', position: 4, name: 'Finitura a scelta', text: 'Applichiamo la finitura scelta: verniciatura opaca o lucida, oliatura naturale, ceratura tradizionale.' },
+  ],
+};
+
+const faqLevigatura = [
+  {
+    q: 'Quante volte si può levigare un parquet?',
+    a: 'Un parquet massello di buona qualità (spessore 18–22 mm) può essere levigato 5–7 volte nell\'arco della sua vita. Un parquet prefinito (strato nobile 3–6 mm) può essere levigato 1–3 volte. Prima di procedere valutiamo sempre lo spessore residuo per garantire la durabilità futura.'
+  },
+  {
+    q: 'Levigatura produce polvere? Devo liberare la stanza?',
+    a: 'Utilizziamo macchinari professionali dotati di sistemi di aspirazione a bordo che riducono la produzione di polvere del 90% rispetto ai metodi tradizionali. Consigliamo comunque di spostare i mobili leggeri. Per il resto vi assistiamo noi nella protezione dei mobili presenti.'
+  },
+  {
+    q: 'Quanto dura la levigatura di 80 mq?',
+    a: 'Una levigatura standard di 80 mq richiede solitamente 2 giorni lavorativi: il primo giorno per le passate di levigatura, il secondo per l\'applicazione della finitura. I tempi di asciugatura della vernice aggiungono 24–48 ore di attesa prima di posare i mobili.'
+  },
+  {
+    q: 'Conviene levigare o sostituire il parquet?',
+    a: 'La levigatura costa in media 1/3 rispetto alla sostituzione completa e produce risultati eccellenti se il parquet ha ancora spessore sufficiente. Durante il sopralluogo gratuito vi forniremo una valutazione onesta: se la sostituzione fosse davvero più conveniente, ve lo diremo.'
+  },
+];
+
+const segnali = [
+  { icon: '🪵', title: 'Graffi e Righe Profonde',    text: 'Il parquet presenta segni del tempo, graffi da mobili o righi da animali che la normale pulizia non elimina.' },
+  { icon: '🌫️', title: 'Colore Spento e Opaco',      text: 'La finitura è consumata, il legno ha perso lucentezza e il colore originale appare sbiadito.' },
+  { icon: '🔊', title: 'Scricchiolii e Movimenti',   text: 'Alcune doghe emettono suoni o si muovono sotto i piedi — spesso risolvibile con levigatura e stuccatura.' },
+  { icon: '⬜', title: 'Macchie e Aloni Difficili',  text: 'Macchie d\'acqua, aloni bianchi o scuri che non si eliminano con i normali detergenti per parquet.' },
+];
+
+const finiture = [
+  { name: 'Verniciatura Opaca',   desc: 'La scelta moderna. Protegge bene il legno, valorizza la venatura naturale, facile da mantenere. La più richiesta.', css: 'background:linear-gradient(135deg,#8b6a3e,#6b4f2e)' },
+  { name: 'Verniciatura Lucida',  desc: 'Effetto specchio brillante. Dona luminosità all\'ambiente. Richiede più manutenzione ma è di grande impatto estetico.', css: 'background:linear-gradient(135deg,#a07832,#7a5820)' },
+  { name: 'Oliatura Naturale',    desc: 'Penetra il legno anziché coprirlo. Aspetto naturale e caldo. Si tocca up facilmente punto per punto senza rifare tutto.', css: 'background:linear-gradient(135deg,#6b4f2e,#4a3018)' },
+  { name: 'Ceratura Tradizionale',desc: 'Finitura classica d\'altri tempi. Aspetto antico caldo, ideale per parquet storici o stili rustici.', css: 'background:linear-gradient(135deg,#7a5820,#5a4010)' },
+];
+---
+
+<PageLayout
+  title="Levigatura Parquet Roma | Ripristino Professionale | ParquetRoma"
+  description="Levigatura parquet Roma professionale: ripristiniamo il tuo parquet come nuovo senza sostituirlo. Macchine a bassa polvere, 4 tipi di finitura. Preventivo gratuito entro 48h."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parquet-sanding/1920/800"
+  schema={[serviceSchema, howToSchema]}
+>
+
+  <PageHero
+    eyebrow="Risparmia fino al 70%"
+    title="Levigatura Parquet Roma<br><em>Come Nuovo, Senza Sostituirlo</em>"
+    subtitle="Il tuo parquet è graffiato, opaco o ha perso colore? Prima di cambiarlo, scopri la levigatura professionale: ripristino completo a un terzo del costo della sostituzione."
+    image="https://picsum.photos/seed/parquet-sanding/1920/800"
+    breadcrumbs={[{ name: 'Levigatura Parquet Roma', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Valutazione Gratuita</a>
+      <a href="tel:+390612345678" class="btn btn--ghost btn--lg">Chiama Ora</a>
+    </div>
+  </PageHero>
+
+  <!-- QUANDO SERVE -->
+  <section class="section" aria-labelledby="segnali-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Riconosci i Segnali</p>
+        <h2 class="section__title" id="segnali-title">È il Momento<br><em>di Levigare?</em></h2>
+        <p class="section__subtitle">Ecco i quattro segnali che indicano che il tuo parquet ha bisogno di una levigatura professionale.</p>
+      </div>
+      <div class="grid grid--4 stagger-grid">
+        {segnali.map(s => (
+          <div class="feature-card reveal-up">
+            <div class="feature-card__icon" aria-hidden="true" style="font-size:1.75rem">{s.icon}</div>
+            <h3 class="feature-card__title">{s.title}</h3>
+            <p class="feature-card__text">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="section section--alt" aria-labelledby="processo-lev-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Come Lavoriamo</p>
+        <h2 class="section__title" id="processo-lev-title">Il Processo di<br><em>Levigatura Professionale</em></h2>
+      </div>
+      <div class="service-detail reveal-up">
+        <div class="service-detail__image clip-reveal">
+          <img
+            src="https://picsum.photos/seed/sanding-machine/900/675"
+            alt="Macchina levigatrice professionale parquet Roma"
+            width="900"
+            height="675"
+            loading="lazy"
+          />
+        </div>
+        <div class="service-detail__content">
+          <ol class="processo__list" role="list" style="counter-reset:none">
+            <li class="processo__item">
+              <span class="processo__num" aria-hidden="true">01</span>
+              <div class="processo__content">
+                <h3 class="processo__title">Valutazione Gratuita</h3>
+                <p class="processo__text">Sopralluogo per misurare lo spessore residuo e valutare le condizioni del parquet. Nessun costo, risposta entro 48 ore.</p>
+              </div>
+            </li>
+            <li class="processo__item">
+              <span class="processo__num" aria-hidden="true">02</span>
+              <div class="processo__content">
+                <h3 class="processo__title">Levigatura Grezza</h3>
+                <p class="processo__text">Rimozione della vecchia finitura con macchinari professionali ad aspirazione integrata. Minima produzione di polvere.</p>
+              </div>
+            </li>
+            <li class="processo__item">
+              <span class="processo__num" aria-hidden="true">03</span>
+              <div class="processo__content">
+                <h3 class="processo__title">Stuccatura e Levigatura Fine</h3>
+                <p class="processo__text">Stucchiamo eventuali fughe o piccoli danni, poi passiamo con grane sempre più fini per una superficie perfettamente liscia.</p>
+              </div>
+            </li>
+            <li class="processo__item">
+              <span class="processo__num" aria-hidden="true">04</span>
+              <div class="processo__content">
+                <h3 class="processo__title">Finitura a Scelta</h3>
+                <p class="processo__text">Verniciatura opaca o lucida, oliatura naturale o ceratura tradizionale. La scelta è tua, vi consigliamo in base all'ambiente.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINITURE -->
+  <section class="section" aria-labelledby="finiture-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Tipi di Finitura</p>
+        <h2 class="section__title" id="finiture-title">Scegli la Finitura<br><em>Giusta per Te</em></h2>
+        <p class="section__subtitle">Dopo la levigatura scegli la finitura che meglio si adatta al tuo stile e alle esigenze dell'ambiente.</p>
+      </div>
+      <div class="grid grid--4 stagger-grid">
+        {finiture.map(f => (
+          <div class="reveal-up" style="border:1px solid var(--color-border);border-radius:12px;overflow:hidden">
+            <div style={`height:80px;${f.css};opacity:0.8`} aria-hidden="true"></div>
+            <div style="padding:1.25rem">
+              <h3 style="font-family:var(--font-serif);font-size:1rem;margin:0 0 0.5rem">{f.name}</h3>
+              <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0;line-height:1.6">{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt" aria-labelledby="faq-lev-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Domande Frequenti</p>
+        <h2 class="section__title" id="faq-lev-title">Tutto sulla<br><em>Levigatura Parquet</em></h2>
+      </div>
+      <div class="faq-accordion reveal-up" style="max-width:800px;margin:0 auto">
+        {faqLevigatura.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">{f.q}</summary>
+            <div class="faq-answer"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section" aria-labelledby="testi-lev-title">
+    <span class="section-num section-num--right" aria-hidden="true">05</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Chi l'ha Fatto con Noi</p>
+        <h2 class="section__title" id="testi-lev-title">Parquet Restaurato,<br><em>Clienti Soddisfatti</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {testimonials.slice(0, 3).map(t => (
+          <TestimonialCard testimonial={t} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <!-- CTA -->
+  <section class="section section--alt" style="text-align:center" aria-labelledby="cta-lev-title">
+    <div class="container reveal-up">
+      <p class="section__eyebrow">Pronto a Rinnovare?</p>
+      <h2 class="section__title" id="cta-lev-title">Valutazione Gratuita<br><em>del Tuo Parquet</em></h2>
+      <p class="section__subtitle" style="max-width:500px;margin:0 auto 2rem">Veniamo a vedere il tuo parquet e ti diciamo onestamente se è il caso di levigarlo o no. Nessun costo, nessun impegno.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Valutazione Gratuita</a>
+        <a href="tel:+390612345678" class="btn btn--ghost btn--lg">+39 06 1234 5678</a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+
+</PageLayout>

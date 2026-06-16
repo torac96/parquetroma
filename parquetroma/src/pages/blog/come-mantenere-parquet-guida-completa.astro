@@ -1,0 +1,176 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import TrustBar   from '../../components/sections/TrustBar.astro';
+import { SITE_CONFIG } from '../../data/config';
+import { url }    from '../../utils/url';
+
+const breadcrumbs = [
+  { name: 'Blog', url: '/blog/' },
+  { name: 'Manutenzione Parquet', url: '/blog/come-mantenere-parquet-guida-completa/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Come Mantenere il Parquet: Guida Completa alla Manutenzione',
+  description: 'Guida pratica alla manutenzione del parquet: pulizia quotidiana, oliatura, quando levigare. Consigli diretti dal team di parquettisti di Roma.',
+  author: { '@type': 'Organization', name: 'ParquetRoma', url: SITE_CONFIG.url },
+  publisher: {
+    '@type': 'Organization',
+    name: 'ParquetRoma',
+    logo: { '@type': 'ImageObject', url: `${SITE_CONFIG.url}/favicon.svg` },
+  },
+  datePublished: '2026-05-10',
+  dateModified:  '2026-05-10',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_CONFIG.url}/blog/come-mantenere-parquet-guida-completa/` },
+  image: 'https://picsum.photos/seed/parquet-maintenance/1200/630',
+};
+---
+
+<PageLayout
+  title="Come Mantenere il Parquet: Guida Completa | ParquetRoma"
+  description="Guida alla manutenzione del parquet: pulizia quotidiana, protezione, oliatura e quando levigare. Consigli pratici dal team di parquettisti di Roma."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parquet-maintenance/1200/630"
+  schema={articleSchema}
+>
+
+  <article style="max-width:780px;margin:0 auto;padding:4rem 1.5rem">
+
+    <header style="margin-bottom:3rem">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem">
+        <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--color-gold-pale);color:var(--color-accent);padding:0.25rem 0.75rem;border-radius:99px;font-weight:600">Manutenzione</span>
+        <span style="font-size:0.8rem;color:var(--color-text-muted)">6 min di lettura</span>
+      </div>
+      <h1 style="font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.25;color:var(--color-on-surface);margin:0 0 1rem">
+        Come Mantenere il Parquet:<br><em>Guida Completa</em>
+      </h1>
+      <p style="font-size:1.1rem;color:var(--color-text-secondary);line-height:1.7;margin:0 0 1.5rem">Un parquet ben mantenuto dura 50 anni. Uno trascurato si consuma in 10. Ecco cosa fare — e cosa assolutamente evitare.</p>
+      <div style="display:flex;align-items:center;gap:1rem;padding:1rem 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)">
+        <div>
+          <strong style="font-size:0.9rem;color:var(--color-on-surface)">Team ParquetRoma</strong>
+          <span style="display:block;font-size:0.78rem;color:var(--color-text-muted)">Pubblicato il 10 Maggio 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="prose" style="color:var(--color-text-secondary);line-height:1.8;font-size:1rem">
+
+      <p>Il parquet è uno dei pavimenti più longevi che esistano — ma solo se trattato nel modo giusto. In questa guida ti diamo le istruzioni che diamo ai nostri clienti dopo ogni posa: cosa fare ogni giorno, ogni mese, ogni anno.</p>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">La Regola Numero 1: Niente Acqua in Eccesso</h2>
+
+      <p>Il legno e l'acqua non vanno d'accordo. L'umidità in eccesso causa rigonfiamenti, macchie scure e nei casi peggiori danni strutturali irreversibili. Regola aurea: il pavimento in legno deve essere <em>asciugato immediatamente</em> se si bagna.</p>
+
+      <div style="background:var(--color-surface-raised);border-left:4px solid var(--color-accent);padding:1.25rem 1.5rem;border-radius:0 8px 8px 0;margin:1.5rem 0">
+        <p style="margin:0;font-weight:600;color:var(--color-on-surface)">Mai usare:</p>
+        <ul style="margin:0.5rem 0 0;padding-left:1.25rem">
+          <li>Mocio bagnato o strizzato male</li>
+          <li>Vapore (scopa a vapore) — il vapore penetra le fughe</li>
+          <li>Prodotti aggressivi o sgrassatori</li>
+          <li>Candeggina o aceto (alterano il pH del legno)</li>
+        </ul>
+      </div>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">Pulizia Quotidiana e Settimanale</h2>
+
+      <p><strong>Ogni giorno:</strong> Passa uno strofinaccio o una scopa elettrostatica per raccogliere polvere e sabbia. I grani di sabbia sono come carta vetrata: ogni passo li strofina contro la superficie e graffia la finitura nel tempo.</p>
+
+      <p><strong>Ogni settimana:</strong> Passa il pavimento con un panno in microfibra leggermente umido (strizzato benissimo) con un detergente specifico per parquet a pH neutro. Esistono prodotti diversi per parquet verniciato e parquet oliato — usa quello giusto per il tuo tipo di finitura.</p>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">Parquet Verniciato vs Parquet Oliato: Manutenzione Diversa</h2>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0">
+        <div style="background:var(--color-surface-raised);border:1px solid var(--color-border);border-radius:10px;padding:1.25rem">
+          <h3 style="font-family:var(--font-serif);font-size:1rem;margin:0 0 0.75rem;color:var(--color-on-surface)">Parquet Verniciato</h3>
+          <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem">
+            <li>Più facile da pulire</li>
+            <li>Resiste meglio all'umidità superficiale</li>
+            <li>Graffi superficiali difficili da riparare puntualmente</li>
+            <li>Richiede levigatura completa per i danni</li>
+            <li>Nessuna manutenzione specifica annuale</li>
+          </ul>
+        </div>
+        <div style="background:var(--color-surface-raised);border:1px solid var(--color-border);border-radius:10px;padding:1.25rem">
+          <h3 style="font-family:var(--font-serif);font-size:1rem;margin:0 0 0.75rem;color:var(--color-on-surface)">Parquet Oliato</h3>
+          <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem">
+            <li>Aspetto naturale e caldo ineguagliabile</li>
+            <li>Graffi riparabili puntualmente (solo la zona interessata)</li>
+            <li>Richiede rioliatura 1–2 volte l'anno</li>
+            <li>Prodotti specifici per la pulizia (neutri)</li>
+            <li>Più manutenzione, ma più semplice da riparare</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">Protezione: i Piccoli Accorgimenti che Fanno la Differenza</h2>
+
+      <ul>
+        <li><strong>Tappetini all'ingresso:</strong> raccolgono sabbia e ghiaia prima che arrivino sul parquet</li>
+        <li><strong>Feltri sotto i mobili:</strong> obbligatori per sedie e tavoli. Si cambiano quando si consumano</li>
+        <li><strong>Umidità relativa costante:</strong> il parquet ama un'umidità tra il 45% e il 65%. Evita ambienti troppo secchi (riscaldamento a manetta) o troppo umidi</li>
+        <li><strong>Tende o pellicole UV:</strong> la luce solare diretta schiarisce e secca il legno nel tempo. Usa tende nelle ore di sole diretto</li>
+        <li><strong>Unghie degli animali:</strong> i cani con unghie lunghe graffiano il parquet. Tienile corte o usa tappeti nelle zone di passaggio</li>
+      </ul>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">Quando è il Momento di Levigare?</h2>
+
+      <p>Anche con la migliore manutenzione, il parquet va levigato periodicamente. Ma come capire quando è il momento?</p>
+
+      <div style="display:grid;gap:0.75rem;margin:1.5rem 0">
+        {[
+          { signal: 'La finitura è opaca e non si ravviva con la pulizia', when: 'Levigatura imminente' },
+          { signal: 'Graffi profondi che attraversano la finitura fino al legno', when: 'Levigatura necessaria' },
+          { signal: 'Aloni scuri che non si rimuovono', when: 'Levigatura urgente' },
+          { signal: 'Il legno "beve" l\'acqua invece di farla scorrere via', when: 'Levigatura urgente' },
+          { signal: 'Doghe che scricchiolano o si muovono', when: 'Intervento strutturale prima della levigatura' },
+        ].map(item => (
+          <div style="display:flex;align-items:center;gap:1rem;background:var(--color-surface-raised);border:1px solid var(--color-border);border-radius:8px;padding:0.875rem 1rem">
+            <span style="flex:1;font-size:0.875rem;color:var(--color-on-surface)">{item.signal}</span>
+            <span style="font-size:0.78rem;font-weight:600;color:var(--color-accent);white-space:nowrap">{item.when}</span>
+          </div>
+        ))}
+      </div>
+
+      <p>Un parquet massello di buona qualità può essere levigato 5–7 volte nell'arco della sua vita. Con buona manutenzione, la levigatura si fa ogni 15–25 anni.</p>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">Checklist di Manutenzione Annuale</h2>
+
+      <div style="background:var(--color-surface-raised);border:1px solid var(--color-border);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        {[
+          { freq: 'Ogni giorno', tasks: ['Raccogliere polvere e sabbia con scopa elettrostatica'] },
+          { freq: 'Ogni settimana', tasks: ['Pulizia con panno microfibra leggermente umido + detergente pH neutro'] },
+          { freq: 'Ogni mese', tasks: ['Controllare feltri sotto i mobili', 'Verificare umidità ambiente (45–65%)'] },
+          { freq: 'Ogni 1–2 anni', tasks: ['Rioliatura (solo per parquet oliato)', 'Pulizia profonda con prodotto manutenzione specifico'] },
+          { freq: 'Ogni 15–25 anni', tasks: ['Levigatura professionale e nuova finitura'] },
+        ].map(item => (
+          <div style="margin-bottom:1rem">
+            <p style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:600;color:var(--color-accent);margin:0 0 0.5rem">{item.freq}</p>
+            {item.tasks.map(task => (
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--color-on-surface);margin-bottom:0.25rem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                {task}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+    <div style="margin-top:3rem;padding:2rem;background:var(--color-surface-raised);border-radius:12px;border:1px solid var(--color-border);text-align:center">
+      <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin:0 0 0.75rem;color:var(--color-on-surface)">Il tuo parquet ha bisogno di levigatura?</h3>
+      <p style="color:var(--color-text-secondary);margin:0 0 1.5rem">Veniamo a valutarlo gratuitamente e ti diciamo onestamente cosa si può fare.</p>
+      <a href={url('/levigatura-parquet-roma/')} class="btn btn--primary btn--lg">Scopri la Levigatura</a>
+    </div>
+
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--color-border);display:flex;justify-content:space-between;align-items:center">
+      <a href={url('/blog/')} style="font-size:0.875rem;color:var(--color-accent);text-decoration:none">← Torna al Blog</a>
+      <a href={url('/blog/quanto-costa-posa-parquet-roma/')} style="font-size:0.875rem;color:var(--color-accent);text-decoration:none">Leggi anche: Prezzi Posa →</a>
+    </div>
+
+  </article>
+
+  <TrustBar />
+
+</PageLayout>

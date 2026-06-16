@@ -1,0 +1,223 @@
+---
+import PageLayout       from '../../layouts/PageLayout.astro';
+import PageHero         from '../../components/sections/PageHero.astro';
+import TrustBar         from '../../components/sections/TrustBar.astro';
+import CtaBand          from '../../components/sections/CtaBand.astro';
+import { portfolio }    from '../../data/portfolio';
+import { testimonials } from '../../data/testimonials';
+import { SITE_CONFIG }  from '../../data/config';
+import { url }          from '../../utils/url';
+
+const breadcrumbs = [{ name: 'Architetti & Designer', url: '/architetti-interior-designer-roma/' }];
+
+const b2bServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Servizio Parquet per Architetti e Interior Designer Roma',
+  provider: { '@id': `${SITE_CONFIG.url}/#business` },
+  areaServed: { '@type': 'City', name: 'Roma' },
+  description: 'Partner affidabile per cantieri di architettura e interior design a Roma. Posa parquet premium, rispetto scadenze, documentazione tecnica completa.',
+  audience: { '@type': 'Audience', audienceType: 'Architetti e Interior Designer' },
+  serviceType: 'Posa Parquet Contract',
+};
+
+const studioArch = testimonials.find(t => t.id === 'studio-arch')!;
+
+const b2bProjects = portfolio.filter(p => ['eur-studio', 'prati-penthouse', 'centro-storico'].includes(p.id));
+
+const benefitB2B = [
+  { icon: '⏱️', title: 'Rispetto Scadenze',         text: 'Consegniamo nei tempi concordati con il direttore lavori. Sappiamo che un cantiere in ritardo costa a tutti.' },
+  { icon: '📋', title: 'Documentazione Tecnica',     text: 'Forniamo schede tecniche dei materiali, certificazioni FSC/PEFC, report fotografici pre e post posa.' },
+  { icon: '🛡️', title: 'Assicurazione RC',           text: 'Lavoriamo con polizza RC professionale. I vostri cantieri sono coperti in ogni fase del lavoro.' },
+  { icon: '🪵', title: 'Materiali Certificati',      text: 'Accesso a linee premium con campionari fisici su richiesta. Essenze rare e finiture personalizzate.' },
+  { icon: '📞', title: 'Referente Dedicato',         text: 'Un interlocutore unico per lo studio: niente rimpallaggi, risposte entro 4 ore lavorative.' },
+  { icon: '🧾', title: 'Fatturazione Professionale', text: 'Fatturazione B2B con IVA split payment, computo metrico dettagliato e preventivi adatti ai capitolati.' },
+];
+
+const processoB2B = [
+  { n: '01', title: 'Brief Tecnico',          text: 'Riceviamo il progetto e le specifiche tecniche. Analizziamo il capitolato, le tavole di pianta e le schede materiali.' },
+  { n: '02', title: 'Sopralluogo Tecnico',    text: 'Sopralluogo con misurazione laser, valutazione sottofondo, identificazione di eventuali criticità strutturali.' },
+  { n: '03', title: 'Preventivo con CM',      text: 'Preventivo con computo metrico dettagliato, adatto alla rendicontazione verso il committente finale.' },
+  { n: '04', title: 'Coordinamento DL',       text: 'Coordiniamo con il direttore lavori per pianificare la posa nel flusso del cantiere, rispettando le fasi.' },
+  { n: '05', title: 'Posa e Report',          text: 'Eseguiamo la posa e consegniamo un report fotografico completo per la documentazione del cantiere.' },
+  { n: '06', title: 'Garanzia Documentata',   text: 'Garanzia scritta con certificato di posa da allegare alla documentazione finale dell\'immobile.' },
+];
+---
+
+<PageLayout
+  title="Parquet per Architetti Roma | Partner Cantieri di Lusso | ParquetRoma"
+  description="Sei architetto o interior designer a Roma? ParquetRoma: partner affidabile per cantieri premium, scadenze rispettate, documentazione tecnica completa, materiali certificati FSC."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/eur-after/1920/800"
+  schema={b2bServiceSchema}
+>
+
+  <PageHero
+    eyebrow="Servizio Professionale B2B"
+    title="Il Tuo Partner<br><em>per i Cantieri di Lusso</em>"
+    subtitle="Lavoriamo con studi di architettura e interior design romani da oltre 15 anni. Affidabilità, documentazione tecnica e qualità artigianale che valorizza ogni progetto."
+    image="https://picsum.photos/seed/eur-after/1920/800"
+    breadcrumbs={[{ name: 'Architetti & Designer', href: '' }]}
+    actions={true}
+  >
+    <div slot="actions" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo B2B</a>
+      <a href="tel:+390612345678" class="btn btn--ghost btn--lg">Chiama Direttamente</a>
+    </div>
+  </PageHero>
+
+  <!-- TESTIMONIAL B2B -->
+  <section class="section" aria-labelledby="b2b-trust-title">
+    <span class="section-num section-num--right" aria-hidden="true">01</span>
+    <div class="container">
+      <div class="service-detail reveal-up">
+        <div class="service-detail__content">
+          <span class="service-detail__eyebrow">Cosa Dicono gli Studi</span>
+          <h2 class="service-detail__title" id="b2b-trust-title">Scelti da<br><em>Studi di Architettura</em></h2>
+          <p class="service-detail__desc">Siamo il partner di riferimento per diversi studi professionali romani. La nostra capacità di rispettare i tempi del cantiere e la qualità documentabile del lavoro ci hanno reso un appuntamento fisso per i progetti di lusso a Roma.</p>
+          <blockquote style="border-left:3px solid var(--color-accent);padding-left:1.25rem;margin:2rem 0;font-style:italic;color:var(--color-text-secondary);font-size:1.1rem;line-height:1.7">
+            "{studioArch.quote}"
+            <cite style="display:block;margin-top:0.75rem;font-style:normal;font-size:0.9rem;font-weight:600;color:var(--color-on-surface)">— {studioArch.name} · {studioArch.role}</cite>
+          </blockquote>
+          <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Parliamo del Tuo Progetto</a>
+        </div>
+        <div class="service-detail__image clip-reveal">
+          <img
+            src="https://picsum.photos/seed/eur-studio-after/900/675"
+            alt="Studio EUR — posa parquet frassino grigio per interior designer Roma"
+            width="900"
+            height="675"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFIT B2B -->
+  <section class="section section--alt" aria-labelledby="benefit-title">
+    <span class="section-num section-num--left" aria-hidden="true">02</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Perché Sceglierci</p>
+        <h2 class="section__title" id="benefit-title">6 Motivi per cui<br><em>gli Studi ci Scelgono</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {benefitB2B.map(b => (
+          <div class="feature-card reveal-up">
+            <div class="feature-card__icon" aria-hidden="true" style="font-size:1.75rem">{b.icon}</div>
+            <h3 class="feature-card__title">{b.title}</h3>
+            <p class="feature-card__text">{b.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO B2B -->
+  <section class="section" aria-labelledby="processo-b2b-title">
+    <span class="section-num section-num--right" aria-hidden="true">03</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Come Lavoriamo con gli Studi</p>
+        <h2 class="section__title" id="processo-b2b-title">Dal Brief Tecnico<br><em>alla Consegna Documentata</em></h2>
+      </div>
+      <ol class="processo__list stagger-grid" role="list">
+        {processoB2B.map(p => (
+          <li class="processo__item reveal-up">
+            <span class="processo__num" aria-hidden="true">{p.n}</span>
+            <div class="processo__content">
+              <h3 class="processo__title">{p.title}</h3>
+              <p class="processo__text">{p.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO B2B -->
+  <section class="section section--alt" aria-labelledby="portfolio-b2b-title">
+    <span class="section-num section-num--left" aria-hidden="true">04</span>
+    <div class="container">
+      <div class="section__header reveal-up">
+        <p class="section__eyebrow">Progetti Selezionati</p>
+        <h2 class="section__title" id="portfolio-b2b-title">Cantieri Completati<br><em>per Professionisti</em></h2>
+      </div>
+      <div class="grid grid--3 stagger-grid">
+        {b2bProjects.map(p => (
+          <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden">
+            <img src={p.after} alt={p.title} width="600" height="400" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+            <div style="padding:1.5rem">
+              <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-accent);font-weight:600;margin-bottom:0.5rem">{p.category} · {p.size}</p>
+              <h3 style="font-family:var(--font-serif);font-size:1.15rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{p.title}</h3>
+              <p style="font-size:0.875rem;color:var(--color-text-secondary);margin:0;line-height:1.6">{p.wood} · Posa {p.pattern}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:3rem">
+        <a href={url('/portfolio/')} class="btn btn--ghost btn--lg">Vedi tutto il portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM B2B -->
+  <section class="section" id="contatta" aria-labelledby="form-b2b-title">
+    <span class="section-num section-num--right" aria-hidden="true">05</span>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <h2 class="contact-info__title" id="form-b2b-title">Parliamo del<br><em>Tuo Progetto</em></h2>
+          <p class="contact-info__intro">Condividi i dettagli del cantiere. Ti risponderemo entro 4 ore lavorative con disponibilità per un brief tecnico.</p>
+          <ul class="contact-details" role="list">
+            <li class="contact-details__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.27a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .4h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.26a16 16 0 006.29 6.29l1.23-1.23a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+390612345678" class="contact-details__link">+39 06 1234 5678</a>
+            </li>
+            <li class="contact-details__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:info@parquetroma.it" class="contact-details__link">info@parquetroma.it</a>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form reveal-right" name="preventivo-b2b" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+          <input type="hidden" name="form-name" value="preventivo-b2b" />
+          <p hidden><label>Non compilare: <input name="bot-field" /></label></p>
+
+          <div class="form-row">
+            <label class="form-label" for="b2b-studio">Nome Studio / Azienda *</label>
+            <input class="form-input" type="text" id="b2b-studio" name="studio" required placeholder="Studio Arch. Rossi" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="b2b-nome">Nome e Cognome *</label>
+            <input class="form-input" type="text" id="b2b-nome" name="nome" required placeholder="Marco Rossi" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="b2b-email">Email professionale *</label>
+            <input class="form-input" type="email" id="b2b-email" name="email" required placeholder="marco@studiorossi.it" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="b2b-tel">Telefono</label>
+            <input class="form-input" type="tel" id="b2b-tel" name="telefono" placeholder="+39 3XX XXX XXXX" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="b2b-mq">Superficie del cantiere (mq)</label>
+            <input class="form-input" type="text" id="b2b-mq" name="metratura" placeholder="Es: 150 mq" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="b2b-msg">Descrivi il progetto</label>
+            <textarea class="form-input form-textarea" id="b2b-msg" name="messaggio" rows="4" placeholder="Tipo di immobile, essenza preferita, tempistiche del cantiere, eventuali specifiche tecniche..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg" style="width:100%">Invia Richiesta Preventivo B2B</button>
+          <p style="font-size:0.8rem;color:var(--color-text-muted);margin-top:0.75rem;text-align:center">Risposta entro 4 ore lavorative. Trattamento dati ai sensi del GDPR.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CtaBand />
+
+</PageLayout>

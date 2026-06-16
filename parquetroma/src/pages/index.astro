@@ -14,6 +14,7 @@ import { services }     from '../data/services';
 import { portfolio }    from '../data/portfolio';
 import { testimonials } from '../data/testimonials';
 import { SITE_CONFIG }  from '../data/config';
+import { faq }          from '../data/faq';
 import { url }          from '../utils/url';
 
 const previewServices  = services.slice(0, 3);
@@ -43,6 +44,19 @@ const websiteSchema = {
   },
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.answer,
+    },
+  })),
+};
+
 const materials = [
   { num: '01', name: 'Quercia',  latin: 'Quercus robur',       gradient: 'radial-gradient(ellipse at 30% 40%, #a07832 0%, #6b4f18 40%, #3d2a08 100%)', href: url('/servizi/#parquet'), description: 'La regina del parquet. Venatura ricca, calore senza tempo. Naturale, sbiancata o affumicata.' },
   { num: '02', name: 'Noce',     latin: 'Juglans regia',       gradient: 'radial-gradient(ellipse at 40% 35%, #6b4a2e 0%, #4a3020 40%, #231508 100%)', href: url('/servizi/#parquet'), description: 'Toni scuri e venatura sinuosa. Eleganza e preziosità per ambienti di lusso.' },
@@ -62,7 +76,7 @@ const processo = [
   title="Posa Parquet Roma | 20+ Anni di Maestria Artigianale | ParquetRoma"
   description="Installazione parquet professionale a Roma e Lazio. 20+ anni di esperienza artigianale. Posa parquet, porte e consulenza design. Preventivo gratuito. Chiama oggi!"
   lcpImage="https://picsum.photos/seed/parquet-hero/1920/1080"
-  schema={websiteSchema}
+  schema={[websiteSchema, faqSchema]}
 >
 
   <!-- ====== HERO ====== -->

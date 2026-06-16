@@ -1,0 +1,223 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import TrustBar   from '../../components/sections/TrustBar.astro';
+import { SITE_CONFIG } from '../../data/config';
+import { url }    from '../../utils/url';
+
+const breadcrumbs = [
+  { name: 'Blog', url: '/blog/' },
+  { name: 'Costo Posa Parquet Roma', url: '/blog/quanto-costa-posa-parquet-roma/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Quanto Costa la Posa del Parquet a Roma? Prezzi 2026',
+  description: 'Guida completa ai costi di posa parquet a Roma: prezzi al mq per nuova posa, levigatura e restauro. Dati reali aggiornati al 2026.',
+  author: { '@type': 'Organization', name: 'ParquetRoma', url: SITE_CONFIG.url },
+  publisher: {
+    '@type': 'Organization',
+    name: 'ParquetRoma',
+    logo: { '@type': 'ImageObject', url: `${SITE_CONFIG.url}/favicon.svg` },
+  },
+  datePublished: '2026-06-01',
+  dateModified:  '2026-06-01',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_CONFIG.url}/blog/quanto-costa-posa-parquet-roma/` },
+  image: 'https://picsum.photos/seed/parquet-costs/1200/630',
+};
+
+const faqPrezzi = [
+  {
+    q: 'Quanto costa mediamente la posa parquet a Roma al mq?',
+    a: 'La posa parquet a Roma costa mediamente tra €12 e €40/mq solo di manodopera, a seconda del tipo di posa e della complessità. La posa flottante è la meno costosa (€12–18/mq), quella incollata di massello con pattern complesso la più cara (€28–40/mq).'
+  },
+  {
+    q: 'Il preventivo include il materiale?',
+    a: 'I prezzi di posa indicati si riferiscono alla sola manodopera. Il materiale (parquet) va aggiunto: da €20/mq per laminato di buona qualità a €80–150/mq+ per massello in noce o wengé. Un preventivo completo includerà sempre entrambe le voci separatamente.'
+  },
+  {
+    q: 'Ci sono costi nascosti nella posa parquet?',
+    a: 'Noi non ne abbiamo. I costi da considerare oltre alla posa sono: preparazione del sottofondo (se necessaria), materiale di consumo (colle, viti, profili), smaltimento del pavimento vecchio se presente, e la tinteggiatura degli zoccolini. Un buon preventivo li elenca tutti separatamente.'
+  },
+];
+---
+
+<PageLayout
+  title="Quanto Costa la Posa del Parquet a Roma? Prezzi 2026 | ParquetRoma"
+  description="Guida completa e trasparente ai costi di posa parquet a Roma 2026: prezzi al mq per nuova posa, levigatura, restauro. Dati reali dal team ParquetRoma."
+  breadcrumbs={breadcrumbs}
+  lcpImage="https://picsum.photos/seed/parquet-costs/1200/630"
+  schema={articleSchema}
+>
+
+  <!-- ARTICOLO -->
+  <article style="max-width:780px;margin:0 auto;padding:4rem 1.5rem">
+
+    <!-- Header -->
+    <header style="margin-bottom:3rem">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem">
+        <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--color-gold-pale);color:var(--color-accent);padding:0.25rem 0.75rem;border-radius:99px;font-weight:600">Prezzi & Preventivi</span>
+        <span style="font-size:0.8rem;color:var(--color-text-muted)">5 min di lettura</span>
+      </div>
+      <h1 style="font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.25;color:var(--color-on-surface);margin:0 0 1rem">
+        Quanto Costa la Posa del Parquet a Roma?<br><em>Prezzi 2026</em>
+      </h1>
+      <p style="font-size:1.1rem;color:var(--color-text-secondary);line-height:1.7;margin:0 0 1.5rem">Guida completa e trasparente ai costi reali. Nessuna sorpresa, nessuna voce nascosta: quello che devi sapere prima di chiedere un preventivo.</p>
+      <div style="display:flex;align-items:center;gap:1rem;padding:1rem 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)">
+        <div>
+          <strong style="font-size:0.9rem;color:var(--color-on-surface)">Team ParquetRoma</strong>
+          <span style="display:block;font-size:0.78rem;color:var(--color-text-muted)">Pubblicato il 1 Giugno 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Corpo articolo -->
+    <div class="prose" style="color:var(--color-text-secondary);line-height:1.8;font-size:1rem">
+
+      <p>Se stai pensando di installare il parquet nella tua casa a Roma e vuoi avere un'idea dei costi prima di chiamare qualcuno, sei nel posto giusto. Questa guida è scritta dal team di ParquetRoma con i prezzi reali che applichiamo ai nostri cantieri nel 2026.</p>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">1. Posa Parquet Nuovo: Prezzi al mq</h2>
+
+      <p>Il costo della posa dipende principalmente da tre fattori: il tipo di posa, la complessità del pattern e le condizioni del sottofondo.</p>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+        <table style="width:100%;border-collapse:collapse;font-size:0.9rem">
+          <thead>
+            <tr style="background:var(--color-surface-raised)">
+              <th style="padding:0.75rem 1rem;text-align:left;font-weight:600;color:var(--color-on-surface);border-bottom:2px solid var(--color-border)">Tipo di Posa</th>
+              <th style="padding:0.75rem 1rem;text-align:right;font-weight:600;color:var(--color-on-surface);border-bottom:2px solid var(--color-border)">Costo Manodopera</th>
+              <th style="padding:0.75rem 1rem;text-align:right;font-weight:600;color:var(--color-on-surface);border-bottom:2px solid var(--color-border)">Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Posa flottante (prefinito)', '€12–18/mq', 'La più rapida e meno invasiva'],
+              ['Posa incollata (dritto/mattoni)', '€16–22/mq', 'Standard per la maggior parte dei lavori'],
+              ['Posa incollata (diagonale)', '€18–26/mq', 'Più materiale di scarto, più tempo'],
+              ['Spina di pesce (herringbone)', '€22–32/mq', 'Pattern più complesso e richiesto'],
+              ['Chevron (a V)', '€28–40/mq', 'Il più complesso — tavole tagliate a 45°'],
+              ['Massello inchiodato', '€22–35/mq', 'Richiede struttura portante adeguata'],
+            ].map(([tipo, costo, note]) => (
+              <tr style="border-bottom:1px solid var(--color-border)">
+                <td style="padding:0.75rem 1rem;color:var(--color-on-surface)">{tipo}</td>
+                <td style="padding:0.75rem 1rem;text-align:right;font-weight:600;color:var(--color-accent)">{costo}</td>
+                <td style="padding:0.75rem 1rem;text-align:right;font-size:0.8rem;color:var(--color-text-muted)">{note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:0.85rem;color:var(--color-text-muted);font-style:italic">* Prezzi di sola manodopera. Il materiale non è incluso.</p>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">2. Costo del Materiale (Parquet)</h2>
+
+      <p>Al costo di posa va sommato il prezzo del parquet stesso. Le variazioni sono enormi in base all'essenza e al tipo:</p>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+        <table style="width:100%;border-collapse:collapse;font-size:0.9rem">
+          <thead>
+            <tr style="background:var(--color-surface-raised)">
+              <th style="padding:0.75rem 1rem;text-align:left;font-weight:600;color:var(--color-on-surface);border-bottom:2px solid var(--color-border)">Tipo di Parquet</th>
+              <th style="padding:0.75rem 1rem;text-align:right;font-weight:600;color:var(--color-on-surface);border-bottom:2px solid var(--color-border)">Costo Materiale</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Laminato alta qualità', '€18–35/mq'],
+              ['Prefinito quercia (standard)', '€28–50/mq'],
+              ['Prefinito quercia (premium)', '€50–90/mq'],
+              ['Massello quercia', '€55–100/mq'],
+              ['Massello noce', '€80–150/mq'],
+              ['Massello wengé', '€90–180/mq'],
+            ].map(([tipo, costo]) => (
+              <tr style="border-bottom:1px solid var(--color-border)">
+                <td style="padding:0.75rem 1rem;color:var(--color-on-surface)">{tipo}</td>
+                <td style="padding:0.75rem 1rem;text-align:right;font-weight:600;color:var(--color-accent)">{costo}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">3. Levigatura Parquet: Prezzi 2026</h2>
+
+      <p>Se il tuo parquet esistente è in buone condizioni strutturali ma ha perso lucentezza o è graffiato, la levigatura è la soluzione più economica:</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0">
+        {[
+          { label: 'Levigatura + verniciatura', price: '€18–28/mq' },
+          { label: 'Levigatura + oliatura', price: '€20–32/mq' },
+          { label: 'Solo levigatura (no finitura)', price: '€10–16/mq' },
+          { label: 'Stuccatura (extra)', price: '€2–4/mq' },
+        ].map(item => (
+          <div style="background:var(--color-surface-raised);border:1px solid var(--color-border);border-radius:8px;padding:1rem">
+            <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0 0 0.25rem">{item.label}</p>
+            <p style="font-size:1.2rem;font-weight:700;color:var(--color-accent);margin:0;font-family:var(--font-serif)">{item.price}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">4. Esempio Pratico: Appartamento 90 mq</h2>
+
+      <p>Per concretizzare, ecco un esempio reale di preventivo per un appartamento di 90 mq a Roma con quercia sbiancata a spina di pesce:</p>
+
+      <div style="background:var(--color-surface-raised);border:1px solid var(--color-border);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin:0 0 1rem;color:var(--color-on-surface)">Quercia Sbiancata Prefinita · Spina di Pesce · 90 mq</h3>
+        {[
+          ['Parquet quercia sbiancata premium (+ 10% scarto)', '99 mq × €65', '€6.435'],
+          ['Posa a spina di pesce incollata', '90 mq × €26', '€2.340'],
+          ['Preparazione sottofondo', '90 mq × €8', '€720'],
+          ['Profili e raccordi', 'a corpo', '€250'],
+          ['Smaltimento vecchio pavimento', 'a corpo', '€300'],
+        ].map(([voce, calc, totale]) => (
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0.5rem 0;border-bottom:1px solid var(--color-border);font-size:0.9rem">
+            <span style="color:var(--color-on-surface);flex:1">{voce}</span>
+            <span style="color:var(--color-text-muted);margin:0 1rem;font-size:0.8rem">{calc}</span>
+            <span style="font-weight:600;color:var(--color-accent);min-width:5rem;text-align:right">{totale}</span>
+          </div>
+        ))}
+        <div style="display:flex;justify-content:space-between;padding:0.75rem 0 0;font-size:1rem;font-weight:700;color:var(--color-on-surface)">
+          <span>Totale stimato</span>
+          <span style="color:var(--color-accent)">€10.045</span>
+        </div>
+        <p style="font-size:0.78rem;color:var(--color-text-muted);margin:0.5rem 0 0">* IVA al 22% non inclusa. Preventivo indicativo: i prezzi reali variano in base alle condizioni del cantiere.</p>
+      </div>
+
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">5. Come Ottenere un Preventivo Preciso</h2>
+
+      <p>Queste cifre sono indicative. Il prezzo definitivo dipende da molti fattori che si valutano solo sul posto: condizioni del sottofondo, presenza di parquet vecchio da rimuovere, grado di difficoltà di accesso all'immobile, eventuali imperfezioni da correggere.</p>
+
+      <p>Il modo migliore per avere un numero preciso è richiedere un <strong>sopralluogo gratuito</strong>. Veniamo da te entro 48 ore, misuriamo lo spazio e ti presentiamo un preventivo dettagliato con tutte le voci separate. Zero sorprese, zero costi nascosti.</p>
+
+      <!-- FAQ in articolo -->
+      <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--color-on-surface);margin:2.5rem 0 1rem">Domande Frequenti sui Costi</h2>
+      <div class="faq-accordion">
+        {faqPrezzi.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">{f.q}</summary>
+            <div class="faq-answer"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- CTA fine articolo -->
+    <div style="margin-top:3rem;padding:2rem;background:var(--color-surface-raised);border-radius:12px;border:1px solid var(--color-border);text-align:center">
+      <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin:0 0 0.75rem;color:var(--color-on-surface)">Vuoi un Preventivo Reale per il tuo Caso?</h3>
+      <p style="color:var(--color-text-secondary);margin:0 0 1.5rem">Sopralluogo gratuito entro 48 ore. Preventivo dettagliato senza impegno.</p>
+      <a href={url('/preventivo-parquet-roma/')} class="btn btn--primary btn--lg">Richiedi Preventivo Gratuito</a>
+    </div>
+
+    <!-- Navigazione blog -->
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--color-border);display:flex;justify-content:space-between;align-items:center">
+      <a href={url('/blog/')} style="font-size:0.875rem;color:var(--color-accent);text-decoration:none">← Torna al Blog</a>
+      <a href={url('/blog/spina-di-pesce-o-dritto-guida-alla-scelta/')} style="font-size:0.875rem;color:var(--color-accent);text-decoration:none">Articolo successivo →</a>
+    </div>
+
+  </article>
+
+  <TrustBar />
+
+</PageLayout>
