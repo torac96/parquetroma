@@ -12,15 +12,16 @@ export function initHorizontalScroll(): void {
 
   /* UN SOLO ScrollTrigger per pin + scrub — anima il track, non i singoli pannelli.
      Il track è largo numPanels×100vw; xPercent -75 (per 4 pannelli) lo sposta di 3×100vw. */
+  /* CSS sticky handles pinning (.hscroll-sticky); GSAP scrubs the track
+     over the section's natural 400vh height — no pin: true needed */
   const containerAnim = gsap.to(hTrack, {
     xPercent: -100 * (hPanels.length - 1) / hPanels.length,
     ease: 'none',
     scrollTrigger: {
       trigger: hSection,
-      pin: true,
       scrub: 1,
       start: 'top top',
-      end: () => `+=${hSection.offsetWidth * (hPanels.length - 1)}`,
+      end: 'bottom bottom',
       invalidateOnRefresh: true,
     },
   });
