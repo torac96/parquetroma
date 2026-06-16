@@ -12,6 +12,23 @@ export function initHeroAnimations(): void {
     return;
   }
 
+  // Pre-nasconde subito tutti gli elementi per prevenire FOUC su ViewTransitions
+  const eyebrow  = hero.querySelector<HTMLElement>('.hero__eyebrow');
+  const title    = hero.querySelector<HTMLElement>('.hero__title');
+  const subtitle = hero.querySelector<HTMLElement>('.hero__subtitle');
+  const actions  = hero.querySelector<HTMLElement>('.hero__actions');
+  const badges   = hero.querySelectorAll<HTMLElement>('.hero__badge');
+  const brandLine = hero.querySelector<HTMLElement>('.hero__brand-line');
+
+  if (!prefersReducedMotion) {
+    if (eyebrow)        gsap.set(eyebrow,   { opacity: 0 });
+    if (title)          gsap.set(title,     { opacity: 0 });
+    if (subtitle)       gsap.set(subtitle,  { opacity: 0 });
+    if (actions)        gsap.set(actions,   { opacity: 0 });
+    if (badges.length)  gsap.set(badges,    { opacity: 0, y: 16 });
+    if (brandLine)      gsap.set(brandLine, { width: 0 });
+  }
+
   const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
   /* Ken Burns sull'immagine di sfondo */
@@ -21,13 +38,11 @@ export function initHeroAnimations(): void {
   }
 
   /* Brand line */
-  const brandLine = hero.querySelector<HTMLElement>('.hero__brand-line');
   if (brandLine) {
     tl.to(brandLine, { width: '52px', duration: 0.55, ease: 'power3.out' }, 0.3);
   }
 
   /* Eyebrow — character by character */
-  const eyebrow = hero.querySelector<HTMLElement>('.hero__eyebrow');
   if (eyebrow) {
     const text = eyebrow.textContent ?? '';
     eyebrow.innerHTML = text.split('').map(c =>
@@ -39,7 +54,6 @@ export function initHeroAnimations(): void {
   }
 
   /* Title — word by word (yPercent reveal) */
-  const title = hero.querySelector<HTMLElement>('.hero__title');
   if (title) {
     const newHTML = Array.from(title.childNodes)
       .map(node => {
@@ -54,6 +68,8 @@ export function initHeroAnimations(): void {
       })
       .join('');
     title.innerHTML = newHTML;
+    gsap.set(title, { opacity: 0 }); // re-nascondi dopo innerHTML rewrite (resetta stili inline)
+    tl.to(title, { opacity: 1, duration: 0.01 }, 0.64); // snap visibile prima che le parole scorrano
     tl.to(title.querySelectorAll('.word'), {
       yPercent: 0, duration: 0.9, stagger: 0.07, ease: 'power4.out',
     }, 0.65);
@@ -102,15 +118,21 @@ export function initPageHeroAnimations(): void {
   if (!pageHero) return;
   if (prefersReducedMotion) return;
 
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 });
-
-  const title    = pageHero.querySelector<HTMLElement>('.page-hero__title');
-  const subtitle = pageHero.querySelector<HTMLElement>('.page-hero__subtitle');
-  const eyebrow  = pageHero.querySelector<HTMLElement>('.page-hero__eyebrow');
+  const title      = pageHero.querySelector<HTMLElement>('.page-hero__title');
+  const subtitle   = pageHero.querySelector<HTMLElement>('.page-hero__subtitle');
+  const eyebrow    = pageHero.querySelector<HTMLElement>('.page-hero__eyebrow');
   const breadcrumb = pageHero.querySelector<HTMLElement>('.breadcrumb');
 
-  if (breadcrumb) tl.from(breadcrumb, { opacity: 0, y: 15, duration: 0.5 }, 0);
-  if (eyebrow)   tl.from(eyebrow,   { opacity: 0, y: 15, duration: 0.5 }, 0.1);
+  // Pre-nascondi subito per prevenire FOUC
+  if (breadcrumb) gsap.set(breadcrumb, { opacity: 0, y: 15 });
+  if (eyebrow)    gsap.set(eyebrow,   { opacity: 0, y: 15 });
+  if (title)      gsap.set(title,     { opacity: 0 });
+  if (subtitle)   gsap.set(subtitle,  { opacity: 0, y: 20 });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 });
+
+  if (breadcrumb) tl.to(breadcrumb, { opacity: 1, y: 0, duration: 0.5 }, 0);
+  if (eyebrow)    tl.to(eyebrow,   { opacity: 1, y: 0, duration: 0.5 }, 0.1);
 
   if (title) {
     const newHTML = Array.from(title.childNodes)
@@ -126,9 +148,11 @@ export function initPageHeroAnimations(): void {
       })
       .join('');
     title.innerHTML = newHTML;
+    gsap.set(title, { opacity: 0 }); // re-nascondi dopo innerHTML rewrite (resetta stili inline)
+    tl.to(title, { opacity: 1, duration: 0.01 }, 0.19); // snap visibile prima dello slide
     tl.to(title.querySelectorAll('span > span'), {
       yPercent: 0, duration: 0.8, stagger: 0.06,
     }, 0.2);
   }
-  if (subtitle) tl.from(subtitle, { opacity: 0, y: 20, duration: 0.7 }, 0.55);
+  if (subtitle) tl.to(subtitle, { opacity: 1, y: 0, duration: 0.7 }, 0.55);
 }
