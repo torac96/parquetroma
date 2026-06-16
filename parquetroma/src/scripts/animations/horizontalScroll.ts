@@ -2,16 +2,18 @@ import { gsap, prefersReducedMotion } from './initGSAP';
 
 export function initHorizontalScroll(): void {
   const hSection = document.getElementById('hscroll');
+  const hTrack   = hSection?.querySelector<HTMLElement>('.hscroll-track');
   const hPanels  = gsap.utils.toArray<HTMLElement>('.h-panel');
 
-  if (!hSection || hPanels.length < 2) return;
+  if (!hSection || !hTrack || hPanels.length < 2) return;
   if (prefersReducedMotion) return;
   /* Su mobile la sezione è già in layout verticale via CSS */
   if (window.innerWidth <= 768) return;
 
-  /* UN SOLO ScrollTrigger per pin + scrub */
-  const containerAnim = gsap.to(hPanels, {
-    xPercent: -100 * (hPanels.length - 1),
+  /* UN SOLO ScrollTrigger per pin + scrub — anima il track, non i singoli pannelli.
+     Il track è largo numPanels×100vw; xPercent -75 (per 4 pannelli) lo sposta di 3×100vw. */
+  const containerAnim = gsap.to(hTrack, {
+    xPercent: -100 * (hPanels.length - 1) / hPanels.length,
     ease: 'none',
     scrollTrigger: {
       trigger: hSection,
@@ -23,7 +25,7 @@ export function initHorizontalScroll(): void {
     },
   });
 
-  /* Panel content reveal — containerAnimation referenzia il tween corretto (non gsap.globalTimeline) */
+  /* Panel content reveal — containerAnimation referenzia il tween corretto */
   hPanels.forEach((panel, i) => {
     if (i === 0) return;
     const content = panel.querySelector<HTMLElement>('.h-panel__content');
@@ -36,7 +38,9 @@ export function initHorizontalScroll(): void {
         scrollTrigger: {
           trigger: panel,
           containerAnimation: containerAnim,
-          start: 'left center',
+          start: 'left 85%',
+          end: 'left 40%',
+          scrub: false,
           once: true,
         },
       }

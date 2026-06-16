@@ -475,7 +475,7 @@ const processo = [
 }
 
 /* ── Horizontal Scroll ──────────────────────────────────── */
-.hscroll-section { height: 400vh; }
+.hscroll-section { height: 400vh; background: var(--color-surface); }
 .hscroll-sticky {
   position: sticky;
   top: 0;
@@ -497,7 +497,10 @@ const processo = [
   overflow: hidden;
   background: var(--color-dark);
 }
-.h-panel--light { background: var(--color-cream); }
+.h-panel--light {
+  background: var(--color-cream);
+  color: #1E1A15;  /* force dark text — panel is always light regardless of .dark theme */
+}
 .h-panel__orb {
   position: absolute;
   inset: 0;
