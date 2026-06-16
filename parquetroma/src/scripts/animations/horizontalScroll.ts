@@ -21,7 +21,7 @@ export function initHorizontalScroll(): void {
       trigger: hSection,
       scrub: 1,
       start: 'top top',
-      end: 'bottom bottom',
+      end: () => `+=${window.innerHeight * (hPanels.length - 1)}`,
       invalidateOnRefresh: true,
     },
   });
