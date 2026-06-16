@@ -63,7 +63,7 @@ export function initHeroAnimations(): void {
         if (node.nodeType === Node.TEXT_NODE) {
           const text = node.textContent ?? '';
           return text.split(/(\s+)/).map(word =>
-            /\s+/.test(word) ? word : `<span class="word-wrap" style="overflow:hidden;display:inline-block;vertical-align:top"><span class="word" style="display:inline-block;transform:translateY(115%)">` + word + `</span></span>`
+            /\s+/.test(word) ? word : `<span class="word-wrap" style="overflow:hidden;display:inline-block;vertical-align:top"><span class="word" style="display:inline-block">` + word + `</span></span>`
           ).join('');
         } else {
           return (node as Element).outerHTML;
@@ -71,9 +71,12 @@ export function initHeroAnimations(): void {
       })
       .join('');
     title.innerHTML = newHTML;
-    gsap.set(title, { opacity: 0 }); // re-nascondi dopo innerHTML rewrite (resetta stili inline)
-    tl.to(title, { opacity: 1, duration: 0.01 }, 0.64); // snap visibile prima che le parole scorrano
-    tl.to(title.querySelectorAll('.word'), {
+    // Stato iniziale via gsap.set (non via CSS inline string) — evita errori di parsing
+    const words = title.querySelectorAll<HTMLElement>('.word');
+    gsap.set(title, { opacity: 0 });
+    gsap.set(words, { yPercent: 115 });
+    tl.to(title, { opacity: 1, duration: 0.01 }, 0.64);
+    tl.to(words, {
       yPercent: 0, duration: 0.9, stagger: 0.07, ease: 'power4.out',
     }, 0.65);
   }
@@ -143,7 +146,7 @@ export function initPageHeroAnimations(): void {
         if (node.nodeType === Node.TEXT_NODE) {
           const text = node.textContent ?? '';
           return text.split(/(\s+)/).map(word =>
-            /\s+/.test(word) ? word : `<span style="overflow:hidden;display:inline-block;vertical-align:top"><span style="display:inline-block;transform:translateY(110%)">` + word + `</span></span>`
+            /\s+/.test(word) ? word : `<span style="overflow:hidden;display:inline-block;vertical-align:top"><span style="display:inline-block">` + word + `</span></span>`
           ).join('');
         } else {
           return (node as Element).outerHTML;
@@ -151,9 +154,12 @@ export function initPageHeroAnimations(): void {
       })
       .join('');
     title.innerHTML = newHTML;
-    gsap.set(title, { opacity: 0 }); // re-nascondi dopo innerHTML rewrite (resetta stili inline)
-    tl.to(title, { opacity: 1, duration: 0.01 }, 0.19); // snap visibile prima dello slide
-    tl.to(title.querySelectorAll('span > span'), {
+    // Stato iniziale via gsap.set (non via CSS inline string) — evita errori di parsing
+    const innerSpans = title.querySelectorAll<HTMLElement>('span > span');
+    gsap.set(title, { opacity: 0 });
+    gsap.set(innerSpans, { yPercent: 110 });
+    tl.to(title, { opacity: 1, duration: 0.01 }, 0.19);
+    tl.to(innerSpans, {
       yPercent: 0, duration: 0.8, stagger: 0.06,
     }, 0.2);
   }
