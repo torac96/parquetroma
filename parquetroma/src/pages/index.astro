@@ -545,7 +545,7 @@ const processo = [
   line-height: var(--lh-relaxed);
   max-width: 420px;
 }
-.h-panel__text--dark { color: var(--color-text-secondary); }
+.h-panel__text--dark { color: #6B6560; } /* hardcoded warm gray — var() goes light in dark mode */
 .h-panel__badge {
   display: flex;
   align-items: center;
@@ -590,7 +590,7 @@ const processo = [
   user-select: none;
   pointer-events: none;
 }
-.h-panel__num--light { color: var(--color-border); }
+.h-panel__num--light { color: rgba(30, 26, 21, 0.07); } /* subtle dark watermark on cream, matches dark panel .04 white */
 .h-panel__scroll-hint {
   position: absolute;
   bottom: 3rem;
@@ -718,6 +718,10 @@ const processo = [
   font-weight: 700;
   color: var(--color-on-surface);
   margin-bottom: .5rem;
+}
+.processo__body {
+  min-width: 0;
+  min-height: 0;
 }
 .processo__text {
   font-size: .93rem;
