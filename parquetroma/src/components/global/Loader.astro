@@ -55,9 +55,27 @@
     });
   }
 
-  window.addEventListener('load', hideLoader, { once: true });
+  // Prima visita: mostra loader e aspetta window.load
+  // Navigazioni successive (ViewTransitions): nascondi subito, window.load non si riattiva mai
+  const isFirstVisit = !sessionStorage.getItem('__pr_visited');
+  if (isFirstVisit) {
+    sessionStorage.setItem('__pr_visited', '1');
+    if (document.readyState === 'complete') {
+      // Fallback: load già sparato (es. cache aggressiva)
+      hideLoader();
+    } else {
+      window.addEventListener('load', hideLoader, { once: true });
+    }
+  } else {
+    // ViewTransitions navigation — il loader non serve, nascondilo immediatamente
+    clearInterval(tick);
+    loaderTween.kill();
+    loader.style.display = 'none';
+    loader.style.opacity = '0';
+    document.dispatchEvent(new CustomEvent('loader:complete'));
+  }
 
-  /* Hide loader immediately on View Transitions navigation */
+  /* Nascondi il VECCHIO loader prima dello swap */
   document.addEventListener('astro:before-swap', () => {
     gsap.killTweensOf(loader);
     gsap.killTweensOf(rects);
