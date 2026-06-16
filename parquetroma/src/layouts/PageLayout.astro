@@ -79,6 +79,12 @@ interface Props {
 
     /* Re-init after Astro View Transitions navigation */
     document.addEventListener('astro:after-swap', () => {
+      // Nascondi il nuovo loader apparso nel DOM dopo lo swap
+      const swapLoader = document.getElementById('loader') as HTMLElement | null;
+      if (swapLoader) {
+        swapLoader.style.display = 'none';
+        swapLoader.style.opacity = '0';
+      }
       initHeader();
       initAllAnimations();
       requestAnimationFrame(() => ScrollTrigger.refresh());
