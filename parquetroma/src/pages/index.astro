@@ -260,8 +260,8 @@ const processo = [
         </div>
 
         <!-- Panel 4 -->
-        <div class="h-panel" style="background:#120d04">
-          <div class="h-panel__orb" style="background:radial-gradient(ellipse at 50% 50%,#c4922a,transparent 60%);opacity:.22"></div>
+        <div class="h-panel h-panel--surface">
+          <div class="h-panel__orb" style="background:radial-gradient(ellipse at 50% 50%,#c4922a,transparent 60%);opacity:.12"></div>
           <div class="container h-panel__grid h-panel__grid--rev">
             <div class="h-panel__num" aria-hidden="true">04</div>
             <div class="h-panel__content">
@@ -498,6 +498,13 @@ const processo = [
   overflow: hidden;
   background: var(--color-dark);
 }
+.h-panel--surface { background: var(--color-surface); }
+/* In light mode surface is cream — override text to dark */
+:root:not(.dark) .h-panel--surface .h-panel__num  { color: var(--color-border-ui); }
+:root:not(.dark) .h-panel--surface .h-panel__step { color: var(--color-gold); }
+:root:not(.dark) .h-panel--surface .h-panel__title { color: var(--color-text); }
+:root:not(.dark) .h-panel--surface .h-panel__title em { color: var(--color-gold); }
+:root:not(.dark) .h-panel--surface .h-panel__text { color: var(--color-text-muted); }
 .h-panel__orb {
   position: absolute;
   inset: 0;
