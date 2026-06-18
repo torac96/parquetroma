@@ -72,9 +72,42 @@ const categories = ['Tutti', 'Prezzi & Preventivi', 'Guide & Consigli', 'Manuten
         ))}
       </div>
 
-      <!-- Griglia articoli -->
-      <div class="grid grid--3 stagger-grid">
-        {articles.map(article => (
+      <!-- Articolo in evidenza (più recente) -->
+      {articles[0] && (
+        <article class="reveal-up blog-featured" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:3rem;transition:transform 0.3s var(--ease-out),box-shadow 0.3s var(--ease-out)" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <a href={url(`/blog/${articles[0].slug}/`)} class="blog-featured__img" style="display:block;overflow:hidden;min-height:320px">
+            <img
+              src={articles[0].image}
+              alt={articles[0].title}
+              width="600"
+              height="400"
+              loading="eager"
+              style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s var(--ease-out)"
+            />
+          </a>
+          <div style="padding:2.5rem;display:flex;flex-direction:column;justify-content:center">
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
+              <span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;background:var(--color-gold-pale);color:var(--color-accent);padding:0.25rem 0.75rem;border-radius:99px;font-weight:700">{articles[0].category}</span>
+              <span style="font-size:0.75rem;color:var(--color-text-muted)">{articles[0].readTime} di lettura</span>
+            </div>
+            <h3 style="font-family:var(--font-serif);font-size:1.6rem;margin:0 0 1rem;color:var(--color-on-surface);line-height:1.3">
+              <a href={url(`/blog/${articles[0].slug}/`)} style="color:inherit;text-decoration:none">{articles[0].title}</a>
+            </h3>
+            <p style="font-size:0.95rem;color:var(--color-text-secondary);margin:0 0 2rem;line-height:1.7">{articles[0].excerpt}</p>
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <time datetime={articles[0].date} style="font-size:0.78rem;color:var(--color-text-muted)">{articles[0].dateLabel}</time>
+              <a href={url(`/blog/${articles[0].slug}/`)} class="btn btn--primary" style="font-size:0.85rem">Leggi l'articolo →</a>
+            </div>
+          </div>
+        </article>
+      )}
+
+      <!-- Altri articoli -->
+      {articles.length > 1 && (
+        <p class="section__eyebrow reveal-up" style="margin-bottom:1.5rem">Altri Articoli</p>
+      )}
+      <div class="grid grid--2 stagger-grid">
+        {articles.slice(1).map(article => (
           <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s var(--ease-out),box-shadow 0.3s var(--ease-out)" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
             <a href={url(`/blog/${article.slug}/`)} style="display:block;overflow:hidden;aspect-ratio:3/2">
               <img

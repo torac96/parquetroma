@@ -697,6 +697,8 @@ body::after {
 }
 @media (max-width: 639px) {
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+  .blog-featured { grid-template-columns: 1fr !important; }
+  .blog-featured__img { min-height: 240px !important; }
 }
 
 /* ============================================================
