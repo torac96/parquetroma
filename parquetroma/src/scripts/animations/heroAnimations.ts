@@ -26,7 +26,7 @@ export function initHeroAnimations(): void {
     if (subtitle)       gsap.set(subtitle,  { opacity: 0 });
     if (actions)        gsap.set(actions,   { opacity: 0 });
     if (badges.length)  gsap.set(badges,    { opacity: 0, y: 16 });
-    if (brandLine)      gsap.set(brandLine, { width: 0 });
+    if (brandLine)      gsap.set(brandLine, { scaleX: 0 });
   }
 
   const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
@@ -39,7 +39,7 @@ export function initHeroAnimations(): void {
 
   /* Brand line */
   if (brandLine) {
-    tl.to(brandLine, { width: '52px', duration: 0.55, ease: 'power3.out' }, 0.3);
+    tl.to(brandLine, { scaleX: 1, duration: 0.55, ease: 'power3.out' }, 0.3);
   }
 
   /* Eyebrow — character by character */
@@ -107,14 +107,10 @@ export function initHeroAnimations(): void {
 
   /* Parallax on hero bg on scroll */
   if (bgImg) {
-    ScrollTrigger.create({
-      trigger: hero,
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-      onUpdate(self) {
-        gsap.set(bgImg, { yPercent: self.progress * 25 });
-      },
+    gsap.to(bgImg, {
+      yPercent: 25,
+      ease: 'none',
+      scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
     });
   }
 }

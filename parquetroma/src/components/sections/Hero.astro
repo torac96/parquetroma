@@ -88,7 +88,7 @@ import { url } from '../../utils/url';
   padding-block: clamp(3rem, 8vh, 5rem) clamp(4rem, 9vh, 7rem);
   max-width: 760px;
 }
-.hero__brand-line { width: 0; height: 1.5px; background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light)); margin-bottom: 1.25rem; border-radius: 1px; will-change: width; }
+.hero__brand-line { width: 52px; height: 1.5px; background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light)); margin-bottom: 1.25rem; border-radius: 1px; transform: scaleX(0); transform-origin: left center; will-change: transform; }
 .hero__eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: var(--ls-widest); text-transform: uppercase; color: var(--color-gold-light); margin-bottom: 1.5rem; display: block; opacity: 0; }
 .hero__title { font-family: var(--font-serif); font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 700; color: #fff; line-height: var(--lh-none); margin-bottom: 1.75rem; letter-spacing: var(--ls-tighter); }
 .hero__subtitle { font-size: clamp(1.05rem, 1.8vw, 1.2rem); color: rgba(255,255,255,.8); max-width: 520px; margin-bottom: 2.5rem; line-height: var(--lh-relaxed); opacity: 0; }
