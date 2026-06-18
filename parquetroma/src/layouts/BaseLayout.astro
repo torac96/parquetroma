@@ -3,6 +3,9 @@ import '../styles/global.css';
 import '../styles/animations.css';
 import { SCHEMA_LOCAL_BUSINESS, SITE_CONFIG } from '../data/config';
 import { ClientRouter } from 'astro:transitions';
+import interUrl      from '../fonts/inter-latin.woff2?url';
+import playfairUrl   from '../fonts/playfair-700-latin.woff2?url';
+import playfairIUrl  from '../fonts/playfair-700i-latin.woff2?url';
 
 interface BreadcrumbItem {
   name: string;
@@ -94,10 +97,10 @@ if (schema) {
   <!-- Sitemap -->
   <link rel="sitemap" href="/sitemap-index.xml" />
 
-  <!-- Font preloads (self-hosted, latin subset only) -->
-  <link rel="preload" href="/fonts/inter-latin.woff2"          as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/playfair-700-latin.woff2"   as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/playfair-700i-latin.woff2"  as="font" type="font/woff2" crossorigin />
+  <!-- Font preloads (self-hosted, Vite-hashed URLs) -->
+  <link rel="preload" href={interUrl}     as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={playfairUrl}  as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={playfairIUrl} as="font" type="font/woff2" crossorigin />
 
   <!-- LCP image preload (hero) -->
   {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
