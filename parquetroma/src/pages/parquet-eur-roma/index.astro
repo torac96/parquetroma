@@ -70,8 +70,8 @@ const essenzeProfessionali = [
         {eurProjects.map(p => (
           <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--color-border)">
-              <img src={p.before} alt={`Prima — ${p.title}`} width="450" height="300" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
-              <img src={p.after}  alt={`Dopo — ${p.title}`}  width="450" height="300" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+              <img src={p.before} alt={`Prima — ${p.title}`} width="450" height="300" loading="lazy" decoding="async" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+              <img src={p.after}  alt={`Dopo — ${p.title}`}  width="450" height="300" loading="lazy" decoding="async" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
             </div>
             <div style="padding:1.5rem">
               <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem">
@@ -136,7 +136,7 @@ const essenzeProfessionali = [
             alt="Studio EUR — parquet frassino grigio per interior designer Roma"
             width="900"
             height="675"
-            loading="lazy"
+            loading="lazy" decoding="async"
           />
         </div>
       </div>

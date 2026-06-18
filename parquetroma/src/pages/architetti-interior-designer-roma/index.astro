@@ -87,7 +87,7 @@ const processoB2B = [
             alt="Studio EUR — posa parquet frassino grigio per interior designer Roma"
             width="900"
             height="675"
-            loading="lazy"
+            loading="lazy" decoding="async"
           />
         </div>
       </div>
@@ -147,7 +147,7 @@ const processoB2B = [
       <div class="grid grid--3 stagger-grid">
         {b2bProjects.map(p => (
           <article class="reveal-up" style="background:var(--color-card-bg);border:1px solid var(--color-border-ui);border-radius:12px;overflow:hidden">
-            <img src={p.after} alt={p.title} width="600" height="400" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
+            <img src={p.after} alt={p.title} width="600" height="400" loading="lazy" decoding="async" style="width:100%;aspect-ratio:3/2;object-fit:cover" />
             <div style="padding:1.5rem">
               <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-accent);font-weight:600;margin-bottom:0.5rem">{p.category} · {p.size}</p>
               <h3 style="font-family:var(--font-serif);font-size:1.15rem;margin:0 0 0.5rem;color:var(--color-on-surface)">{p.title}</h3>

@@ -14,7 +14,7 @@ const { material } = Astro.props;
       alt={`Parquet ${material.name} — ${material.latin}`}
       width="600"
       height="900"
-      loading="lazy"
+      loading="lazy" decoding="async"
     />
     <div class="wood-card__overlay" aria-hidden="true"></div>
   </div>
