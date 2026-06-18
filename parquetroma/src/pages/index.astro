@@ -331,12 +331,10 @@ const processo = [
       <div class="processo__grid stagger-grid" role="list">
         {processo.map((step) => (
           <div class="processo__card" role="listitem">
-            <div class="processo__card-top">
-              <span class="processo__num" aria-hidden="true">{step.n}</span>
-              <div class="processo__icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" set:html={step.icon} />
-              </div>
+            <div class="processo__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" set:html={step.icon} />
             </div>
+            <span class="processo__num" aria-hidden="true">Fase {step.n}</span>
             <h3 class="processo__title">{step.title}</h3>
             <p class="processo__text">{step.text}</p>
           </div>
@@ -658,22 +656,8 @@ const processo = [
   border-color: rgba(196,146,42,.4);
   box-shadow: 0 4px 24px rgba(196,146,42,.08);
 }
-.processo__card-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-}
-.processo__num {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--color-gold);
-  opacity: .55;
-  letter-spacing: -.02em;
-}
 .processo__icon {
+  margin-bottom: 1.25rem;
   width: 2.75rem;
   height: 2.75rem;
   background: var(--color-gold-pale);
@@ -685,6 +669,16 @@ const processo = [
   flex-shrink: 0;
 }
 .dark .processo__icon { background: rgba(196,146,42,.12); }
+.processo__num {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: .5rem;
+}
 .processo__title {
   font-family: var(--font-serif);
   font-size: 1.1rem;
