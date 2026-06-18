@@ -278,6 +278,7 @@ body::after {
   .reveal-up, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; }
   .stagger-grid > * { opacity: 1 !important; transform: none !important; }
   .mat-reveal { transform: none !important; opacity: 1 !important; }
+  .processo__item { opacity: 1 !important; transform: none !important; }
 }
 
 /* ============================================================

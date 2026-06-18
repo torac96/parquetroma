@@ -333,7 +333,7 @@ const processo = [
           <div class="processo__line-bar"></div>
         </div>
         {processo.map((step) => (
-          <div class="processo__item reveal-up" role="listitem">
+          <div class="processo__item" role="listitem">
             <div class="processo__dot" aria-hidden="true"></div>
             <div class="processo__icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" set:html={step.icon} />
@@ -674,6 +674,8 @@ const processo = [
   padding: 2rem 0;
   border-bottom: 1px solid var(--color-border-ui);
   position: relative;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .processo__item:last-child { border-bottom: none; }
 .processo__dot { display: none; }
