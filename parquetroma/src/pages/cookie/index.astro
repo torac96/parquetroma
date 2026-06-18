@@ -1,0 +1,177 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+---
+<PageLayout
+    title="Cookie Policy | ParquetRoma"
+    description="Cookie Policy di ParquetRoma. Informazioni sui cookie utilizzati dal sito in conformità alla normativa europea."
+    noindex={true}
+>
+    <PageHero
+        eyebrow="Informativa Legale"
+        title="Cookie<br><em>Policy</em>"
+        subtitle="Informazioni sui cookie utilizzati dal sito"
+        breadcrumbs={[{ name: 'Cookie Policy', href: '' }]}
+    />
+
+    <section class="section">
+        <div class="container" style="max-width:800px">
+            <div class="legal-content">
+
+                <p class="legal-content__updated">Ultimo aggiornamento: giugno 2026</p>
+
+                <h2>Cosa sono i Cookie</h2>
+                <p>
+                    I cookie sono piccoli file di testo che i siti web memorizzano nel browser dell'utente
+                    durante la navigazione. Vengono utilizzati per far funzionare correttamente il sito,
+                    ricordare le preferenze dell'utente, o raccogliere informazioni statistiche anonime.
+                </p>
+
+                <h2>Cookie Utilizzati da Questo Sito</h2>
+                <p>Il sito ParquetRoma è un sito statico che utilizza esclusivamente:</p>
+
+                <h3>Cookie Tecnici (necessari)</h3>
+                <p>
+                    Sono cookie strettamente necessari al funzionamento del sito. Non richiedono il consenso
+                    dell'utente in quanto essenziali per la navigazione.
+                </p>
+                <table class="legal-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Durata</th>
+                            <th>Scopo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>theme</code></td>
+                            <td>localStorage</td>
+                            <td>Persistente</td>
+                            <td>Salva la preferenza tema chiaro/scuro</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    <em>Nota: il sito utilizza <code>localStorage</code> (non cookie HTTP) per la
+                    preferenza di tema. I dati rimangono nel browser locale e non vengono trasmessi
+                    a nessun server.</em>
+                </p>
+
+                <h3>Cookie di Terze Parti</h3>
+                <p>
+                    Al momento il sito <strong>non utilizza</strong> cookie di terze parti per finalità
+                    di analisi o profilazione (nessun Google Analytics, Facebook Pixel o strumenti simili).
+                </p>
+                <p>
+                    Il sito potrebbe incorporare risorse esterne (es. font, librerie CDN) che potrebbero
+                    impostare cookie tecnici propri. In tal caso, tali cookie sono regolati dalle rispettive
+                    privacy policy dei provider.
+                </p>
+
+                <h2>Come Gestire i Cookie</h2>
+                <p>
+                    Puoi controllare e cancellare i cookie attraverso le impostazioni del tuo browser.
+                    Di seguito i link alle istruzioni per i browser più comuni:
+                </p>
+                <ul>
+                    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+                    <li><a href="https://support.mozilla.org/it/kb/Attivare%20e%20disattivare%20i%20cookie" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+                    <li><a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Apple Safari</a></li>
+                    <li><a href="https://support.microsoft.com/it-it/windows/eliminare-e-gestire-i-cookie-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+                </ul>
+                <p>
+                    Tieni presente che la disabilitazione dei cookie tecnici potrebbe compromettere
+                    il corretto funzionamento di alcune funzionalità del sito.
+                </p>
+
+                <h2>Modifiche alla Presente Informativa</h2>
+                <p>
+                    ParquetRoma si riserva il diritto di modificare questa cookie policy in qualsiasi
+                    momento. Le modifiche saranno pubblicate su questa pagina con aggiornamento della
+                    data in cima al documento.
+                </p>
+
+                <h2>Contatti</h2>
+                <p>
+                    Per qualsiasi domanda relativa ai cookie o alla nostra <a href="/privacy/">Privacy Policy</a>,
+                    scrivi a <a href="mailto:info@parquetroma.it">info@parquetroma.it</a>.
+                </p>
+
+            </div>
+        </div>
+    </section>
+</PageLayout>
+
+<style>
+.legal-content {
+    padding-block: 1rem 4rem;
+}
+.legal-content__updated {
+    color: var(--color-text-muted, #888);
+    font-size: 0.875rem;
+    margin-bottom: 2.5rem;
+}
+.legal-content h2 {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-family: var(--font-heading);
+    color: var(--color-gold, #C4922A);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--color-border, #e0ddd8);
+}
+.legal-content h3 {
+    font-size: 1rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.legal-content p,
+.legal-content li {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-text, #2a2420);
+}
+.legal-content ul {
+    padding-left: 1.5rem;
+    margin-block: 0.5rem 1rem;
+}
+.legal-content li {
+    margin-bottom: 0.35rem;
+}
+.legal-content a {
+    color: var(--color-gold, #C4922A);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.legal-content a:hover {
+    opacity: 0.8;
+}
+.legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: 1rem 1.5rem;
+    font-size: 0.9rem;
+}
+.legal-table th,
+.legal-table td {
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--color-border, #e0ddd8);
+}
+.legal-table th {
+    background: var(--color-surface-alt, #f5f3ef);
+    font-weight: 600;
+    color: var(--color-text, #2a2420);
+}
+.legal-content code {
+    font-family: monospace;
+    font-size: 0.875em;
+    background: var(--color-surface-alt, #f5f3ef);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+}
+</style>

@@ -1,0 +1,150 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+---
+<PageLayout
+    title="Privacy Policy | ParquetRoma"
+    description="Informativa sulla privacy di ParquetRoma. Scopri come trattiamo i tuoi dati personali in conformità al GDPR."
+    noindex={true}
+>
+    <PageHero
+        eyebrow="Informativa Legale"
+        title="Privacy<br><em>Policy</em>"
+        subtitle="Come proteggiamo i tuoi dati personali"
+        breadcrumbs={[{ name: 'Privacy Policy', href: '' }]}
+    />
+
+    <section class="section">
+        <div class="container" style="max-width:800px">
+            <div class="legal-content">
+
+                <p class="legal-content__updated">Ultimo aggiornamento: giugno 2026</p>
+
+                <h2>1. Titolare del Trattamento</h2>
+                <p>
+                    Il Titolare del Trattamento dei dati personali è <strong>ParquetRoma</strong>,
+                    con sede a Roma (RM), Italia.<br>
+                    Email: <a href="mailto:info@parquetroma.it">info@parquetroma.it</a>
+                </p>
+
+                <h2>2. Dati Raccolti</h2>
+                <p>Attraverso il modulo di contatto, raccogliamo i seguenti dati personali:</p>
+                <ul>
+                    <li>Nome e cognome</li>
+                    <li>Indirizzo email</li>
+                    <li>Numero di telefono</li>
+                    <li>Messaggio libero (che può contenere ulteriori informazioni personali)</li>
+                </ul>
+                <p>
+                    Il sito non raccoglie dati tramite cookie di profilazione né utilizza sistemi
+                    di tracciamento comportamentale. Per i dettagli sui cookie tecnici utilizzati,
+                    consulta la nostra <a href="/cookie/">Cookie Policy</a>.
+                </p>
+
+                <h2>3. Finalità del Trattamento</h2>
+                <p>I dati raccolti sono trattati esclusivamente per:</p>
+                <ul>
+                    <li>Rispondere alle richieste di informazioni e preventivi inviati tramite il modulo di contatto</li>
+                    <li>Gestire il rapporto precontrattuale e contrattuale con il cliente</li>
+                </ul>
+                <p>I tuoi dati <strong>non vengono</strong> utilizzati per finalità di marketing, profilazione o venduti a terze parti.</p>
+
+                <h2>4. Base Giuridica</h2>
+                <p>
+                    Il trattamento è fondato sul <strong>consenso dell'interessato</strong> (Art. 6, par. 1, lett. a del GDPR),
+                    espresso al momento dell'invio del modulo di contatto, e sull'esecuzione di misure
+                    precontrattuali adottate su richiesta dell'interessato (Art. 6, par. 1, lett. b del GDPR).
+                </p>
+
+                <h2>5. Conservazione dei Dati</h2>
+                <p>
+                    I dati personali sono conservati per il tempo strettamente necessario a gestire la richiesta
+                    e, in caso di instaurazione di un rapporto contrattuale, per il periodo previsto dalla
+                    normativa civilistica e fiscale applicabile (fino a 10 anni dalla conclusione del contratto).
+                    In assenza di contratto, i dati vengono cancellati entro 12 mesi dall'ultimo contatto.
+                </p>
+
+                <h2>6. Comunicazione a Terzi</h2>
+                <p>
+                    I dati personali non sono ceduti a terzi per finalità proprie. Possono essere comunicati
+                    esclusivamente a fornitori di servizi tecnici (es. hosting del sito) che agiscono in qualità
+                    di Responsabili del Trattamento ai sensi dell'Art. 28 GDPR, vincolati da appositi accordi
+                    di riservatezza.
+                </p>
+
+                <h2>7. Trasferimento a Paesi Terzi</h2>
+                <p>
+                    I dati non vengono trasferiti a paesi al di fuori dello Spazio Economico Europeo (SEE),
+                    salvo che per l'utilizzo di servizi di hosting i cui server si trovino nell'UE o in paesi
+                    con decisione di adeguatezza della Commissione Europea.
+                </p>
+
+                <h2>8. Diritti dell'Interessato</h2>
+                <p>Ai sensi degli articoli 15–22 del GDPR, hai il diritto di:</p>
+                <ul>
+                    <li><strong>Accesso</strong>: ottenere conferma del trattamento e una copia dei tuoi dati</li>
+                    <li><strong>Rettifica</strong>: correggere dati inesatti o incompleti</li>
+                    <li><strong>Cancellazione</strong>: richiedere la cancellazione dei tuoi dati ("diritto all'oblio")</li>
+                    <li><strong>Limitazione</strong>: richiedere la limitazione del trattamento in determinati casi</li>
+                    <li><strong>Portabilità</strong>: ricevere i tuoi dati in formato strutturato e leggibile da macchina</li>
+                    <li><strong>Opposizione</strong>: opporti al trattamento in qualsiasi momento</li>
+                    <li><strong>Revoca del consenso</strong>: revocare il consenso senza pregiudicare la liceità del trattamento precedente</li>
+                </ul>
+                <p>
+                    Per esercitare i tuoi diritti, scrivi a <a href="mailto:info@parquetroma.it">info@parquetroma.it</a>.
+                    Hai inoltre il diritto di proporre reclamo all'Autorità Garante per la Protezione dei Dati Personali
+                    (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a>).
+                </p>
+
+                <h2>9. Modifiche alla Presente Informativa</h2>
+                <p>
+                    ParquetRoma si riserva il diritto di modificare questa informativa in qualsiasi momento.
+                    Le modifiche saranno pubblicate su questa pagina con aggiornamento della data in cima al documento.
+                    Ti invitiamo a consultarla periodicamente.
+                </p>
+
+            </div>
+        </div>
+    </section>
+</PageLayout>
+
+<style>
+.legal-content {
+    padding-block: 1rem 4rem;
+}
+.legal-content__updated {
+    color: var(--color-text-muted, #888);
+    font-size: 0.875rem;
+    margin-bottom: 2.5rem;
+}
+.legal-content h2 {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-family: var(--font-heading);
+    color: var(--color-gold, #C4922A);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--color-border, #e0ddd8);
+}
+.legal-content p,
+.legal-content li {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-text, #2a2420);
+}
+.legal-content ul {
+    padding-left: 1.5rem;
+    margin-block: 0.5rem 1rem;
+}
+.legal-content li {
+    margin-bottom: 0.35rem;
+}
+.legal-content a {
+    color: var(--color-gold, #C4922A);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.legal-content a:hover {
+    opacity: 0.8;
+}
+</style>
