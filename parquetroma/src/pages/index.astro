@@ -690,6 +690,7 @@ const processo = [
 }
 .dark .processo__dot { border-color: var(--color-surface); }
 .processo__icon {
+  grid-column: 2;
   width: 48px;
   height: 48px;
   background: var(--color-gold-pale);
@@ -699,7 +700,7 @@ const processo = [
   justify-content: center;
   color: var(--color-gold);
   flex-shrink: 0;
-  margin-left: 2rem;
+  margin-left: .5rem;
 }
 .dark .processo__icon { background: rgba(196,146,42,.12); }
 .processo__num {
@@ -720,6 +721,7 @@ const processo = [
   margin-bottom: .5rem;
 }
 .processo__body {
+  grid-column: 3;
   min-width: 0;
   min-height: 0;
 }
@@ -797,6 +799,6 @@ const processo = [
 
   .processo__list { max-width: 100%; }
   .processo__item { grid-template-columns: 2rem 2.5rem 1fr; gap: 1rem; }
-  .processo__icon { margin-left: .75rem; }
+  .processo__icon { margin-left: 0; }
 }
 </style>
