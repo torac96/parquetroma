@@ -331,10 +331,7 @@ const processo = [
       <div class="processo__grid stagger-grid" role="list">
         {processo.map((step) => (
           <div class="processo__card" role="listitem">
-            <div class="processo__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={step.icon} />
-            </div>
-            <span class="processo__num" aria-hidden="true">Fase {step.n}</span>
+            <span class="processo__num" aria-hidden="true">{step.n}</span>
             <h3 class="processo__title">{step.title}</h3>
             <p class="processo__text">{step.text}</p>
           </div>
@@ -656,33 +653,14 @@ const processo = [
   border-color: rgba(196,146,42,.4);
   box-shadow: 0 4px 24px rgba(196,146,42,.08);
 }
-.processo__icon {
-  margin-bottom: 1.25rem;
-  width: 3rem;
-  height: 3rem;
-  background: #F5EDD8;
-  border: 1.5px solid rgba(196,146,42,.35);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #9E7420;
-  flex-shrink: 0;
-}
-.dark .processo__icon {
-  background: #2A2218;
-  border-color: rgba(196,146,42,.4);
-  color: #D4A843;
-}
 .processo__num {
   display: block;
-  font-family: var(--font-sans);
-  font-size: .68rem;
-  font-weight: 600;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
   color: var(--color-gold);
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
 }
 .processo__title {
   font-family: var(--font-serif);
