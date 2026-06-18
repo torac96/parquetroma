@@ -905,7 +905,7 @@ details[open] > .faq-question::after { transform: rotate(45deg); }
   #hscroll { height: auto !important; }
   .hscroll-sticky { position: static !important; height: auto !important; overflow: visible !important; }
   .hscroll-track  { display: block !important; width: 100% !important; transform: none !important; }
-  .h-panel { width: 100vw !important; height: auto !important; min-height: 100svh; padding: 4rem 0; }
+  .h-panel { width: 100vw !important; height: auto !important; min-height: auto; padding: 5rem 0; }
   .h-panel__grid { grid-template-columns: 1fr !important; gap: 2rem !important; direction: ltr !important; }
 }
 

@@ -744,6 +744,57 @@ const processo = [
   .portfolio-preview__grid { grid-template-columns: 1fr; }
   .h-panel__grid { grid-template-columns: 1fr; }
   .h-panel__num { display: none; }
+  .h-panel__scroll-hint { display: none; }
+
+  /* Step pill */
+  .h-panel__step {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(196,146,42,.15);
+    border: 1px solid rgba(196,146,42,.3);
+    border-radius: 100px;
+    padding: .28rem .9rem;
+    margin-bottom: 1.25rem;
+    font-size: .7rem;
+    letter-spacing: .14em;
+  }
+
+  /* Progress bar — fills 25% per step */
+  .h-panel__content::before {
+    content: '';
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+  .hscroll-track > .h-panel:nth-child(1) .h-panel__content::before {
+    background: linear-gradient(to right, var(--color-gold) 25%, rgba(255,255,255,.1) 25%);
+  }
+  .hscroll-track > .h-panel:nth-child(2) .h-panel__content::before {
+    background: linear-gradient(to right, var(--color-gold) 50%, rgba(255,255,255,.1) 50%);
+  }
+  .hscroll-track > .h-panel:nth-child(3) .h-panel__content::before {
+    background: linear-gradient(to right, var(--color-gold) 75%, rgba(255,255,255,.1) 75%);
+  }
+  .hscroll-track > .h-panel:nth-child(4) .h-panel__content::before {
+    background: var(--color-gold);
+  }
+  /* Panel 4 in light mode: cream bg → dark track */
+  :root:not(.dark) .h-panel--surface .h-panel__content::before {
+    background: linear-gradient(to right, var(--color-gold) 100%, rgba(0,0,0,.08) 100%);
+  }
+
+  /* Title scale */
+  .h-panel__title { font-size: clamp(2.1rem, 8.5vw, 2.75rem); margin-bottom: 1rem; }
+
+  /* Body text */
+  .h-panel__text { font-size: .97rem; }
+
+  /* Panel dividers */
+  .h-panel + .h-panel { border-top: 1px solid rgba(255,255,255,.07); }
+  :root:not(.dark) .h-panel--surface + .h-panel,
+  .h-panel + .h-panel--surface { border-color: rgba(0,0,0,.07); }
+
   .processo__list { max-width: 100%; }
   .processo__item { grid-template-columns: 2rem 2.5rem 1fr; gap: 1rem; }
   .processo__icon { margin-left: .75rem; }
