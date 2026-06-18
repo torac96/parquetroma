@@ -58,10 +58,10 @@
 
 | # | Task | File/Scope | Priorità | Stato |
 |---|------|-----------|----------|-------|
-| S1 | Aggiungere `llms.txt` + `robots.txt` corretto in `public/` | `public/` | 🟡 | Da fare |
-| S2 | Verificare BreadcrumbList schema su tutte le pagine nuove | `BaseLayout.astro` | 🟡 | Da fare |
+| S1 | Aggiungere `llms.txt` + `robots.txt` corretto in `public/` | `public/` | 🟡 | 🟢 DONE — `llms.txt` arricchito con lista pagine; `robots.txt` corretto già presente |
+| S2 | Verificare BreadcrumbList schema su tutte le pagine nuove | `BaseLayout.astro` | 🟡 | 🟢 DONE — tutte le pagine (tranne homepage) passano `breadcrumbs` prop; infrastruttura schema BreadcrumbList verificata |
 | S3 | Aggiungere `og:image` reale (non picsum) su ogni pagina | `BaseLayout.astro`, dati pagine | 🟡 | Da fare |
-| S4 | Audit `<h1>` unico per pagina — verificare doppione in PageHero + SEO title | Tutte le nuove pagine | 🟡 | Da fare |
+| S4 | Audit `<h1>` unico per pagina — verificare doppione in PageHero + SEO title | Tutte le nuove pagine | 🟡 | 🟢 DONE — ogni pagina ha esattamente 1 `<h1>` (PageHero / Hero / hero custom contatti / inline blog) |
 
 ---
 
