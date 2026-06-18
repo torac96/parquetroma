@@ -546,6 +546,259 @@ body::after {
 .processo__cta { text-align: center; margin-top: 3.5rem; }
 
 /* ============================================================
+   PROCESSO LIST — numbered steps used on inner/SEO pages
+   ============================================================ */
+.processo__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+.processo__item {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.processo__item:last-child { border-bottom: none; }
+.processo__num {
+  font-family: var(--font-serif);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #fff;
+  background: var(--color-gold);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+.processo__content { padding-top: .35rem; flex: 1; }
+.processo__title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: .35rem;
+}
+.processo__text {
+  color: var(--color-text-secondary);
+  font-size: .95rem;
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+
+/* ============================================================
+   FAQ ACCORDION — native <details> accordion
+   ============================================================ */
+.faq-accordion {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.faq-item { border-bottom: 1px solid var(--color-border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background .2s;
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::after {
+  content: '+';
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--color-gold);
+  flex-shrink: 0;
+  transition: transform .3s var(--ease-out);
+  line-height: 1;
+}
+details[open] > .faq-question::after { transform: rotate(45deg); }
+.faq-question:hover { background: var(--color-surface-raised); }
+.faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  color: var(--color-text-secondary);
+  font-size: .95rem;
+  line-height: var(--lh-relaxed);
+}
+.faq-answer p { margin: 0; }
+
+/* ============================================================
+   FEATURE CARD
+   ============================================================ */
+.feature-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+}
+.feature-card__icon { margin-bottom: 1rem; line-height: 1; }
+.feature-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: .5rem;
+}
+.feature-card__text {
+  font-size: .9rem;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+
+/* ============================================================
+   SERVICE DETAIL — image + content split
+   ============================================================ */
+.service-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.service-detail--reverse { direction: rtl; }
+.service-detail--reverse > * { direction: ltr; }
+.service-detail__image img { width: 100%; border-radius: var(--radius-xl); display: block; }
+.service-detail__eyebrow {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: .85rem;
+}
+.service-detail__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tighter);
+  margin-bottom: 1rem;
+}
+.service-detail__title em { font-style: italic; color: var(--color-gold); }
+.service-detail__desc {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: var(--lh-relaxed);
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 900px) {
+  .service-detail { grid-template-columns: 1fr; gap: 2.5rem; }
+  .service-detail--reverse { direction: ltr; }
+}
+
+/* ============================================================
+   FEATURES LIST — checkmark list
+   ============================================================ */
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+.features-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--color-text-secondary);
+  font-size: .95rem;
+  line-height: var(--lh-relaxed);
+}
+.features-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: .1em;
+  color: var(--color-gold);
+  font-weight: 700;
+  font-size: .8rem;
+}
+
+/* ============================================================
+   CONTACT GRID & INNER PAGE FORM
+   ============================================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
+}
+.contact-info__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tighter);
+  margin-bottom: 1rem;
+}
+.contact-info__title em { font-style: italic; color: var(--color-gold); }
+.contact-info__intro {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: var(--lh-relaxed);
+  margin-bottom: 1.5rem;
+}
+.contact-details { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+.contact-details__item { display: flex; align-items: center; gap: .75rem; color: var(--color-text-secondary); }
+.contact-details__item svg { color: var(--color-gold); flex-shrink: 0; }
+.contact-details__link { color: var(--color-on-surface); font-weight: 600; text-decoration: none; transition: color .2s; }
+.contact-details__link:hover { color: var(--color-gold); }
+.contact-form {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-ui);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.form-row { display: flex; flex-direction: column; gap: .4rem; }
+.form-label { font-size: .85rem; font-weight: 600; color: var(--color-on-surface); }
+.form-input {
+  padding: .75rem 1rem;
+  border: 1.5px solid var(--color-border-ui);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: .95rem;
+  width: 100%;
+  min-height: 44px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(196,146,42,.12);
+}
+.form-input::placeholder { color: var(--color-text-muted); }
+.form-textarea { resize: vertical; min-height: 120px; }
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* ============================================================
    MATERIALS SHOWCASE
    ============================================================ */
 .materials__grid {

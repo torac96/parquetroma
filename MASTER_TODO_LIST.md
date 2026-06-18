@@ -49,8 +49,8 @@
 | # | Task | File/Scope | Priorità | Stato |
 |---|------|-----------|----------|-------|
 | U4 | Fix spaziature eccessive sezioni pagine quartieri (Parioli, Trastevere, EUR) | `global.css` `.section` padding | 🟠 | 🟢 DONE |
-| U5 | Fix layout grezzo pagine SEO (levigatura, restauro, architetti, essenze) | `levigatura-*`, `restauro-*`, `architetti-*`, `parquet-noce-*`, ecc. | 🟠 | Da fare |
-| U6 | Design system check: headings H1/H2/H3 consistenti con stile principale | Tutte le pagine nuove | 🟡 | Da fare |
+| U5 | Fix layout grezzo pagine SEO (levigatura, restauro, architetti, essenze) | `global.css` — aggiunto `.feature-card`, `.service-detail`, `.features-list`, `.faq-accordion`, `.processo__list`, contact form | 🟠 | 🟢 DONE |
+| U6 | Design system check: headings H1/H2/H3 consistenti con stile principale | Tutte le pagine nuove | 🟡 | 🟢 DONE — H1 solo da PageHero, H2 via `.section__title`/`.service-detail__title`, H3 su card |
 
 ---
 
