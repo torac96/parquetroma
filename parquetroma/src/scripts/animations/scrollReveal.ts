@@ -47,29 +47,6 @@ export function initScrollReveals(): void {
     });
   });
 
-  /* processo line draw */
-  const lineBar = document.querySelector<HTMLElement>('.processo__line-bar');
-  if (lineBar) {
-    gsap.to(lineBar, {
-      scaleY: 1, duration: 1, ease: 'none',
-      scrollTrigger: {
-        trigger: lineBar.closest('.processo__list') ?? lineBar,
-        start: 'top 75%',
-        end: 'bottom 60%',
-        scrub: 1,
-      },
-    });
-  }
-
-  /* processo steps stagger */
-  gsap.utils.toArray<HTMLElement>('.processo__item').forEach((step, i) => {
-    gsap.from(step, {
-      opacity: 0, y: 30, duration: 0.7, ease: 'power3.out',
-      scrollTrigger: { trigger: step, start: 'top 87%', once: true },
-      delay: i * 0.1,
-    });
-  });
-
   /* timeline items (chi-siamo) */
   gsap.utils.toArray<HTMLElement>('.timeline__item').forEach((item, i) => {
     gsap.from(item, {

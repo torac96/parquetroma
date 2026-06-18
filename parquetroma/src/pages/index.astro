@@ -328,21 +328,17 @@ const processo = [
         title="Il Nostro <em>Processo</em>"
         subtitle="Quattro fasi, zero stress. Dalla prima chiamata al pavimento finito."
       />
-      <div class="processo__list" role="list">
-        <div class="processo__line" aria-hidden="true">
-          <div class="processo__line-bar"></div>
-        </div>
+      <div class="processo__grid stagger-grid" role="list">
         {processo.map((step) => (
-          <div class="processo__item" role="listitem">
-            <div class="processo__dot" aria-hidden="true"></div>
-            <div class="processo__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" set:html={step.icon} />
+          <div class="processo__card" role="listitem">
+            <div class="processo__card-top">
+              <span class="processo__num" aria-hidden="true">{step.n}</span>
+              <div class="processo__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" set:html={step.icon} />
+              </div>
             </div>
-            <div class="processo__body">
-              <span class="processo__num">{step.n}</span>
-              <h3 class="processo__title">{step.title}</h3>
-              <p class="processo__text">{step.text}</p>
-            </div>
+            <h3 class="processo__title">{step.title}</h3>
+            <p class="processo__text">{step.text}</p>
           </div>
         ))}
       </div>
@@ -644,82 +640,60 @@ const processo = [
 .section-num--left  { left: -2rem; }
 
 /* ── Processo ───────────────────────────────────────────── */
-.processo__list {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  max-width: 680px;
-  margin: 0 auto;
-}
-.processo__line {
-  position: absolute;
-  left: 1.5rem; /* centro della colonna icona (3rem / 2) */
-  top: 4.5rem;
-  bottom: 4.5rem;
-  width: 2px;
-  background: var(--color-border-ui);
-  overflow: hidden;
-}
-.processo__line-bar {
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(180deg, var(--color-gold), var(--color-gold-dark));
-  border-radius: 1px;
-}
-.processo__item {
+.processo__grid {
   display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 1.75rem;
-  align-items: flex-start;
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--color-border-ui);
-  position: relative;
-  opacity: 0;
-  transform: translateY(30px);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
 }
-.processo__item:last-child { border-bottom: none; }
-.processo__dot { display: none; }
+.processo__card {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border-ui);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  position: relative;
+  transition: border-color .2s, box-shadow .2s;
+}
+.processo__card:hover {
+  border-color: rgba(196,146,42,.4);
+  box-shadow: 0 4px 24px rgba(196,146,42,.08);
+}
+.processo__card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.processo__num {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-gold);
+  opacity: .3;
+}
 .processo__icon {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
   background: var(--color-gold-pale);
-  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-gold);
   flex-shrink: 0;
-  position: relative;
-  z-index: 1;
 }
-.dark .processo__icon {
-  background: rgba(196,146,42,.12);
-  border-color: rgba(196,146,42,.5);
-}
-.processo__num {
-  font-family: var(--font-serif);
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: var(--ls-widest);
-  text-transform: uppercase;
-  color: var(--color-gold);
-  display: block;
-  margin-bottom: .4rem;
-}
+.dark .processo__icon { background: rgba(196,146,42,.12); }
 .processo__title {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-on-surface);
-  margin-bottom: .4rem;
-}
-.processo__body {
-  min-width: 0;
-  padding-top: .35rem;
+  margin-bottom: .5rem;
+  line-height: 1.3;
 }
 .processo__text {
-  font-size: .93rem;
+  font-size: .88rem;
   color: var(--color-text-secondary);
   line-height: var(--lh-relaxed);
 }
@@ -790,9 +764,9 @@ const processo = [
   :root:not(.dark) .h-panel--surface + .h-panel,
   .h-panel + .h-panel--surface { border-color: rgba(0,0,0,.07); }
 
-  .processo__list { max-width: 100%; }
-  .processo__item { grid-template-columns: 2.5rem 1fr; gap: 1.25rem; }
-  .processo__icon { width: 2.5rem; height: 2.5rem; }
-  .processo__line { left: 1.25rem; }
+  .processo__grid { grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+}
+@media (max-width: 480px) {
+  .processo__grid { grid-template-columns: 1fr; }
 }
 </style>
