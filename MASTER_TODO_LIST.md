@@ -38,9 +38,9 @@
 
 | # | Task | File/Scope | Priorità | Stato |
 |---|------|-----------|----------|-------|
-| U1 | Fix contrasto chip categoria Blog (testo quasi invisibile) | `blog/index.astro` | 🟠 | Da fare |
-| U2 | Fix altezza card articolo Blog (occupa più di 1 viewport) | `blog/index.astro` | 🟠 | Da fare |
-| U3 | Aggiungere sezione "Articoli Recenti" in sidebar/featured | `blog/index.astro` | 🟡 | Da fare |
+| U1 | Fix contrasto chip categoria Blog (testo quasi invisibile) | `tokens.css`, `global.css` | 🟠 | 🟢 DONE — commit adfaa3c |
+| U2 | Fix altezza card articolo Blog (occupa più di 1 viewport) | `global.css` (utility .grid--N) | 🟠 | 🟢 DONE — commit adfaa3c |
+| U3 | Aggiungere sezione "Articoli Recenti" in sidebar/featured | `blog/index.astro` | 🟡 | 🟢 DONE — commit cea18de |
 
 ---
 
@@ -48,7 +48,7 @@
 
 | # | Task | File/Scope | Priorità | Stato |
 |---|------|-----------|----------|-------|
-| U4 | Fix spaziature eccessive sezioni pagine quartieri (Parioli, Trastevere, EUR) | `parquet-*-roma/index.astro` | 🟠 | Da fare |
+| U4 | Fix spaziature eccessive sezioni pagine quartieri (Parioli, Trastevere, EUR) | `global.css` `.section` padding | 🟠 | 🟢 DONE |
 | U5 | Fix layout grezzo pagine SEO (levigatura, restauro, architetti, essenze) | `levigatura-*`, `restauro-*`, `architetti-*`, `parquet-noce-*`, ecc. | 🟠 | Da fare |
 | U6 | Design system check: headings H1/H2/H3 consistenti con stile principale | Tutte le pagine nuove | 🟡 | Da fare |
 
