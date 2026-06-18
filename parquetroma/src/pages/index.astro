@@ -648,15 +648,14 @@ const processo = [
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  max-width: 740px;
+  max-width: 680px;
   margin: 0 auto;
 }
 .processo__line {
   position: absolute;
-  left: 1.75rem;
-  top: 2.5rem;
-  bottom: 2.5rem;
+  left: 1.5rem; /* centro della colonna icona (3rem / 2) */
+  top: 4.5rem;
+  bottom: 4.5rem;
   width: 2px;
   background: var(--color-border-ui);
   overflow: hidden;
@@ -669,40 +668,33 @@ const processo = [
 }
 .processo__item {
   display: grid;
-  grid-template-columns: 3.5rem 3rem 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.75rem;
   align-items: flex-start;
   padding: 2rem 0;
   border-bottom: 1px solid var(--color-border-ui);
   position: relative;
 }
 .processo__item:last-child { border-bottom: none; }
-.processo__dot {
-  position: absolute;
-  left: 1.25rem;
-  top: 2.4rem;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-gold);
-  border: 3px solid var(--color-surface);
-  z-index: 1;
-}
-.dark .processo__dot { border-color: var(--color-surface); }
+.processo__dot { display: none; }
 .processo__icon {
-  grid-column: 2;
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
   background: var(--color-gold-pale);
-  border-radius: var(--radius-md);
+  border: 2px solid var(--color-gold);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-gold);
   flex-shrink: 0;
-  margin-left: .5rem;
+  position: relative;
+  z-index: 1;
 }
-.dark .processo__icon { background: rgba(196,146,42,.12); }
+.dark .processo__icon {
+  background: rgba(196,146,42,.12);
+  border-color: rgba(196,146,42,.5);
+}
 .processo__num {
   font-family: var(--font-serif);
   font-size: .72rem;
@@ -711,19 +703,18 @@ const processo = [
   text-transform: uppercase;
   color: var(--color-gold);
   display: block;
-  margin-bottom: .5rem;
+  margin-bottom: .4rem;
 }
 .processo__title {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-on-surface);
-  margin-bottom: .5rem;
+  margin-bottom: .4rem;
 }
 .processo__body {
-  grid-column: 3;
   min-width: 0;
-  min-height: 0;
+  padding-top: .35rem;
 }
 .processo__text {
   font-size: .93rem;
@@ -798,7 +789,8 @@ const processo = [
   .h-panel + .h-panel--surface { border-color: rgba(0,0,0,.07); }
 
   .processo__list { max-width: 100%; }
-  .processo__item { grid-template-columns: 2rem 2.5rem 1fr; gap: 1rem; }
-  .processo__icon { margin-left: 0; }
+  .processo__item { grid-template-columns: 2.5rem 1fr; gap: 1.25rem; }
+  .processo__icon { width: 2.5rem; height: 2.5rem; }
+  .processo__line { left: 1.25rem; }
 }
 </style>
