@@ -38,6 +38,7 @@
   --color-header-scrolled: rgba(250,248,244,0.98);
   --color-text-primary: #1E1A15;
   --color-text-secondary: #6B6560;
+  --color-accent:         #C4922A;
 
   /* === FONT FAMILIES === */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -135,4 +136,5 @@
   --color-header-scrolled:  rgba(16,14,9,0.98);
   --color-text-primary:     #FAF8F4;
   --color-text-secondary:   #B8B2AC;
+  --color-accent:           #D4A843;
 }
