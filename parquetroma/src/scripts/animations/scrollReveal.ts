@@ -53,7 +53,7 @@ export function initScrollReveals(): void {
     gsap.to(lineBar, {
       scaleY: 1, duration: 1, ease: 'none',
       scrollTrigger: {
-        trigger: lineBar.closest('.processo__steps') ?? lineBar,
+        trigger: lineBar.closest('.processo__list') ?? lineBar,
         start: 'top 75%',
         end: 'bottom 60%',
         scrub: 1,
@@ -62,9 +62,9 @@ export function initScrollReveals(): void {
   }
 
   /* processo steps stagger */
-  gsap.utils.toArray<HTMLElement>('.processo__step').forEach((step, i) => {
+  gsap.utils.toArray<HTMLElement>('.processo__item').forEach((step, i) => {
     gsap.from(step, {
-      opacity: 0, x: -30, duration: 0.7, ease: 'power3.out',
+      opacity: 0, y: 30, duration: 0.7, ease: 'power3.out',
       scrollTrigger: { trigger: step, start: 'top 87%', once: true },
       delay: i * 0.1,
     });

@@ -5,7 +5,7 @@
    RESET + BASE
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: clip; }
 body {
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -97,6 +97,7 @@ body::after {
 .section {
   padding-block: clamp(3.5rem, 7vw, 6rem);
   position: relative;
+  overflow-x: clip;
 }
 .section--alt  { background: var(--color-surface-alt); }
 .section--dark { background: var(--color-dark); color: #fff; }

@@ -42,7 +42,20 @@
       "Bash(ls \"C:/Users/pietr/AppData/Local/Temp/lh-report.json\" 2>&1)",
       "Bash(ls *.md)",
       "Bash(ls .github/)",
-      "Bash(npm i *)"
+      "Bash(npm i *)",
+      "Bash(git commit -m 'fix: preserve HTML structure in hero title word-split animation *)",
+      "Bash(curl -s http://localhost:4321)",
+      "PowerShell(Stop-Process -Name \"node\" -Force -ErrorAction SilentlyContinue)",
+      "Bash(git commit -m 'fix: hide loader immediately on View Transitions navigation *)",
+      "Bash(git commit -m 'fix: hide loader in persistent PageLayout script on View Transitions *)",
+      "Skill(run)",
+      "Bash(git commit *)",
+      "Bash(git -C \"C:/Users/pietr/Documents/Projects/ClaudeCode/GenerateSites\" status)",
+      "Bash(git -C \"C:/Users/pietr/Documents/Projects/ClaudeCode/GenerateSites\" diff --stat)",
+      "Bash(git -C \"C:/Users/pietr/Documents/Projects/ClaudeCode/GenerateSites\" add parquetroma/src/pages/cookie/ parquetroma/src/pages/privacy/ MASTER_TODO_LIST.md)",
+      "Bash(git -C C:/Users/pietr/Documents/Projects/ClaudeCode/GenerateSites commit -m ' *)",
+      "Bash(grep -n \"^\\\\\\\\.\" C:/Users/pietr/Documents/Projects/ClaudeCode/GenerateSites/parquetroma/src/styles/global.css)",
+      "Bash(grep -v \"import\\\\|//\\\\|<!--\")"
     ]
   },
   "enabledPlugins": {
