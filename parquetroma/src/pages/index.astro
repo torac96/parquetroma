@@ -260,14 +260,14 @@ const processo = [
         </div>
 
         <!-- Panel 4 -->
-        <div class="h-panel h-panel--light">
-          <div class="h-panel__orb" style="background:radial-gradient(ellipse at 40% 60%,var(--color-gold-pale),transparent 55%);opacity:.4"></div>
+        <div class="h-panel" style="background:#120d04">
+          <div class="h-panel__orb" style="background:radial-gradient(ellipse at 50% 50%,#c4922a,transparent 60%);opacity:.22"></div>
           <div class="container h-panel__grid h-panel__grid--rev">
-            <div class="h-panel__num h-panel__num--light" aria-hidden="true">04</div>
+            <div class="h-panel__num" aria-hidden="true">04</div>
             <div class="h-panel__content">
-              <span class="h-panel__step h-panel__step--dark">04 / 04</span>
-              <h2 class="h-panel__title h-panel__title--dark">Il Tuo<br><em style="color:var(--color-gold)">Risultato</em></h2>
-              <p class="h-panel__text h-panel__text--dark">Un pavimento che ti emoziona ogni volta che entri. Garantito per iscritto. 500+ famiglie romane lo confermano ogni giorno.</p>
+              <span class="h-panel__step">04 / 04</span>
+              <h2 class="h-panel__title">Il Tuo<br><em>Risultato</em></h2>
+              <p class="h-panel__text">Un pavimento che ti emoziona ogni volta che entri. Garantito per iscritto. 500+ famiglie romane lo confermano ogni giorno.</p>
               <div class="h-panel__actions">
                 <a href={url('/contatti/')} class="btn btn--primary btn--lg">Inizia il Tuo Progetto</a>
                 <a href={url('/portfolio/')} class="btn btn--secondary btn--lg">Vedi il Portfolio</a>
@@ -498,10 +498,6 @@ const processo = [
   overflow: hidden;
   background: var(--color-dark);
 }
-.h-panel--light {
-  background: var(--color-cream);
-  color: #1E1A15;  /* force dark text — panel is always light regardless of .dark theme */
-}
 .h-panel__orb {
   position: absolute;
   inset: 0;
@@ -527,7 +523,6 @@ const processo = [
   display: block;
   margin-bottom: 1.5rem;
 }
-.h-panel__step--dark { color: var(--color-gold); }
 .h-panel__title {
   font-family: var(--font-serif);
   font-size: clamp(3rem, 6vw, 5rem);
@@ -538,15 +533,12 @@ const processo = [
   margin-bottom: 1.5rem;
 }
 .h-panel__title em { color: var(--color-gold-light); font-style: italic; }
-.h-panel__title--dark { color: var(--color-text); }
-.h-panel__title--dark em { color: var(--color-gold); }
 .h-panel__text {
   font-size: 1.05rem;
   color: rgba(255,255,255,.65);
   line-height: var(--lh-relaxed);
   max-width: 420px;
 }
-.h-panel__text--dark { color: #6B6560; } /* hardcoded warm gray — var() goes light in dark mode */
 .h-panel__badge {
   display: flex;
   align-items: center;
