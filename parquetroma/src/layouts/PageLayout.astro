@@ -85,6 +85,7 @@ interface Props {
         swapLoader.style.display = 'none';
         swapLoader.style.opacity = '0';
       }
+      initTheme();
       initHeader();
       initAllAnimations();
       requestAnimationFrame(() => ScrollTrigger.refresh());
