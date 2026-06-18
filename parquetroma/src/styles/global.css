@@ -571,7 +571,7 @@ body::after {
   font-weight: 700;
   letter-spacing: .08em;
   color: #fff;
-  background: var(--color-gold);
+  /* background: var(--color-gold); */
   width: 44px;
   height: 44px;
   border-radius: 50%;
