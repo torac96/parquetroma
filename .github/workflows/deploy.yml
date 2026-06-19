@@ -2,7 +2,7 @@ name: Deploy ParquetRoma to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
   workflow_dispatch:
 
 permissions:
@@ -27,23 +27,20 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: parquetroma/package-lock.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Install dependencies
-        working-directory: parquetroma
         run: npm ci
 
       - name: Build
-        working-directory: parquetroma
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: parquetroma/dist
+          path: dist
 
   deploy:
     name: Deploy to GitHub Pages

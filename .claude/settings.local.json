@@ -55,7 +55,16 @@
       "Bash(git -C \"C:/Users/pietr/Documents/Projects/ClaudeCode/GenerateSites\" add parquetroma/src/pages/cookie/ parquetroma/src/pages/privacy/ MASTER_TODO_LIST.md)",
       "Bash(git -C C:/Users/pietr/Documents/Projects/ClaudeCode/GenerateSites commit -m ' *)",
       "Bash(grep -n \"^\\\\\\\\.\" C:/Users/pietr/Documents/Projects/ClaudeCode/GenerateSites/parquetroma/src/styles/global.css)",
-      "Bash(grep -v \"import\\\\|//\\\\|<!--\")"
+      "Bash(grep -v \"import\\\\|//\\\\|<!--\")",
+      "Bash(mv \"C:\\\\Users\\\\pietr\\\\Documents\\\\Projects\\\\ClaudeCode\\\\GenerateSites\\\\parquetroma\\\\public\\\\fonts\\\\inter-latin.woff2\" \"C:\\\\Users\\\\pietr\\\\Documents\\\\Projects\\\\ClaudeCode\\\\GenerateSites\\\\parquetroma\\\\src\\\\fonts\\\\\" && mv \"C:\\\\Users\\\\pietr\\\\Documents\\\\Projects\\\\ClaudeCode\\\\GenerateSites\\\\parquetroma\\\\public\\\\fonts\\\\playfair-700-latin.woff2\" \"C:\\\\Users\\\\pietr\\\\Documents\\\\Projects\\\\ClaudeCode\\\\GenerateSites\\\\parquetroma\\\\src\\\\fonts\\\\\")",
+      "Bash(mv \"C:\\\\Users\\\\pietr\\\\Documents\\\\Projects\\\\ClaudeCode\\\\GenerateSites\\\\parquetroma\\\\public\\\\fonts\\\\playfair-700i-latin.woff2\" \"C:\\\\Users\\\\pietr\\\\Documents\\\\Projects\\\\ClaudeCode\\\\GenerateSites\\\\parquetroma\\\\src\\\\fonts\\\\\" && rmdir \"C:\\\\Users\\\\pietr\\\\Documents\\\\Projects\\\\ClaudeCode\\\\GenerateSites\\\\parquetroma\\\\public\\\\fonts\" && echo \"done\")",
+      "Bash(mkdir -p parquetroma/docs)",
+      "Bash(mv parquetroma/PIANO_STRATEGICO.md parquetroma/docs/PIANO_STRATEGICO.md)",
+      "Bash(mkdir -p docs)",
+      "Bash(mv *.html css js Catturaprova.PNG docs/)",
+      "Bash(mv *.md docs/)",
+      "Bash(mv MASTER_TODO_LIST.md docs/)",
+      "PowerShell(Move-Item *)"
     ]
   },
   "enabledPlugins": {
