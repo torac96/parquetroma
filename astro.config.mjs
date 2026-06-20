@@ -2,10 +2,12 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import netlify from '@astrojs/netlify';
 
 const isNetlify = process.env.DEPLOY_TARGET === 'netlify';
 
 export default defineConfig({
+  adapter: netlify(),
   site: isNetlify ? 'https://parquetroma.it' : 'https://torac96.github.io',
   base: isNetlify ? '/' : '/parquetroma',
   integrations: [
