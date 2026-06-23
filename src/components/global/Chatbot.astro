@@ -1,5 +1,7 @@
 ---
 import { SITE_CONFIG } from '../../data/config';
+// Strip trailing slash so data-siteurl is always "https://domain.com"
+const siteUrl = SITE_CONFIG.url.replace(/\/$/, '');
 ---
 
 <button
@@ -24,6 +26,7 @@ import { SITE_CONFIG } from '../../data/config';
   role="dialog"
   aria-label="Chat assistenza ParquetRoma"
   aria-hidden="true"
+  data-siteurl={siteUrl}
 >
   <!-- Header -->
   <div class="chatbot__header">

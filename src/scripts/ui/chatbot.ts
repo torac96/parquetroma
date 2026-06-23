@@ -10,6 +10,21 @@ function getApiBase(): string {
   return `${base}/api/chat`;
 }
 
+// Returns the production site origin (e.g. "https://www.parquetroma.it")
+// stored at build time on the panel element so links stay relative on any env.
+function getSiteUrl(): string {
+  return document.getElementById('chatbot-panel')?.dataset.siteurl ?? '';
+}
+
+// If href is an absolute URL pointing to our own domain, strip origin → relative path
+function toRelativeIfInternal(href: string): string {
+  const siteUrl = getSiteUrl();
+  if (siteUrl && href.startsWith(siteUrl + '/')) return href.slice(siteUrl.length);
+  // Also handle current origin (works in dev/preview automatically)
+  if (href.startsWith(window.location.origin + '/')) return href.slice(window.location.origin.length);
+  return href;
+}
+
 // Minimal safe markdown → HTML
 // Split order: markdown links → phone numbers → emails → plain text
 function renderMarkdown(text: string): string {
@@ -21,7 +36,8 @@ function renderMarkdown(text: string): string {
       // Markdown link: [label](href) — absolute or relative
       const mdLink = part.match(/^\[([^\]]+)\]\(((?:(?:https?|tel|mailto):\/?\/?|\/)[^)]+)\)$/);
       if (mdLink) {
-        const [, label, href] = mdLink;
+        const [, label, rawHref] = mdLink;
+        const href = toRelativeIfInternal(rawHref);
         const isExternal = href.startsWith('http');
         return `<a href="${href}"${isExternal ? ' target="_blank" rel="noopener noreferrer"' : ''}>${label}</a>`;
       }
