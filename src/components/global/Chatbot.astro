@@ -252,8 +252,64 @@ import { SITE_CONFIG } from '../../data/config';
 .chatbot__msg--model strong { font-weight: 600; }
 .chatbot__msg--model ul { padding-left: 1.1rem; margin: 0.3rem 0; }
 .chatbot__msg--model li { margin: 0.15rem 0; }
-.chatbot__msg--model a { color: var(--color-gold-dark); text-decoration: underline; }
-.chatbot__msg--model a:hover { color: var(--color-gold); }
+
+/* Generic links */
+.chatbot__msg--model a {
+  color: var(--color-gold-dark);
+  text-decoration: underline;
+  transition: opacity var(--duration-150);
+}
+.chatbot__msg--model a:hover { opacity: 0.75; }
+
+/* Action-chip links: tel, WhatsApp, mailto, internal CTAs */
+.chatbot__msg--model a[href^="tel:"],
+.chatbot__msg--model a[href*="wa.me"],
+.chatbot__msg--model a[href^="mailto:"],
+.chatbot__msg--model a[href^="/"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-decoration: none;
+  line-height: 1.6;
+  transition: opacity var(--duration-150), transform var(--duration-100);
+}
+.chatbot__msg--model a[href^="tel:"],
+.chatbot__msg--model a[href*="wa.me"],
+.chatbot__msg--model a[href^="mailto:"],
+.chatbot__msg--model a[href^="/"] {
+  transform: none;
+}
+.chatbot__msg--model a[href^="tel:"]:hover,
+.chatbot__msg--model a[href*="wa.me"]:hover,
+.chatbot__msg--model a[href^="mailto:"]:hover,
+.chatbot__msg--model a[href^="/"]:hover {
+  opacity: 0.82;
+  transform: scale(1.02);
+}
+
+.chatbot__msg--model a[href^="tel:"] {
+  background: rgba(0, 128, 110, 0.12);
+  color: #00796b;
+  border: 1px solid rgba(0, 128, 110, 0.2);
+}
+.chatbot__msg--model a[href*="wa.me"] {
+  background: rgba(37, 211, 102, 0.12);
+  color: #128c7e;
+  border: 1px solid rgba(37, 211, 102, 0.25);
+}
+.chatbot__msg--model a[href^="mailto:"] {
+  background: rgba(196, 146, 42, 0.1);
+  color: var(--color-gold-dark);
+  border: 1px solid rgba(196, 146, 42, 0.2);
+}
+.chatbot__msg--model a[href^="/"] {
+  background: rgba(196, 146, 42, 0.08);
+  color: var(--color-gold-dark);
+  border: 1px solid rgba(196, 146, 42, 0.18);
+}
 
 /* Streaming cursor */
 .chatbot__msg--streaming::after {

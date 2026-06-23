@@ -11,17 +11,28 @@ function getApiBase(): string {
 }
 
 // Minimal safe markdown → HTML
+// Split order: markdown links → phone numbers → emails → plain text
 function renderMarkdown(text: string): string {
-  // Split on markdown links first to avoid escaping their content
-  const parts = text.split(/(\[[^\]]+\]\((?:https?|tel|mailto):\/?\/?[^)]+\))/g);
+  const SPLIT_RE = /(\[[^\]]+\]\((?:https?|tel|mailto):\/?\/?[^)]+\)|\+39[\s\-.]?\d[\d\s\-.]{5,12}\d|[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})/g;
+  const parts = text.split(SPLIT_RE);
 
   return parts.map((part, i) => {
     if (i % 2 === 1) {
-      const m = part.match(/^\[([^\]]+)\]\(((?:https?|tel|mailto):\/?\/?[^)]+)\)$/);
-      if (m) {
-        const [, label, href] = m;
+      // Markdown link: [label](href)
+      const mdLink = part.match(/^\[([^\]]+)\]\(((?:https?|tel|mailto):\/?\/?[^)]+)\)$/);
+      if (mdLink) {
+        const [, label, href] = mdLink;
         const isExternal = href.startsWith('http');
         return `<a href="${href}"${isExternal ? ' target="_blank" rel="noopener noreferrer"' : ''}>${label}</a>`;
+      }
+      // Bare phone number (e.g. +39-06-1234-5678)
+      if (part.startsWith('+39')) {
+        const digits = part.replace(/[^\d]/g, '');
+        return `<a href="tel:+${digits}">${part}</a>`;
+      }
+      // Bare email address
+      if (part.includes('@')) {
+        return `<a href="mailto:${part}">${part}</a>`;
       }
     }
     return part
