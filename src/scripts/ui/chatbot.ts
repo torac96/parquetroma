@@ -13,13 +13,13 @@ function getApiBase(): string {
 // Minimal safe markdown → HTML
 // Split order: markdown links → phone numbers → emails → plain text
 function renderMarkdown(text: string): string {
-  const SPLIT_RE = /(\[[^\]]+\]\((?:https?|tel|mailto):\/?\/?[^)]+\)|\+39[\s\-.]?\d[\d\s\-.]{5,12}\d|[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})/g;
+  const SPLIT_RE = /(\[[^\]]+\]\((?:(?:https?|tel|mailto):\/?\/?|\/)[^)]+\)|\+39[\s\-.]?\d[\d\s\-.]{5,12}\d|[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})/g;
   const parts = text.split(SPLIT_RE);
 
   return parts.map((part, i) => {
     if (i % 2 === 1) {
-      // Markdown link: [label](href)
-      const mdLink = part.match(/^\[([^\]]+)\]\(((?:https?|tel|mailto):\/?\/?[^)]+)\)$/);
+      // Markdown link: [label](href) — absolute or relative
+      const mdLink = part.match(/^\[([^\]]+)\]\(((?:(?:https?|tel|mailto):\/?\/?|\/)[^)]+)\)$/);
       if (mdLink) {
         const [, label, href] = mdLink;
         const isExternal = href.startsWith('http');
