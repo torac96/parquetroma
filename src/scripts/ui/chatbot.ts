@@ -3,6 +3,26 @@ interface Message {
   text: string;
 }
 
+const SESSION_KEY = 'chatbot_session';
+
+interface SessionData {
+  history: Message[];
+  messages: Message[]; // full list including greeting
+  greeted: boolean;
+  userHasSent: boolean;
+}
+
+function saveSession(data: SessionData) {
+  try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(data)); } catch {}
+}
+
+function loadSession(): SessionData | null {
+  try {
+    const raw = sessionStorage.getItem(SESSION_KEY);
+    return raw ? (JSON.parse(raw) as SessionData) : null;
+  } catch { return null; }
+}
+
 const history: Message[] = [];
 
 function getApiBase(): string {
@@ -97,6 +117,25 @@ export function initChatbot() {
   let greeted = false;
   let userHasSent = false;
 
+  // Restore previous session (survives in-tab navigation via View Transitions)
+  const session = loadSession();
+  if (session && session.messages.length > 0) {
+    greeted = session.greeted;
+    userHasSent = session.userHasSent;
+    history.push(...session.history);
+    session.messages.forEach(m => {
+      const el = createMessageEl(m.role);
+      setContent(el, m.text);
+      messages!.appendChild(el);
+    });
+    if (userHasSent) quickreplies?.classList.add('hidden');
+    // Show badge only if panel was closed when user navigated away
+    if (!isOpen) toggle.querySelector('.chatbot__badge')?.removeAttribute('style');
+  }
+
+  // All messages stored here for session persistence (includes greeting)
+  const allMessages: Message[] = session?.messages ? [...session.messages] : [];
+
   function open() {
     isOpen = true;
     panel.setAttribute('aria-hidden', 'false');
@@ -106,13 +145,17 @@ export function initChatbot() {
 
     if (!greeted) {
       greeted = true;
-      // Show greeting with slight delay for polish
+      const greetText = 'Ciao! 👋 Sono l\'assistente di **ParquetRoma**.\nCome posso aiutarti oggi? Puoi chiedermi informazioni su servizi, preventivi, zone coperte o tempi di lavoro.';
       setTimeout(() => {
         const greeting = createMessageEl('model');
-        setContent(greeting, 'Ciao! 👋 Sono l\'assistente di **ParquetRoma**.\nCome posso aiutarti oggi? Puoi chiedermi informazioni su servizi, preventivi, zone coperte o tempi di lavoro.');
+        setContent(greeting, greetText);
         messages!.appendChild(greeting);
         scrollToBottom(messages!);
+        allMessages.push({ role: 'model', text: greetText });
+        saveSession({ history, messages: allMessages, greeted, userHasSent });
       }, 180);
+    } else {
+      scrollToBottom(messages!);
     }
   }
 
@@ -166,6 +209,7 @@ export function initChatbot() {
     const userEl = createMessageEl('user');
     userEl.textContent = text;
     messages!.appendChild(userEl);
+    allMessages.push({ role: 'user', text });
     scrollToBottom(messages!);
 
     // Typing indicator
@@ -234,6 +278,8 @@ export function initChatbot() {
         setContent(replyEl, fullText, false); // ensure cursor removed
         history.push({ role: 'user', text });
         history.push({ role: 'model', text: fullText });
+        allMessages.push({ role: 'model', text: fullText });
+        saveSession({ history, messages: allMessages, greeted, userHasSent });
       }
     } catch {
       typing.remove();
