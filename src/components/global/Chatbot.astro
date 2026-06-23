@@ -266,12 +266,10 @@ const siteUrl = SITE_CONFIG.url.replace(/\/$/, '');
   text-decoration: underline;
 }
 
-/* Action buttons: phone, WhatsApp, email, form */
+/* Action buttons: phone, WhatsApp, email */
 .chatbot__msg--model a[href^="tel:"],
 .chatbot__msg--model a[href*="wa.me"],
-.chatbot__msg--model a[href^="mailto:"],
-.chatbot__msg--model a[href^="/preventivo"],
-.chatbot__msg--model a[href^="/contatti"] {
+.chatbot__msg--model a[href^="mailto:"] {
   display: inline-block;
   margin: 0.25rem 0.15rem 0 0;
   padding: 0.3rem 0.75rem;
@@ -286,9 +284,7 @@ const siteUrl = SITE_CONFIG.url.replace(/\/$/, '');
 }
 .chatbot__msg--model a[href^="tel:"]:hover,
 .chatbot__msg--model a[href*="wa.me"]:hover,
-.chatbot__msg--model a[href^="mailto:"]:hover,
-.chatbot__msg--model a[href^="/preventivo"]:hover,
-.chatbot__msg--model a[href^="/contatti"]:hover {
+.chatbot__msg--model a[href^="mailto:"]:hover {
   filter: brightness(1.1);
   transform: translateY(-1px);
 }
@@ -311,11 +307,6 @@ const siteUrl = SITE_CONFIG.url.replace(/\/$/, '');
 }
 .chatbot__msg--model a[href^="mailto:"]::before { content: "✉ "; }
 
-.chatbot__msg--model a[href^="/preventivo"],
-.chatbot__msg--model a[href^="/contatti"] {
-  background: var(--color-green);
-  color: #fff;
-}
 
 /* Streaming cursor */
 .chatbot__msg--streaming::after {
